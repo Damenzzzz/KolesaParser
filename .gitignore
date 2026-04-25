@@ -3,6 +3,3 @@ __pycache__/
 .venv/
 venv/
 
-data/cars.db
-data/exports/*.csv
-logs/*.log

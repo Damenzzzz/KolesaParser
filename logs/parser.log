@@ -1,0 +1,1422 @@
+2026-04-25 22:00:46,331 | INFO | kolesa_parser | started mode collect
+2026-04-25 22:00:52,764 | INFO | kolesa_parser | current page 1: https://kolesa.kz/cars/
+2026-04-25 22:00:54,717 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/213097689
+2026-04-25 22:01:05,789 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/213097689
+2026-04-25 22:01:10,792 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/199360151
+2026-04-25 22:01:18,810 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/199360151
+2026-04-25 22:01:22,221 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/217970641
+2026-04-25 22:01:34,287 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/217970641
+2026-04-25 22:01:37,613 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/197433518
+2026-04-25 22:01:46,035 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/197433518
+2026-04-25 22:01:51,834 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/217859726
+2026-04-25 22:02:02,876 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/217859726
+2026-04-25 22:02:07,009 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/217720086
+2026-04-25 22:02:13,883 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/217720086
+2026-04-25 22:02:18,302 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/217710833
+2026-04-25 22:02:27,169 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/217710833
+2026-04-25 22:02:34,926 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/206467348
+2026-04-25 22:02:44,481 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/206467348
+2026-04-25 22:02:52,477 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/217211549
+2026-04-25 22:03:01,055 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/217211549
+2026-04-25 22:03:05,781 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/161961211
+2026-04-25 22:03:14,510 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/161961211
+2026-04-25 22:03:19,617 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/217647514
+2026-04-25 22:03:26,989 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/217647514
+2026-04-25 22:03:34,711 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/217642783
+2026-04-25 22:03:41,902 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/217642783
+2026-04-25 22:03:49,954 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/217630003
+2026-04-25 22:03:57,091 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/217630003
+2026-04-25 22:04:03,165 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/217628609
+2026-04-25 22:04:11,987 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/217628609
+2026-04-25 22:04:17,489 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/217623187
+2026-04-25 22:04:27,794 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/217623187
+2026-04-25 22:04:32,171 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/215715123
+2026-04-25 22:04:41,096 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/215715123
+2026-04-25 22:04:45,394 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/215725652
+2026-04-25 22:04:52,696 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/215725652
+2026-04-25 22:04:59,675 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/217604660
+2026-04-25 22:05:06,749 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/217604660
+2026-04-25 22:05:11,018 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/202026392
+2026-04-25 22:05:18,507 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/202026392
+2026-04-25 22:05:22,382 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/198689675
+2026-04-25 22:05:29,589 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/198689675
+2026-04-25 22:06:30,078 | INFO | kolesa_parser | started mode report
+2026-04-25 22:06:41,629 | INFO | kolesa_parser | started mode export
+2026-04-25 22:22:44,077 | INFO | kolesa_parser | started mode collect
+2026-04-25 22:22:45,944 | INFO | kolesa_parser | current page 1: https://kolesa.kz/cars/
+2026-04-25 22:22:47,278 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/213865210
+2026-04-25 22:22:55,776 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/213865210
+2026-04-25 22:23:02,359 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/216333200
+2026-04-25 22:23:09,536 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/216333200
+2026-04-25 22:23:14,027 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/202822312
+2026-04-25 22:23:21,931 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/202822312
+2026-04-25 22:23:27,798 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/218211207
+2026-04-25 22:23:35,543 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/218211207
+2026-04-25 22:23:42,740 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/217264426
+2026-04-25 22:23:50,085 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/217264426
+2026-04-25 22:23:53,511 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/218007216
+2026-04-25 22:24:01,533 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/218007216
+2026-04-25 22:24:05,937 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/215990325
+2026-04-25 22:24:14,131 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/215990325
+2026-04-25 22:24:21,005 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/214374976
+2026-04-25 22:24:28,256 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/214374976
+2026-04-25 22:24:31,702 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/217530017
+2026-04-25 22:24:38,446 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/217530017
+2026-04-25 22:24:46,492 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/202642038
+2026-04-25 22:24:53,349 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/202642038
+2026-04-25 22:24:59,518 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/218208746
+2026-04-25 22:25:06,345 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/218208746
+2026-04-25 22:25:10,291 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/215921929
+2026-04-25 22:25:17,196 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/215921929
+2026-04-25 22:25:22,803 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/217267315
+2026-04-25 22:25:29,712 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/217267315
+2026-04-25 22:25:35,904 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/171086990
+2026-04-25 22:25:42,594 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/171086990
+2026-04-25 22:25:47,549 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/202574183
+2026-04-25 22:25:54,501 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/202574183
+2026-04-25 22:25:58,080 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/217722241
+2026-04-25 22:26:04,796 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/217722241
+2026-04-25 22:26:09,209 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/217285494
+2026-04-25 22:26:16,058 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/217285494
+2026-04-25 22:26:19,436 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/217709143
+2026-04-25 22:26:26,336 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/217709143
+2026-04-25 22:26:32,107 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/216902160
+2026-04-25 22:26:39,099 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/216902160
+2026-04-25 22:26:42,927 | INFO | kolesa_parser | listing URL https://kolesa.kz/a/show/217686399
+2026-04-25 22:26:49,841 | INFO | kolesa_parser | saved listing https://kolesa.kz/a/show/217686399
+2026-04-25 22:28:12,561 | INFO | kolesa_parser | started mode report
+2026-04-25 23:33:16,143 | INFO | kolesa_parser | started mode export
+2026-04-25 23:55:56,919 | INFO | kolesa_parser | selected mode collect
+2026-04-25 23:55:56,919 | INFO | kolesa_parser | selected engine http
+2026-04-25 23:55:56,919 | INFO | kolesa_parser | target limit 100
+2026-04-25 23:55:56,919 | INFO | kolesa_parser | current database count at start: 40
+2026-04-25 23:55:56,920 | INFO | kolesa_parser | concurrency 2
+2026-04-25 23:55:57,395 | INFO | kolesa_http_parser | current search page 1: https://kolesa.kz/cars/
+2026-04-25 23:56:01,107 | INFO | httpx | HTTP Request: GET https://kolesa.kz/cars/ "HTTP/1.1 200 OK"
+2026-04-25 23:56:01,144 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217500795
+2026-04-25 23:56:01,145 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217608298
+2026-04-25 23:56:01,145 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/191800863
+2026-04-25 23:56:01,146 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218219105
+2026-04-25 23:56:01,146 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/214193228
+2026-04-25 23:56:01,146 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/162949202
+2026-04-25 23:56:01,146 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/200917555
+2026-04-25 23:56:01,147 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217448517
+2026-04-25 23:56:01,147 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/202090543
+2026-04-25 23:56:01,147 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218219693
+2026-04-25 23:56:01,147 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218219468
+2026-04-25 23:56:01,147 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955094
+2026-04-25 23:56:01,148 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/184477696
+2026-04-25 23:56:01,148 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954676
+2026-04-25 23:56:01,148 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/193060122
+2026-04-25 23:56:01,149 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954713
+2026-04-25 23:56:01,149 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954672
+2026-04-25 23:56:01,149 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955217
+2026-04-25 23:56:01,149 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955208
+2026-04-25 23:56:01,150 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955202
+2026-04-25 23:56:01,150 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955226
+2026-04-25 23:56:01,150 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/193060398
+2026-04-25 23:56:01,150 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955187
+2026-04-25 23:56:01,151 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216863856
+2026-04-25 23:56:01,153 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/191685406
+2026-04-25 23:56:01,154 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217568298
+2026-04-25 23:56:01,155 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217835954
+2026-04-25 23:56:01,155 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218114202
+2026-04-25 23:56:01,156 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/211737438
+2026-04-25 23:56:01,156 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217132845
+2026-04-25 23:56:01,157 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217895983
+2026-04-25 23:56:01,157 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217217703
+2026-04-25 23:56:01,157 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/215929407
+2026-04-25 23:56:04,223 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217500795 "HTTP/1.1 200 OK"
+2026-04-25 23:56:04,232 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217500795; current total saved count: 41
+2026-04-25 23:56:04,360 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217608298 "HTTP/1.1 200 OK"
+2026-04-25 23:56:04,366 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217608298; current total saved count: 42
+2026-04-25 23:56:07,552 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/191800863 "HTTP/1.1 200 OK"
+2026-04-25 23:56:07,559 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/191800863; current total saved count: 43
+2026-04-25 23:56:08,797 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218219105 "HTTP/1.1 200 OK"
+2026-04-25 23:56:08,805 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218219105; current total saved count: 44
+2026-04-25 23:56:12,376 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/162949202 "HTTP/1.1 200 OK"
+2026-04-25 23:56:12,383 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/162949202; current total saved count: 45
+2026-04-25 23:56:12,387 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/214193228 "HTTP/1.1 200 OK"
+2026-04-25 23:56:12,395 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/214193228; current total saved count: 46
+2026-04-25 23:56:15,767 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/200917555 "HTTP/1.1 200 OK"
+2026-04-25 23:56:15,774 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/200917555; current total saved count: 47
+2026-04-25 23:56:16,227 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217448517 "HTTP/1.1 200 OK"
+2026-04-25 23:56:16,235 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217448517; current total saved count: 48
+2026-04-25 23:56:17,792 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/202090543 "HTTP/1.1 200 OK"
+2026-04-25 23:56:17,800 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/202090543; current total saved count: 49
+2026-04-25 23:56:20,492 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218219693 "HTTP/1.1 200 OK"
+2026-04-25 23:56:20,499 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218219693; current total saved count: 50
+2026-04-25 23:56:21,724 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218219468 "HTTP/1.1 200 OK"
+2026-04-25 23:56:21,730 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218219468; current total saved count: 51
+2026-04-25 23:56:23,256 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955094 "HTTP/1.1 200 OK"
+2026-04-25 23:56:23,264 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955094; current total saved count: 52
+2026-04-25 23:56:24,573 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/184477696 "HTTP/1.1 200 OK"
+2026-04-25 23:56:24,580 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/184477696; current total saved count: 53
+2026-04-25 23:56:25,431 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954676 "HTTP/1.1 200 OK"
+2026-04-25 23:56:25,437 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954676; current total saved count: 54
+2026-04-25 23:56:27,061 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/193060122 "HTTP/1.1 200 OK"
+2026-04-25 23:56:27,068 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/193060122; current total saved count: 55
+2026-04-25 23:56:28,960 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954672 "HTTP/1.1 200 OK"
+2026-04-25 23:56:28,967 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954672; current total saved count: 56
+2026-04-25 23:56:29,707 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954713 "HTTP/1.1 200 OK"
+2026-04-25 23:56:29,713 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954713; current total saved count: 57
+2026-04-25 23:56:32,408 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955217 "HTTP/1.1 200 OK"
+2026-04-25 23:56:32,434 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955217; current total saved count: 58
+2026-04-25 23:56:33,411 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955208 "HTTP/1.1 200 OK"
+2026-04-25 23:56:33,436 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955208; current total saved count: 59
+2026-04-25 23:56:36,172 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955202 "HTTP/1.1 200 OK"
+2026-04-25 23:56:36,202 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955202; current total saved count: 60
+2026-04-25 23:56:36,901 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955226 "HTTP/1.1 200 OK"
+2026-04-25 23:56:36,967 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955226; current total saved count: 61
+2026-04-25 23:56:39,398 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/193060398 "HTTP/1.1 200 OK"
+2026-04-25 23:56:39,423 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/193060398; current total saved count: 62
+2026-04-25 23:56:39,738 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955187 "HTTP/1.1 200 OK"
+2026-04-25 23:56:39,763 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955187; current total saved count: 63
+2026-04-25 23:56:43,311 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216863856 "HTTP/1.1 200 OK"
+2026-04-25 23:56:43,332 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216863856; current total saved count: 64
+2026-04-25 23:56:43,599 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/191685406 "HTTP/1.1 200 OK"
+2026-04-25 23:56:43,612 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/191685406; current total saved count: 65
+2026-04-25 23:56:45,837 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217835954 "HTTP/1.1 200 OK"
+2026-04-25 23:56:45,844 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217835954; current total saved count: 66
+2026-04-25 23:56:47,286 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217568298 "HTTP/1.1 200 OK"
+2026-04-25 23:56:47,296 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217568298; current total saved count: 67
+2026-04-25 23:56:50,210 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218114202 "HTTP/1.1 200 OK"
+2026-04-25 23:56:50,230 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218114202; current total saved count: 68
+2026-04-25 23:56:51,023 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/211737438 "HTTP/1.1 200 OK"
+2026-04-25 23:56:51,031 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/211737438; current total saved count: 69
+2026-04-25 23:56:54,514 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217895983 "HTTP/1.1 200 OK"
+2026-04-25 23:56:54,522 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217895983; current total saved count: 70
+2026-04-25 23:56:54,770 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217132845 "HTTP/1.1 200 OK"
+2026-04-25 23:56:54,776 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217132845; current total saved count: 71
+2026-04-25 23:56:56,429 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217217703 "HTTP/1.1 200 OK"
+2026-04-25 23:56:56,440 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217217703; current total saved count: 72
+2026-04-25 23:56:58,481 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/215929407 "HTTP/1.1 200 OK"
+2026-04-25 23:56:58,491 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/215929407; current total saved count: 73
+2026-04-25 23:56:58,495 | INFO | kolesa_http_parser | current total saved count: 73
+2026-04-25 23:56:58,495 | INFO | kolesa_http_parser | current search page 2: https://kolesa.kz/cars/?page=2
+2026-04-25 23:57:03,107 | INFO | httpx | HTTP Request: GET https://kolesa.kz/cars/?page=2 "HTTP/1.1 200 OK"
+2026-04-25 23:57:03,137 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218219105
+2026-04-25 23:57:03,138 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/214193228
+2026-04-25 23:57:03,139 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/162949202
+2026-04-25 23:57:03,139 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/200917555
+2026-04-25 23:57:03,140 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217448517
+2026-04-25 23:57:03,147 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/202090543
+2026-04-25 23:57:03,148 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218219693
+2026-04-25 23:57:03,148 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218219468
+2026-04-25 23:57:03,149 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157955094
+2026-04-25 23:57:03,149 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/184477696
+2026-04-25 23:57:03,150 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157954676
+2026-04-25 23:57:03,150 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/193060122
+2026-04-25 23:57:03,151 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157954713
+2026-04-25 23:57:03,151 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157954672
+2026-04-25 23:57:03,161 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/216863856
+2026-04-25 23:57:03,162 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/191685406
+2026-04-25 23:57:03,163 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217568298
+2026-04-25 23:57:03,163 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217835954
+2026-04-25 23:57:03,164 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/214705951
+2026-04-25 23:57:03,166 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218034861
+2026-04-25 23:57:03,167 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216322798
+2026-04-25 23:57:03,168 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217738428
+2026-04-25 23:57:03,168 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/215582073
+2026-04-25 23:57:03,169 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216837717
+2026-04-25 23:57:03,169 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/207735842
+2026-04-25 23:57:03,169 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217621911
+2026-04-25 23:57:03,170 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217620634
+2026-04-25 23:57:03,171 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/215936788
+2026-04-25 23:57:03,172 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/143681536
+2026-04-25 23:57:03,173 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/213156207
+2026-04-25 23:57:03,173 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217729312
+2026-04-25 23:57:04,948 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/214705951 "HTTP/1.1 200 OK"
+2026-04-25 23:57:04,967 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/214705951; current total saved count: 74
+2026-04-25 23:57:07,303 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218034861 "HTTP/1.1 200 OK"
+2026-04-25 23:57:07,314 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218034861; current total saved count: 75
+2026-04-25 23:57:08,032 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216322798 "HTTP/1.1 200 OK"
+2026-04-25 23:57:08,040 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216322798; current total saved count: 76
+2026-04-25 23:57:10,272 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217738428 "HTTP/1.1 200 OK"
+2026-04-25 23:57:10,281 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217738428; current total saved count: 77
+2026-04-25 23:57:11,958 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/215582073 "HTTP/1.1 200 OK"
+2026-04-25 23:57:11,967 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/215582073; current total saved count: 78
+2026-04-25 23:57:14,952 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216837717 "HTTP/1.1 200 OK"
+2026-04-25 23:57:14,959 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216837717; current total saved count: 79
+2026-04-25 23:57:15,312 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/207735842 "HTTP/1.1 200 OK"
+2026-04-25 23:57:15,323 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/207735842; current total saved count: 80
+2026-04-25 23:57:19,306 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217621911 "HTTP/1.1 200 OK"
+2026-04-25 23:57:19,313 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217621911; current total saved count: 81
+2026-04-25 23:57:19,591 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217620634 "HTTP/1.1 200 OK"
+2026-04-25 23:57:19,598 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217620634; current total saved count: 82
+2026-04-25 23:57:21,534 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/215936788 "HTTP/1.1 200 OK"
+2026-04-25 23:57:21,548 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/215936788; current total saved count: 83
+2026-04-25 23:57:22,634 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/143681536 "HTTP/1.1 200 OK"
+2026-04-25 23:57:22,648 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/143681536; current total saved count: 84
+2026-04-25 23:57:23,740 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/213156207 "HTTP/1.1 200 OK"
+2026-04-25 23:57:23,748 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/213156207; current total saved count: 85
+2026-04-25 23:57:24,624 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217729312 "HTTP/1.1 200 OK"
+2026-04-25 23:57:24,633 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217729312; current total saved count: 86
+2026-04-25 23:57:24,642 | INFO | kolesa_http_parser | current total saved count: 86
+2026-04-25 23:57:24,642 | INFO | kolesa_http_parser | current search page 3: https://kolesa.kz/cars/?page=3
+2026-04-25 23:57:26,877 | INFO | httpx | HTTP Request: GET https://kolesa.kz/cars/?page=3 "HTTP/1.1 200 OK"
+2026-04-25 23:57:26,897 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/184477696
+2026-04-25 23:57:26,899 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157954676
+2026-04-25 23:57:26,900 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/193060122
+2026-04-25 23:57:26,906 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157954713
+2026-04-25 23:57:26,909 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157954672
+2026-04-25 23:57:26,910 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157955217
+2026-04-25 23:57:26,910 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157955208
+2026-04-25 23:57:26,911 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157955202
+2026-04-25 23:57:26,912 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157955226
+2026-04-25 23:57:26,913 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/193060398
+2026-04-25 23:57:26,922 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157955187
+2026-04-25 23:57:26,924 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215936788
+2026-04-25 23:57:26,926 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/143681536
+2026-04-25 23:57:26,929 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/213156207
+2026-04-25 23:57:26,929 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217729312
+2026-04-25 23:57:26,930 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/216837717
+2026-04-25 23:57:26,930 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/207735842
+2026-04-25 23:57:26,954 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/216863856
+2026-04-25 23:57:26,955 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/191685406
+2026-04-25 23:57:26,957 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217568298
+2026-04-25 23:57:26,958 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217835954
+2026-04-25 23:57:26,959 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/202817920
+2026-04-25 23:57:26,963 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/215890608
+2026-04-25 23:57:26,965 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217753807
+2026-04-25 23:57:26,965 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/187874935
+2026-04-25 23:57:26,966 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955194
+2026-04-25 23:57:26,967 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/170439517
+2026-04-25 23:57:26,969 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955214
+2026-04-25 23:57:26,970 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954491
+2026-04-25 23:57:26,972 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157397206
+2026-04-25 23:57:26,972 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/187647623
+2026-04-25 23:57:26,975 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954514
+2026-04-25 23:57:26,976 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/193752730
+2026-04-25 23:57:30,257 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/215890608 "HTTP/1.1 200 OK"
+2026-04-25 23:57:30,285 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/215890608; current total saved count: 87
+2026-04-25 23:57:31,090 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/202817920 "HTTP/1.1 200 OK"
+2026-04-25 23:57:31,098 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/202817920; current total saved count: 88
+2026-04-25 23:57:34,469 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/187874935 "HTTP/1.1 200 OK"
+2026-04-25 23:57:34,475 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/187874935; current total saved count: 89
+2026-04-25 23:57:34,738 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217753807 "HTTP/1.1 200 OK"
+2026-04-25 23:57:34,745 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217753807; current total saved count: 90
+2026-04-25 23:57:37,004 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955194 "HTTP/1.1 200 OK"
+2026-04-25 23:57:37,014 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955194; current total saved count: 91
+2026-04-25 23:57:37,205 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/170439517 "HTTP/1.1 200 OK"
+2026-04-25 23:57:37,217 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/170439517; current total saved count: 92
+2026-04-25 23:57:40,139 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954491 "HTTP/1.1 200 OK"
+2026-04-25 23:57:40,150 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954491; current total saved count: 93
+2026-04-25 23:57:41,399 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955214 "HTTP/1.1 200 OK"
+2026-04-25 23:57:41,406 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955214; current total saved count: 94
+2026-04-25 23:57:42,786 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157397206 "HTTP/1.1 200 OK"
+2026-04-25 23:57:42,795 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157397206; current total saved count: 95
+2026-04-25 23:57:45,127 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954514 "HTTP/1.1 200 OK"
+2026-04-25 23:57:45,143 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954514; current total saved count: 96
+2026-04-25 23:57:45,736 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/187647623 "HTTP/1.1 200 OK"
+2026-04-25 23:57:45,748 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/187647623; current total saved count: 97
+2026-04-25 23:57:48,202 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/193752730 "HTTP/1.1 200 OK"
+2026-04-25 23:57:48,211 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/193752730; current total saved count: 98
+2026-04-25 23:57:48,225 | INFO | kolesa_http_parser | current total saved count: 98
+2026-04-25 23:57:48,225 | INFO | kolesa_http_parser | current search page 4: https://kolesa.kz/cars/?page=4
+2026-04-25 23:57:50,076 | INFO | httpx | HTTP Request: GET https://kolesa.kz/cars/?page=4 "HTTP/1.1 200 OK"
+2026-04-25 23:57:50,112 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/216322798
+2026-04-25 23:57:50,114 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157954514
+2026-04-25 23:57:50,114 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/193752730
+2026-04-25 23:57:50,124 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218125789
+2026-04-25 23:57:50,125 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218033309
+2026-04-25 23:57:50,126 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954496
+2026-04-25 23:57:50,126 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954485
+2026-04-25 23:57:50,127 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/181376746
+2026-04-25 23:57:50,127 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/137573325
+2026-04-25 23:57:50,128 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954501
+2026-04-25 23:57:50,129 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157525752
+2026-04-25 23:57:50,130 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954476
+2026-04-25 23:57:50,130 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/181376430
+2026-04-25 23:57:50,131 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954481
+2026-04-25 23:57:50,132 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955273
+2026-04-25 23:57:50,132 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955250
+2026-04-25 23:57:50,133 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955254
+2026-04-25 23:57:50,133 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955258
+2026-04-25 23:57:50,134 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955247
+2026-04-25 23:57:50,135 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955425
+2026-04-25 23:57:50,136 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955392
+2026-04-25 23:57:50,137 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955239
+2026-04-25 23:57:50,137 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955411
+2026-04-25 23:57:50,138 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218116264
+2026-04-25 23:57:50,139 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/214549656
+2026-04-25 23:57:50,139 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/209166512
+2026-04-25 23:57:50,140 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/202825207
+2026-04-25 23:57:50,142 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/214803782
+2026-04-25 23:57:50,142 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218116204
+2026-04-25 23:57:50,143 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217726227
+2026-04-25 23:57:50,144 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217745603
+2026-04-25 23:57:50,144 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/201397973
+2026-04-25 23:57:50,145 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218218627
+2026-04-25 23:57:52,153 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218125789 "HTTP/1.1 200 OK"
+2026-04-25 23:57:52,170 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218125789; current total saved count: 99
+2026-04-25 23:57:53,098 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218033309 "HTTP/1.1 200 OK"
+2026-04-25 23:57:53,118 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218033309; current total saved count: 100
+2026-04-25 23:57:53,149 | INFO | kolesa_http_parser | current total saved count: 100
+2026-04-25 23:57:53,509 | INFO | kolesa_parser | selected mode report
+2026-04-25 23:58:42,288 | INFO | kolesa_parser | selected mode export
+2026-04-26 00:02:32,706 | INFO | kolesa_parser | selected mode collect
+2026-04-26 00:02:32,707 | INFO | kolesa_parser | selected engine http
+2026-04-26 00:02:32,707 | INFO | kolesa_parser | target limit 15000
+2026-04-26 00:02:32,707 | INFO | kolesa_parser | current database count at start: 100
+2026-04-26 00:02:32,707 | INFO | kolesa_parser | concurrency 3
+2026-04-26 00:02:33,129 | INFO | kolesa_http_parser | current search page 1: https://kolesa.kz/cars/
+2026-04-26 00:02:35,520 | INFO | httpx | HTTP Request: GET https://kolesa.kz/cars/ "HTTP/1.1 200 OK"
+2026-04-26 00:02:35,549 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/205527367
+2026-04-26 00:02:35,549 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216515186
+2026-04-26 00:02:35,550 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/200168877
+2026-04-26 00:02:35,550 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218122824
+2026-04-26 00:02:35,550 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218219224
+2026-04-26 00:02:35,550 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/212923834
+2026-04-26 00:02:35,550 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218218731
+2026-04-26 00:02:35,551 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218203057
+2026-04-26 00:02:35,551 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218184764
+2026-04-26 00:02:35,551 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218067239
+2026-04-26 00:02:35,551 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217176558
+2026-04-26 00:02:35,551 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217201016
+2026-04-26 00:02:35,551 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217451070
+2026-04-26 00:02:35,551 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/213549502
+2026-04-26 00:02:35,552 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216690449
+2026-04-26 00:02:35,552 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/215085622
+2026-04-26 00:02:35,552 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/214800297
+2026-04-26 00:02:35,552 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217230749
+2026-04-26 00:02:35,552 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217966020
+2026-04-26 00:02:35,552 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217965532
+2026-04-26 00:02:35,552 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217704993
+2026-04-26 00:02:35,553 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217964063
+2026-04-26 00:02:35,553 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216424839
+2026-04-26 00:02:35,553 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218218788
+2026-04-26 00:02:35,553 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/215200745
+2026-04-26 00:02:35,553 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217671773
+2026-04-26 00:02:35,553 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/209615181
+2026-04-26 00:02:35,553 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218116264
+2026-04-26 00:02:35,554 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/214549656
+2026-04-26 00:02:35,554 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/209166512
+2026-04-26 00:02:35,554 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/202825207
+2026-04-26 00:02:35,554 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/214803782
+2026-04-26 00:02:35,555 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218116204
+2026-04-26 00:02:38,428 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216515186 "HTTP/1.1 200 OK"
+2026-04-26 00:02:38,436 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216515186; current total saved count: 101
+2026-04-26 00:02:39,757 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/200168877 "HTTP/1.1 200 OK"
+2026-04-26 00:02:39,764 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/200168877; current total saved count: 102
+2026-04-26 00:02:40,256 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/205527367 "HTTP/1.1 200 OK"
+2026-04-26 00:02:40,263 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/205527367; current total saved count: 103
+2026-04-26 00:02:42,241 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218122824 "HTTP/1.1 200 OK"
+2026-04-26 00:02:42,249 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218122824; current total saved count: 104
+2026-04-26 00:02:43,164 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218219224 "HTTP/1.1 200 OK"
+2026-04-26 00:02:43,172 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218219224; current total saved count: 105
+2026-04-26 00:02:44,701 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/212923834 "HTTP/1.1 200 OK"
+2026-04-26 00:02:44,709 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/212923834; current total saved count: 106
+2026-04-26 00:02:45,465 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218218731 "HTTP/1.1 200 OK"
+2026-04-26 00:02:45,472 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218218731; current total saved count: 107
+2026-04-26 00:02:46,005 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218203057 "HTTP/1.1 200 OK"
+2026-04-26 00:02:46,012 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218203057; current total saved count: 108
+2026-04-26 00:02:46,677 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218184764 "HTTP/1.1 200 OK"
+2026-04-26 00:02:46,684 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218184764; current total saved count: 109
+2026-04-26 00:02:47,304 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218067239 "HTTP/1.1 200 OK"
+2026-04-26 00:02:47,313 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218067239; current total saved count: 110
+2026-04-26 00:02:49,655 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217201016 "HTTP/1.1 200 OK"
+2026-04-26 00:02:49,662 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217201016; current total saved count: 111
+2026-04-26 00:02:50,011 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217451070 "HTTP/1.1 200 OK"
+2026-04-26 00:02:50,018 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217451070; current total saved count: 112
+2026-04-26 00:02:50,218 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217176558 "HTTP/1.1 200 OK"
+2026-04-26 00:02:50,224 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217176558; current total saved count: 113
+2026-04-26 00:02:51,641 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/213549502 "HTTP/1.1 200 OK"
+2026-04-26 00:02:51,647 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/213549502; current total saved count: 114
+2026-04-26 00:02:52,543 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/215085622 "HTTP/1.1 200 OK"
+2026-04-26 00:02:52,550 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/215085622; current total saved count: 115
+2026-04-26 00:02:53,407 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216690449 "HTTP/1.1 200 OK"
+2026-04-26 00:02:53,413 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216690449; current total saved count: 116
+2026-04-26 00:02:54,920 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/214800297 "HTTP/1.1 200 OK"
+2026-04-26 00:02:54,927 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/214800297; current total saved count: 117
+2026-04-26 00:02:56,472 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217966020 "HTTP/1.1 200 OK"
+2026-04-26 00:02:56,478 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217966020; current total saved count: 118
+2026-04-26 00:02:56,669 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217230749 "HTTP/1.1 200 OK"
+2026-04-26 00:02:56,676 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217230749; current total saved count: 119
+2026-04-26 00:02:58,179 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217965532 "HTTP/1.1 200 OK"
+2026-04-26 00:02:58,186 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217965532; current total saved count: 120
+2026-04-26 00:03:00,013 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217964063 "HTTP/1.1 200 OK"
+2026-04-26 00:03:00,020 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217964063; current total saved count: 121
+2026-04-26 00:03:00,822 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216424839 "HTTP/1.1 200 OK"
+2026-04-26 00:03:00,829 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216424839; current total saved count: 122
+2026-04-26 00:03:00,915 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217704993 "HTTP/1.1 200 OK"
+2026-04-26 00:03:00,922 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217704993; current total saved count: 123
+2026-04-26 00:03:03,613 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/215200745 "HTTP/1.1 200 OK"
+2026-04-26 00:03:03,620 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/215200745; current total saved count: 124
+2026-04-26 00:03:03,934 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218218788 "HTTP/1.1 200 OK"
+2026-04-26 00:03:03,941 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218218788; current total saved count: 125
+2026-04-26 00:03:04,251 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217671773 "HTTP/1.1 200 OK"
+2026-04-26 00:03:04,257 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217671773; current total saved count: 126
+2026-04-26 00:03:06,830 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/214549656 "HTTP/1.1 200 OK"
+2026-04-26 00:03:06,837 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/214549656; current total saved count: 127
+2026-04-26 00:03:07,159 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218116264 "HTTP/1.1 200 OK"
+2026-04-26 00:03:07,166 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218116264; current total saved count: 128
+2026-04-26 00:03:07,612 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/209615181 "HTTP/1.1 200 OK"
+2026-04-26 00:03:07,619 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/209615181; current total saved count: 129
+2026-04-26 00:03:08,739 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/209166512 "HTTP/1.1 200 OK"
+2026-04-26 00:03:08,745 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/209166512; current total saved count: 130
+2026-04-26 00:03:09,672 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/202825207 "HTTP/1.1 200 OK"
+2026-04-26 00:03:09,679 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/202825207; current total saved count: 131
+2026-04-26 00:03:10,887 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/214803782 "HTTP/1.1 200 OK"
+2026-04-26 00:03:10,894 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/214803782; current total saved count: 132
+2026-04-26 00:03:13,108 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218116204 "HTTP/1.1 200 OK"
+2026-04-26 00:03:13,115 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218116204; current total saved count: 133
+2026-04-26 00:03:13,115 | INFO | kolesa_http_parser | current total saved count: 133
+2026-04-26 00:03:13,116 | INFO | kolesa_http_parser | current search page 2: https://kolesa.kz/cars/?page=2
+2026-04-26 00:03:17,271 | INFO | httpx | HTTP Request: GET https://kolesa.kz/cars/?page=2 "HTTP/1.1 200 OK"
+2026-04-26 00:03:17,296 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/216424839
+2026-04-26 00:03:17,297 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215936788
+2026-04-26 00:03:17,297 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/143681536
+2026-04-26 00:03:17,297 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/213156207
+2026-04-26 00:03:17,297 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217729312
+2026-04-26 00:03:17,298 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217738428
+2026-04-26 00:03:17,298 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215582073
+2026-04-26 00:03:17,298 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/216837717
+2026-04-26 00:03:17,298 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/207735842
+2026-04-26 00:03:17,299 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217621911
+2026-04-26 00:03:17,299 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217620634
+2026-04-26 00:03:17,299 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218219105
+2026-04-26 00:03:17,299 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/214193228
+2026-04-26 00:03:17,299 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/162949202
+2026-04-26 00:03:17,299 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218218788
+2026-04-26 00:03:17,299 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215200745
+2026-04-26 00:03:17,299 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217671773
+2026-04-26 00:03:17,300 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209615181
+2026-04-26 00:03:17,300 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218116264
+2026-04-26 00:03:17,300 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/214549656
+2026-04-26 00:03:17,300 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209166512
+2026-04-26 00:03:17,300 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/202825207
+2026-04-26 00:03:17,301 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/214803782
+2026-04-26 00:03:17,301 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217321639
+2026-04-26 00:03:17,301 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216621852
+2026-04-26 00:03:17,301 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217292187
+2026-04-26 00:03:17,302 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/211352275
+2026-04-26 00:03:17,302 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217739974
+2026-04-26 00:03:17,302 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217853337
+2026-04-26 00:03:17,302 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217740107
+2026-04-26 00:03:17,302 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217740007
+2026-04-26 00:03:17,303 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217730925
+2026-04-26 00:03:17,303 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/213421073
+2026-04-26 00:03:20,599 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217292187 "HTTP/1.1 200 OK"
+2026-04-26 00:03:20,607 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217292187; current total saved count: 134
+2026-04-26 00:03:20,673 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217321639 "HTTP/1.1 200 OK"
+2026-04-26 00:03:20,681 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217321639; current total saved count: 135
+2026-04-26 00:03:21,309 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216621852 "HTTP/1.1 200 OK"
+2026-04-26 00:03:21,316 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216621852; current total saved count: 136
+2026-04-26 00:03:23,368 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217739974 "HTTP/1.1 200 OK"
+2026-04-26 00:03:23,375 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217739974; current total saved count: 137
+2026-04-26 00:03:23,697 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/211352275 "HTTP/1.1 200 OK"
+2026-04-26 00:03:23,704 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/211352275; current total saved count: 138
+2026-04-26 00:03:24,758 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217853337 "HTTP/1.1 200 OK"
+2026-04-26 00:03:24,764 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217853337; current total saved count: 139
+2026-04-26 00:03:25,210 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217740107 "HTTP/1.1 200 OK"
+2026-04-26 00:03:25,217 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217740107; current total saved count: 140
+2026-04-26 00:03:27,006 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217740007 "HTTP/1.1 200 OK"
+2026-04-26 00:03:27,013 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217740007; current total saved count: 141
+2026-04-26 00:03:28,009 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217730925 "HTTP/1.1 200 OK"
+2026-04-26 00:03:28,016 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217730925; current total saved count: 142
+2026-04-26 00:03:29,404 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/213421073 "HTTP/1.1 200 OK"
+2026-04-26 00:03:29,411 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/213421073; current total saved count: 143
+2026-04-26 00:03:29,412 | INFO | kolesa_http_parser | current total saved count: 143
+2026-04-26 00:03:29,412 | INFO | kolesa_http_parser | current search page 3: https://kolesa.kz/cars/?page=3
+2026-04-26 00:03:34,070 | INFO | httpx | HTTP Request: GET https://kolesa.kz/cars/?page=3 "HTTP/1.1 200 OK"
+2026-04-26 00:03:34,094 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/162949202
+2026-04-26 00:03:34,094 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/200917555
+2026-04-26 00:03:34,094 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217448517
+2026-04-26 00:03:34,094 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/202090543
+2026-04-26 00:03:34,095 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218219693
+2026-04-26 00:03:34,095 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218219468
+2026-04-26 00:03:34,095 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157955094
+2026-04-26 00:03:34,095 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/184477696
+2026-04-26 00:03:34,095 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157954676
+2026-04-26 00:03:34,095 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/193060122
+2026-04-26 00:03:34,095 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157954713
+2026-04-26 00:03:34,096 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157954672
+2026-04-26 00:03:34,096 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157955217
+2026-04-26 00:03:34,096 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157955208
+2026-04-26 00:03:34,096 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157955202
+2026-04-26 00:03:34,096 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157955226
+2026-04-26 00:03:34,096 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/193060398
+2026-04-26 00:03:34,096 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157955187
+2026-04-26 00:03:34,096 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/187874935
+2026-04-26 00:03:34,097 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157955194
+2026-04-26 00:03:34,097 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/213421073
+2026-04-26 00:03:34,097 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218218788
+2026-04-26 00:03:34,097 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215200745
+2026-04-26 00:03:34,097 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217671773
+2026-04-26 00:03:34,097 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209615181
+2026-04-26 00:03:34,097 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218116264
+2026-04-26 00:03:34,098 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/214549656
+2026-04-26 00:03:34,098 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209166512
+2026-04-26 00:03:34,098 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/202825207
+2026-04-26 00:03:34,098 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/214803782
+2026-04-26 00:03:34,098 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217911938
+2026-04-26 00:03:34,098 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/194137735
+2026-04-26 00:03:34,098 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/215714573
+2026-04-26 00:03:37,302 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/194137735 "HTTP/1.1 200 OK"
+2026-04-26 00:03:37,310 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/194137735; current total saved count: 144
+2026-04-26 00:03:38,101 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/215714573 "HTTP/1.1 200 OK"
+2026-04-26 00:03:38,107 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/215714573; current total saved count: 145
+2026-04-26 00:03:38,585 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217911938 "HTTP/1.1 200 OK"
+2026-04-26 00:03:38,592 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217911938; current total saved count: 146
+2026-04-26 00:03:38,593 | INFO | kolesa_http_parser | current total saved count: 146
+2026-04-26 00:03:38,593 | INFO | kolesa_http_parser | current search page 4: https://kolesa.kz/cars/?page=4
+2026-04-26 00:03:42,968 | INFO | httpx | HTTP Request: GET https://kolesa.kz/cars/?page=4 "HTTP/1.1 200 OK"
+2026-04-26 00:03:42,987 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157955194
+2026-04-26 00:03:42,988 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/170439517
+2026-04-26 00:03:42,989 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157955214
+2026-04-26 00:03:42,989 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157954491
+2026-04-26 00:03:42,989 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157397206
+2026-04-26 00:03:42,990 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/187647623
+2026-04-26 00:03:42,990 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157954514
+2026-04-26 00:03:42,990 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/193752730
+2026-04-26 00:03:42,991 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/213421073
+2026-04-26 00:03:42,991 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218218788
+2026-04-26 00:03:42,991 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215200745
+2026-04-26 00:03:42,991 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217671773
+2026-04-26 00:03:42,992 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209615181
+2026-04-26 00:03:42,992 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218116264
+2026-04-26 00:03:42,992 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/214549656
+2026-04-26 00:03:42,992 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209166512
+2026-04-26 00:03:42,992 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/202825207
+2026-04-26 00:03:42,993 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/182963633
+2026-04-26 00:03:42,993 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216677817
+2026-04-26 00:03:42,993 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217012564
+2026-04-26 00:03:42,993 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954496
+2026-04-26 00:03:42,994 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954485
+2026-04-26 00:03:42,994 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/181376746
+2026-04-26 00:03:42,994 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/137573325
+2026-04-26 00:03:42,995 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954501
+2026-04-26 00:03:42,996 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157525752
+2026-04-26 00:03:42,996 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954476
+2026-04-26 00:03:42,996 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/181376430
+2026-04-26 00:03:42,996 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954481
+2026-04-26 00:03:42,996 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955273
+2026-04-26 00:03:42,997 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955250
+2026-04-26 00:03:42,997 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955254
+2026-04-26 00:03:42,997 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/215362774
+2026-04-26 00:03:46,267 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217012564 "HTTP/1.1 200 OK"
+2026-04-26 00:03:46,276 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217012564; current total saved count: 147
+2026-04-26 00:03:46,691 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/182963633 "HTTP/1.1 200 OK"
+2026-04-26 00:03:46,697 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/182963633; current total saved count: 148
+2026-04-26 00:03:47,124 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216677817 "HTTP/1.1 200 OK"
+2026-04-26 00:03:47,131 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216677817; current total saved count: 149
+2026-04-26 00:03:48,550 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954496 "HTTP/1.1 200 OK"
+2026-04-26 00:03:48,566 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954496; current total saved count: 150
+2026-04-26 00:03:49,732 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/181376746 "HTTP/1.1 200 OK"
+2026-04-26 00:03:49,738 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/181376746; current total saved count: 151
+2026-04-26 00:03:50,644 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/137573325 "HTTP/1.1 200 OK"
+2026-04-26 00:03:50,652 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/137573325; current total saved count: 152
+2026-04-26 00:03:50,713 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954485 "HTTP/1.1 200 OK"
+2026-04-26 00:03:50,721 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954485; current total saved count: 153
+2026-04-26 00:03:52,501 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954501 "HTTP/1.1 200 OK"
+2026-04-26 00:03:52,508 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954501; current total saved count: 154
+2026-04-26 00:03:54,553 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954476 "HTTP/1.1 200 OK"
+2026-04-26 00:03:54,560 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954476; current total saved count: 155
+2026-04-26 00:03:54,830 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/181376430 "HTTP/1.1 200 OK"
+2026-04-26 00:03:54,837 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/181376430; current total saved count: 156
+2026-04-26 00:03:55,298 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157525752 "HTTP/1.1 200 OK"
+2026-04-26 00:03:55,305 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157525752; current total saved count: 157
+2026-04-26 00:03:57,172 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955273 "HTTP/1.1 200 OK"
+2026-04-26 00:03:57,179 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955273; current total saved count: 158
+2026-04-26 00:03:57,665 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954481 "HTTP/1.1 200 OK"
+2026-04-26 00:03:57,672 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954481; current total saved count: 159
+2026-04-26 00:03:58,079 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955250 "HTTP/1.1 200 OK"
+2026-04-26 00:03:58,085 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955250; current total saved count: 160
+2026-04-26 00:04:01,075 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955254 "HTTP/1.1 200 OK"
+2026-04-26 00:04:01,082 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955254; current total saved count: 161
+2026-04-26 00:04:02,177 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/215362774 "HTTP/1.1 200 OK"
+2026-04-26 00:04:02,184 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/215362774; current total saved count: 162
+2026-04-26 00:04:02,185 | INFO | kolesa_http_parser | current total saved count: 162
+2026-04-26 00:04:02,185 | INFO | kolesa_http_parser | current search page 5: https://kolesa.kz/cars/?page=5
+2026-04-26 00:04:07,002 | INFO | httpx | HTTP Request: GET https://kolesa.kz/cars/?page=5 "HTTP/1.1 200 OK"
+2026-04-26 00:04:07,023 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217753807
+2026-04-26 00:04:07,027 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215362774
+2026-04-26 00:04:07,027 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/213421073
+2026-04-26 00:04:07,028 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218218788
+2026-04-26 00:04:07,028 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215200745
+2026-04-26 00:04:07,028 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217671773
+2026-04-26 00:04:07,028 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209615181
+2026-04-26 00:04:07,028 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218116264
+2026-04-26 00:04:07,028 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/214549656
+2026-04-26 00:04:07,029 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209166512
+2026-04-26 00:04:07,029 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/202825207
+2026-04-26 00:04:07,029 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/215817270
+2026-04-26 00:04:07,029 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217327267
+2026-04-26 00:04:07,029 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955258
+2026-04-26 00:04:07,029 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955247
+2026-04-26 00:04:07,029 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955425
+2026-04-26 00:04:07,030 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955392
+2026-04-26 00:04:07,030 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955239
+2026-04-26 00:04:07,030 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955411
+2026-04-26 00:04:07,030 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955435
+2026-04-26 00:04:07,030 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955419
+2026-04-26 00:04:07,031 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955430
+2026-04-26 00:04:07,031 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955404
+2026-04-26 00:04:07,031 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955402
+2026-04-26 00:04:07,031 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955359
+2026-04-26 00:04:07,031 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955350
+2026-04-26 00:04:07,032 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955307
+2026-04-26 00:04:07,032 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955370
+2026-04-26 00:04:07,032 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955337
+2026-04-26 00:04:07,032 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/176862787
+2026-04-26 00:04:07,032 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/176862749
+2026-04-26 00:04:07,032 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/176862812
+2026-04-26 00:04:07,033 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/176862762
+2026-04-26 00:04:08,909 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217327267 "HTTP/1.1 200 OK"
+2026-04-26 00:04:08,916 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217327267; current total saved count: 163
+2026-04-26 00:04:09,720 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955258 "HTTP/1.1 200 OK"
+2026-04-26 00:04:09,726 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955258; current total saved count: 164
+2026-04-26 00:04:10,752 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/215817270 "HTTP/1.1 200 OK"
+2026-04-26 00:04:10,759 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/215817270; current total saved count: 165
+2026-04-26 00:04:11,605 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955247 "HTTP/1.1 200 OK"
+2026-04-26 00:04:11,612 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955247; current total saved count: 166
+2026-04-26 00:04:12,267 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955425 "HTTP/1.1 200 OK"
+2026-04-26 00:04:12,274 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955425; current total saved count: 167
+2026-04-26 00:04:14,151 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955411 "HTTP/1.1 200 OK"
+2026-04-26 00:04:14,158 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955411; current total saved count: 168
+2026-04-26 00:04:14,866 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955392 "HTTP/1.1 200 OK"
+2026-04-26 00:04:14,873 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955392; current total saved count: 169
+2026-04-26 00:04:14,880 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955239 "HTTP/1.1 200 OK"
+2026-04-26 00:04:14,889 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955239; current total saved count: 170
+2026-04-26 00:04:16,564 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955435 "HTTP/1.1 200 OK"
+2026-04-26 00:04:16,571 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955435; current total saved count: 171
+2026-04-26 00:04:18,543 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955430 "HTTP/1.1 200 OK"
+2026-04-26 00:04:18,550 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955430; current total saved count: 172
+2026-04-26 00:04:19,252 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955404 "HTTP/1.1 200 OK"
+2026-04-26 00:04:19,258 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955404; current total saved count: 173
+2026-04-26 00:04:19,639 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955419 "HTTP/1.1 200 OK"
+2026-04-26 00:04:19,646 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955419; current total saved count: 174
+2026-04-26 00:04:20,534 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955402 "HTTP/1.1 200 OK"
+2026-04-26 00:04:20,540 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955402; current total saved count: 175
+2026-04-26 00:04:21,481 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955350 "HTTP/1.1 200 OK"
+2026-04-26 00:04:21,487 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955350; current total saved count: 176
+2026-04-26 00:04:23,185 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955307 "HTTP/1.1 200 OK"
+2026-04-26 00:04:23,192 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955307; current total saved count: 177
+2026-04-26 00:04:23,606 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955359 "HTTP/1.1 200 OK"
+2026-04-26 00:04:23,613 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955359; current total saved count: 178
+2026-04-26 00:04:23,788 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955370 "HTTP/1.1 200 OK"
+2026-04-26 00:04:23,794 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955370; current total saved count: 179
+2026-04-26 00:04:27,288 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955337 "HTTP/1.1 200 OK"
+2026-04-26 00:04:27,294 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955337; current total saved count: 180
+2026-04-26 00:04:27,743 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/176862787 "HTTP/1.1 200 OK"
+2026-04-26 00:04:27,753 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/176862787; current total saved count: 181
+2026-04-26 00:04:28,175 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/176862749 "HTTP/1.1 200 OK"
+2026-04-26 00:04:28,181 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/176862749; current total saved count: 182
+2026-04-26 00:04:31,316 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/176862812 "HTTP/1.1 200 OK"
+2026-04-26 00:04:31,323 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/176862812; current total saved count: 183
+2026-04-26 00:04:31,480 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/176862762 "HTTP/1.1 200 OK"
+2026-04-26 00:04:31,490 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/176862762; current total saved count: 184
+2026-04-26 00:04:31,491 | INFO | kolesa_http_parser | current total saved count: 184
+2026-04-26 00:04:31,491 | INFO | kolesa_http_parser | current search page 6: https://kolesa.kz/cars/?page=6
+2026-04-26 00:04:35,936 | INFO | httpx | HTTP Request: GET https://kolesa.kz/cars/?page=6 "HTTP/1.1 200 OK"
+2026-04-26 00:04:35,957 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218125789
+2026-04-26 00:04:35,957 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/176862762
+2026-04-26 00:04:35,959 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215362774
+2026-04-26 00:04:35,959 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/213421073
+2026-04-26 00:04:35,959 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218218788
+2026-04-26 00:04:35,960 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215200745
+2026-04-26 00:04:35,960 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217671773
+2026-04-26 00:04:35,960 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209615181
+2026-04-26 00:04:35,960 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218116264
+2026-04-26 00:04:35,960 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/214549656
+2026-04-26 00:04:35,960 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209166512
+2026-04-26 00:04:35,960 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/202825207
+2026-04-26 00:04:35,960 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/214252271
+2026-04-26 00:04:35,961 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218139406
+2026-04-26 00:04:35,961 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955117
+2026-04-26 00:04:35,961 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/176862776
+2026-04-26 00:04:35,961 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955005
+2026-04-26 00:04:35,961 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954989
+2026-04-26 00:04:35,961 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955133
+2026-04-26 00:04:35,961 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955025
+2026-04-26 00:04:35,962 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954997
+2026-04-26 00:04:35,962 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955013
+2026-04-26 00:04:35,962 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955015
+2026-04-26 00:04:35,962 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955003
+2026-04-26 00:04:35,962 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954985
+2026-04-26 00:04:35,962 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954746
+2026-04-26 00:04:35,963 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954751
+2026-04-26 00:04:35,963 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954767
+2026-04-26 00:04:35,963 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954756
+2026-04-26 00:04:35,963 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954761
+2026-04-26 00:04:35,964 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954772
+2026-04-26 00:04:35,964 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954879
+2026-04-26 00:04:35,965 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954742
+2026-04-26 00:04:38,477 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218139406 "HTTP/1.1 200 OK"
+2026-04-26 00:04:38,483 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218139406; current total saved count: 185
+2026-04-26 00:04:38,837 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/214252271 "HTTP/1.1 200 OK"
+2026-04-26 00:04:38,844 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/214252271; current total saved count: 186
+2026-04-26 00:04:39,691 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955117 "HTTP/1.1 200 OK"
+2026-04-26 00:04:39,697 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955117; current total saved count: 187
+2026-04-26 00:04:42,447 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955005 "HTTP/1.1 200 OK"
+2026-04-26 00:04:42,453 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955005; current total saved count: 188
+2026-04-26 00:04:42,774 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/176862776 "HTTP/1.1 200 OK"
+2026-04-26 00:04:42,779 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/176862776; current total saved count: 189
+2026-04-26 00:04:43,072 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954989 "HTTP/1.1 200 OK"
+2026-04-26 00:04:43,078 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954989; current total saved count: 190
+2026-04-26 00:04:45,825 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955133 "HTTP/1.1 200 OK"
+2026-04-26 00:04:45,831 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955133; current total saved count: 191
+2026-04-26 00:04:46,360 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955025 "HTTP/1.1 200 OK"
+2026-04-26 00:04:46,366 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955025; current total saved count: 192
+2026-04-26 00:04:47,114 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954997 "HTTP/1.1 200 OK"
+2026-04-26 00:04:47,120 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954997; current total saved count: 193
+2026-04-26 00:04:47,627 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955013 "HTTP/1.1 200 OK"
+2026-04-26 00:04:47,634 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955013; current total saved count: 194
+2026-04-26 00:04:50,659 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955003 "HTTP/1.1 200 OK"
+2026-04-26 00:04:50,667 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955003; current total saved count: 195
+2026-04-26 00:04:50,857 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954985 "HTTP/1.1 200 OK"
+2026-04-26 00:04:50,864 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954985; current total saved count: 196
+2026-04-26 00:04:50,941 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955015 "HTTP/1.1 200 OK"
+2026-04-26 00:04:50,948 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955015; current total saved count: 197
+2026-04-26 00:04:53,287 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954746 "HTTP/1.1 200 OK"
+2026-04-26 00:04:53,293 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954746; current total saved count: 198
+2026-04-26 00:04:53,393 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954751 "HTTP/1.1 200 OK"
+2026-04-26 00:04:53,399 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954751; current total saved count: 199
+2026-04-26 00:04:55,323 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954756 "HTTP/1.1 200 OK"
+2026-04-26 00:04:55,330 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954756; current total saved count: 200
+2026-04-26 00:04:55,404 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954761 "HTTP/1.1 200 OK"
+2026-04-26 00:04:55,411 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954761; current total saved count: 201
+2026-04-26 00:04:55,604 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954767 "HTTP/1.1 200 OK"
+2026-04-26 00:04:55,610 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954767; current total saved count: 202
+2026-04-26 00:04:58,444 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954879 "HTTP/1.1 200 OK"
+2026-04-26 00:04:58,450 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954879; current total saved count: 203
+2026-04-26 00:04:58,989 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954772 "HTTP/1.1 200 OK"
+2026-04-26 00:04:58,995 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954772; current total saved count: 204
+2026-04-26 00:04:59,013 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954742 "HTTP/1.1 200 OK"
+2026-04-26 00:04:59,020 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954742; current total saved count: 205
+2026-04-26 00:04:59,020 | INFO | kolesa_http_parser | current total saved count: 205
+2026-04-26 00:04:59,020 | INFO | kolesa_http_parser | current search page 7: https://kolesa.kz/cars/?page=7
+2026-04-26 00:05:01,737 | INFO | httpx | HTTP Request: GET https://kolesa.kz/cars/?page=7 "HTTP/1.1 200 OK"
+2026-04-26 00:05:01,765 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215714573
+2026-04-26 00:05:01,767 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215362774
+2026-04-26 00:05:01,767 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/213421073
+2026-04-26 00:05:01,768 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218218788
+2026-04-26 00:05:01,768 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215200745
+2026-04-26 00:05:01,768 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217671773
+2026-04-26 00:05:01,768 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209615181
+2026-04-26 00:05:01,768 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218116264
+2026-04-26 00:05:01,769 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/214549656
+2026-04-26 00:05:01,769 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209166512
+2026-04-26 00:05:01,769 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/202825207
+2026-04-26 00:05:01,769 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217595638
+2026-04-26 00:05:01,769 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217324899
+2026-04-26 00:05:01,769 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954778
+2026-04-26 00:05:01,770 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954892
+2026-04-26 00:05:01,770 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954864
+2026-04-26 00:05:01,770 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954834
+2026-04-26 00:05:01,770 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954871
+2026-04-26 00:05:01,770 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954842
+2026-04-26 00:05:01,771 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954947
+2026-04-26 00:05:01,771 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954885
+2026-04-26 00:05:01,771 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954935
+2026-04-26 00:05:01,772 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954962
+2026-04-26 00:05:01,772 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954921
+2026-04-26 00:05:01,772 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/198704757
+2026-04-26 00:05:01,772 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954625
+2026-04-26 00:05:01,773 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/199267267
+2026-04-26 00:05:01,773 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954646
+2026-04-26 00:05:01,773 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954640
+2026-04-26 00:05:01,773 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954609
+2026-04-26 00:05:01,773 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954633
+2026-04-26 00:05:01,774 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954636
+2026-04-26 00:05:01,774 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954621
+2026-04-26 00:05:04,357 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217595638 "HTTP/1.1 200 OK"
+2026-04-26 00:05:04,364 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217595638; current total saved count: 206
+2026-04-26 00:05:04,611 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954778 "HTTP/1.1 200 OK"
+2026-04-26 00:05:04,617 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954778; current total saved count: 207
+2026-04-26 00:05:05,785 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217324899 "HTTP/1.1 200 OK"
+2026-04-26 00:05:05,792 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217324899; current total saved count: 208
+2026-04-26 00:05:07,880 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954892 "HTTP/1.1 200 OK"
+2026-04-26 00:05:07,887 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954892; current total saved count: 209
+2026-04-26 00:05:08,055 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954864 "HTTP/1.1 200 OK"
+2026-04-26 00:05:08,061 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954864; current total saved count: 210
+2026-04-26 00:05:08,578 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954834 "HTTP/1.1 200 OK"
+2026-04-26 00:05:08,585 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954834; current total saved count: 211
+2026-04-26 00:05:09,828 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954842 "HTTP/1.1 200 OK"
+2026-04-26 00:05:09,834 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954842; current total saved count: 212
+2026-04-26 00:05:09,949 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954871 "HTTP/1.1 200 OK"
+2026-04-26 00:05:09,956 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954871; current total saved count: 213
+2026-04-26 00:05:12,350 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954947 "HTTP/1.1 200 OK"
+2026-04-26 00:05:12,357 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954947; current total saved count: 214
+2026-04-26 00:05:13,233 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954935 "HTTP/1.1 200 OK"
+2026-04-26 00:05:13,240 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954935; current total saved count: 215
+2026-04-26 00:05:14,043 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954885 "HTTP/1.1 200 OK"
+2026-04-26 00:05:14,049 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954885; current total saved count: 216
+2026-04-26 00:05:16,292 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954921 "HTTP/1.1 200 OK"
+2026-04-26 00:05:16,299 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954921; current total saved count: 217
+2026-04-26 00:05:16,684 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954962 "HTTP/1.1 200 OK"
+2026-04-26 00:05:16,690 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954962; current total saved count: 218
+2026-04-26 00:05:18,284 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/198704757 "HTTP/1.1 200 OK"
+2026-04-26 00:05:18,290 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/198704757; current total saved count: 219
+2026-04-26 00:05:18,677 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954625 "HTTP/1.1 200 OK"
+2026-04-26 00:05:18,684 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954625; current total saved count: 220
+2026-04-26 00:05:20,533 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/199267267 "HTTP/1.1 200 OK"
+2026-04-26 00:05:20,540 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/199267267; current total saved count: 221
+2026-04-26 00:05:21,908 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954640 "HTTP/1.1 200 OK"
+2026-04-26 00:05:21,915 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954640; current total saved count: 222
+2026-04-26 00:05:22,731 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954646 "HTTP/1.1 200 OK"
+2026-04-26 00:05:22,738 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954646; current total saved count: 223
+2026-04-26 00:05:23,605 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954609 "HTTP/1.1 200 OK"
+2026-04-26 00:05:23,611 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954609; current total saved count: 224
+2026-04-26 00:05:25,351 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954633 "HTTP/1.1 200 OK"
+2026-04-26 00:05:25,358 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954633; current total saved count: 225
+2026-04-26 00:05:25,851 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954636 "HTTP/1.1 200 OK"
+2026-04-26 00:05:25,859 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954636; current total saved count: 226
+2026-04-26 00:05:27,832 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954621 "HTTP/1.1 200 OK"
+2026-04-26 00:05:27,838 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954621; current total saved count: 227
+2026-04-26 00:05:27,839 | INFO | kolesa_http_parser | current total saved count: 227
+2026-04-26 00:05:27,839 | INFO | kolesa_http_parser | current search page 8: https://kolesa.kz/cars/?page=8
+2026-04-26 00:05:30,853 | INFO | httpx | HTTP Request: GET https://kolesa.kz/cars/?page=8 "HTTP/1.1 200 OK"
+2026-04-26 00:05:30,876 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157954636
+2026-04-26 00:05:30,876 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157954621
+2026-04-26 00:05:30,878 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215362774
+2026-04-26 00:05:30,878 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/213421073
+2026-04-26 00:05:30,878 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218218788
+2026-04-26 00:05:30,879 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215200745
+2026-04-26 00:05:30,879 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217671773
+2026-04-26 00:05:30,879 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209615181
+2026-04-26 00:05:30,879 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218116264
+2026-04-26 00:05:30,879 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/214549656
+2026-04-26 00:05:30,880 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209166512
+2026-04-26 00:05:30,880 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/202825207
+2026-04-26 00:05:30,880 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/195954141
+2026-04-26 00:05:30,880 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217329096
+2026-04-26 00:05:30,880 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/209566292
+2026-04-26 00:05:30,880 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/211414183
+2026-04-26 00:05:30,881 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/183053277
+2026-04-26 00:05:30,881 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157905978
+2026-04-26 00:05:30,881 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/203848169
+2026-04-26 00:05:30,881 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/184475835
+2026-04-26 00:05:30,881 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157906246
+2026-04-26 00:05:30,882 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157906457
+2026-04-26 00:05:30,882 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/187534412
+2026-04-26 00:05:30,882 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157905822
+2026-04-26 00:05:30,882 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/211417495
+2026-04-26 00:05:30,882 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157906342
+2026-04-26 00:05:30,882 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/211416654
+2026-04-26 00:05:30,882 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/177201205
+2026-04-26 00:05:30,883 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157905603
+2026-04-26 00:05:30,883 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157906107
+2026-04-26 00:05:30,883 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157905604
+2026-04-26 00:05:30,883 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955267
+2026-04-26 00:05:30,883 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955277
+2026-04-26 00:05:32,849 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/195954141 "HTTP/1.1 200 OK"
+2026-04-26 00:05:32,873 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/195954141; current total saved count: 228
+2026-04-26 00:05:32,875 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217329096 "HTTP/1.1 200 OK"
+2026-04-26 00:05:32,881 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217329096; current total saved count: 229
+2026-04-26 00:05:35,318 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/209566292 "HTTP/1.1 200 OK"
+2026-04-26 00:05:35,325 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/209566292; current total saved count: 230
+2026-04-26 00:05:36,359 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/183053277 "HTTP/1.1 200 OK"
+2026-04-26 00:05:36,367 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/183053277; current total saved count: 231
+2026-04-26 00:05:36,648 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/211414183 "HTTP/1.1 200 OK"
+2026-04-26 00:05:36,654 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/211414183; current total saved count: 232
+2026-04-26 00:05:38,430 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/184475835 "HTTP/1.1 200 OK"
+2026-04-26 00:05:38,437 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/184475835; current total saved count: 233
+2026-04-26 00:05:38,801 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157905978 "HTTP/1.1 200 OK"
+2026-04-26 00:05:38,807 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157905978; current total saved count: 234
+2026-04-26 00:05:40,258 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157906246 "HTTP/1.1 200 OK"
+2026-04-26 00:05:40,265 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157906246; current total saved count: 235
+2026-04-26 00:05:40,481 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/203848169 "HTTP/1.1 200 OK"
+2026-04-26 00:05:40,488 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/203848169; current total saved count: 236
+2026-04-26 00:05:42,220 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/187534412 "HTTP/1.1 200 OK"
+2026-04-26 00:05:42,227 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/187534412; current total saved count: 237
+2026-04-26 00:05:42,778 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157906457 "HTTP/1.1 200 OK"
+2026-04-26 00:05:42,784 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157906457; current total saved count: 238
+2026-04-26 00:05:44,564 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157905822 "HTTP/1.1 200 OK"
+2026-04-26 00:05:44,570 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157905822; current total saved count: 239
+2026-04-26 00:05:45,092 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/211417495 "HTTP/1.1 200 OK"
+2026-04-26 00:05:45,099 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/211417495; current total saved count: 240
+2026-04-26 00:05:45,725 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157906342 "HTTP/1.1 200 OK"
+2026-04-26 00:05:45,732 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157906342; current total saved count: 241
+2026-04-26 00:05:46,742 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/211416654 "HTTP/1.1 200 OK"
+2026-04-26 00:05:46,749 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/211416654; current total saved count: 242
+2026-04-26 00:05:48,106 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/177201205 "HTTP/1.1 200 OK"
+2026-04-26 00:05:48,114 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/177201205; current total saved count: 243
+2026-04-26 00:05:49,902 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157905603 "HTTP/1.1 200 OK"
+2026-04-26 00:05:49,909 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157905603; current total saved count: 244
+2026-04-26 00:05:50,340 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157906107 "HTTP/1.1 200 OK"
+2026-04-26 00:05:50,346 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157906107; current total saved count: 245
+2026-04-26 00:05:52,364 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157905604 "HTTP/1.1 200 OK"
+2026-04-26 00:05:52,370 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157905604; current total saved count: 246
+2026-04-26 00:05:53,004 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955277 "HTTP/1.1 200 OK"
+2026-04-26 00:05:53,010 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955277; current total saved count: 247
+2026-04-26 00:05:53,665 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955267 "HTTP/1.1 200 OK"
+2026-04-26 00:05:53,671 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955267; current total saved count: 248
+2026-04-26 00:05:53,672 | INFO | kolesa_http_parser | current total saved count: 248
+2026-04-26 00:05:53,672 | INFO | kolesa_http_parser | current search page 9: https://kolesa.kz/cars/?page=9
+2026-04-26 00:05:58,289 | INFO | httpx | HTTP Request: GET https://kolesa.kz/cars/?page=9 "HTTP/1.1 200 OK"
+2026-04-26 00:05:58,311 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217327267
+2026-04-26 00:05:58,312 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157906107
+2026-04-26 00:05:58,312 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157905604
+2026-04-26 00:05:58,313 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157955267
+2026-04-26 00:05:58,313 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157955277
+2026-04-26 00:05:58,314 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215362774
+2026-04-26 00:05:58,315 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/213421073
+2026-04-26 00:05:58,315 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218218788
+2026-04-26 00:05:58,315 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215200745
+2026-04-26 00:05:58,315 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217671773
+2026-04-26 00:05:58,315 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209615181
+2026-04-26 00:05:58,315 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218116264
+2026-04-26 00:05:58,315 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/214549656
+2026-04-26 00:05:58,315 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209166512
+2026-04-26 00:05:58,316 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/202825207
+2026-04-26 00:05:58,316 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/212426384
+2026-04-26 00:05:58,316 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/212741614
+2026-04-26 00:05:58,316 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955164
+2026-04-26 00:05:58,316 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954850
+2026-04-26 00:05:58,317 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954613
+2026-04-26 00:05:58,317 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954508
+2026-04-26 00:05:58,317 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954943
+2026-04-26 00:05:58,318 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954954
+2026-04-26 00:05:58,318 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954909
+2026-04-26 00:05:58,321 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954930
+2026-04-26 00:05:58,322 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/198714724
+2026-04-26 00:05:58,322 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955064
+2026-04-26 00:05:58,322 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955050
+2026-04-26 00:05:58,322 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955044
+2026-04-26 00:05:58,322 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955079
+2026-04-26 00:05:58,323 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/193059689
+2026-04-26 00:05:58,323 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157515798
+2026-04-26 00:05:58,323 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955072
+2026-04-26 00:06:00,763 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955164 "HTTP/1.1 200 OK"
+2026-04-26 00:06:00,769 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955164; current total saved count: 249
+2026-04-26 00:06:01,622 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/212741614 "HTTP/1.1 200 OK"
+2026-04-26 00:06:01,629 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/212741614; current total saved count: 250
+2026-04-26 00:06:01,725 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/212426384 "HTTP/1.1 200 OK"
+2026-04-26 00:06:01,731 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/212426384; current total saved count: 251
+2026-04-26 00:06:04,306 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954613 "HTTP/1.1 200 OK"
+2026-04-26 00:06:04,313 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954613; current total saved count: 252
+2026-04-26 00:06:05,236 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954850 "HTTP/1.1 200 OK"
+2026-04-26 00:06:05,243 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954850; current total saved count: 253
+2026-04-26 00:06:06,311 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954508 "HTTP/1.1 200 OK"
+2026-04-26 00:06:06,319 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954508; current total saved count: 254
+2026-04-26 00:06:08,338 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954943 "HTTP/1.1 200 OK"
+2026-04-26 00:06:08,345 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954943; current total saved count: 255
+2026-04-26 00:06:08,914 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954954 "HTTP/1.1 200 OK"
+2026-04-26 00:06:08,920 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954954; current total saved count: 256
+2026-04-26 00:06:09,073 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954909 "HTTP/1.1 200 OK"
+2026-04-26 00:06:09,080 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954909; current total saved count: 257
+2026-04-26 00:06:10,792 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954930 "HTTP/1.1 200 OK"
+2026-04-26 00:06:10,799 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954930; current total saved count: 258
+2026-04-26 00:06:11,210 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/198714724 "HTTP/1.1 200 OK"
+2026-04-26 00:06:11,216 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/198714724; current total saved count: 259
+2026-04-26 00:06:12,554 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955064 "HTTP/1.1 200 OK"
+2026-04-26 00:06:12,560 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955064; current total saved count: 260
+2026-04-26 00:06:12,766 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955050 "HTTP/1.1 200 OK"
+2026-04-26 00:06:12,773 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955050; current total saved count: 261
+2026-04-26 00:06:14,601 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955044 "HTTP/1.1 200 OK"
+2026-04-26 00:06:14,607 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955044; current total saved count: 262
+2026-04-26 00:06:14,925 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/193059689 "HTTP/1.1 200 OK"
+2026-04-26 00:06:14,931 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/193059689; current total saved count: 263
+2026-04-26 00:06:17,189 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955079 "HTTP/1.1 200 OK"
+2026-04-26 00:06:17,196 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955079; current total saved count: 264
+2026-04-26 00:06:17,391 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955072 "HTTP/1.1 200 OK"
+2026-04-26 00:06:17,398 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955072; current total saved count: 265
+2026-04-26 00:06:17,489 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157515798 "HTTP/1.1 200 OK"
+2026-04-26 00:06:17,495 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157515798; current total saved count: 266
+2026-04-26 00:06:17,495 | INFO | kolesa_http_parser | current total saved count: 266
+2026-04-26 00:06:17,496 | INFO | kolesa_http_parser | current search page 10: https://kolesa.kz/cars/?page=10
+2026-04-26 00:06:21,178 | INFO | httpx | HTTP Request: GET https://kolesa.kz/cars/?page=10 "HTTP/1.1 200 OK"
+2026-04-26 00:06:21,201 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157515798
+2026-04-26 00:06:21,201 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/157955072
+2026-04-26 00:06:21,203 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215362774
+2026-04-26 00:06:21,203 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/213421073
+2026-04-26 00:06:21,203 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218218788
+2026-04-26 00:06:21,203 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215200745
+2026-04-26 00:06:21,203 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217671773
+2026-04-26 00:06:21,204 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209615181
+2026-04-26 00:06:21,204 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218116264
+2026-04-26 00:06:21,204 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/214549656
+2026-04-26 00:06:21,204 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209166512
+2026-04-26 00:06:21,204 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/202825207
+2026-04-26 00:06:21,204 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/215290841
+2026-04-26 00:06:21,205 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/164329402
+2026-04-26 00:06:21,205 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/203228556
+2026-04-26 00:06:21,205 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/193060461
+2026-04-26 00:06:21,205 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955056
+2026-04-26 00:06:21,205 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157955087
+2026-04-26 00:06:21,205 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/185910200
+2026-04-26 00:06:21,206 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954686
+2026-04-26 00:06:21,206 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954704
+2026-04-26 00:06:21,206 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954663
+2026-04-26 00:06:21,206 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/193062671
+2026-04-26 00:06:21,206 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954710
+2026-04-26 00:06:21,207 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/193062982
+2026-04-26 00:06:21,207 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/193061971
+2026-04-26 00:06:21,207 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/193060666
+2026-04-26 00:06:21,207 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/157954695
+2026-04-26 00:06:21,207 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/210901744
+2026-04-26 00:06:21,207 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/210264664
+2026-04-26 00:06:21,207 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/210266072
+2026-04-26 00:06:21,207 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/210261252
+2026-04-26 00:06:21,208 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/210264146
+2026-04-26 00:06:23,318 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/164329402 "HTTP/1.1 200 OK"
+2026-04-26 00:06:23,324 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/164329402; current total saved count: 267
+2026-04-26 00:06:23,814 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/215290841 "HTTP/1.1 200 OK"
+2026-04-26 00:06:23,821 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/215290841; current total saved count: 268
+2026-04-26 00:06:24,877 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/203228556 "HTTP/1.1 200 OK"
+2026-04-26 00:06:24,883 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/203228556; current total saved count: 269
+2026-04-26 00:06:25,608 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/193060461 "HTTP/1.1 200 OK"
+2026-04-26 00:06:25,615 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/193060461; current total saved count: 270
+2026-04-26 00:06:28,394 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955056 "HTTP/1.1 200 OK"
+2026-04-26 00:06:28,401 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955056; current total saved count: 271
+2026-04-26 00:06:29,286 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157955087 "HTTP/1.1 200 OK"
+2026-04-26 00:06:29,293 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157955087; current total saved count: 272
+2026-04-26 00:06:29,649 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/185910200 "HTTP/1.1 200 OK"
+2026-04-26 00:06:29,655 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/185910200; current total saved count: 273
+2026-04-26 00:06:30,264 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954686 "HTTP/1.1 200 OK"
+2026-04-26 00:06:30,271 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954686; current total saved count: 274
+2026-04-26 00:06:31,243 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954704 "HTTP/1.1 200 OK"
+2026-04-26 00:06:31,250 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954704; current total saved count: 275
+2026-04-26 00:06:31,834 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954663 "HTTP/1.1 200 OK"
+2026-04-26 00:06:31,840 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954663; current total saved count: 276
+2026-04-26 00:06:34,170 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/193062982 "HTTP/1.1 200 OK"
+2026-04-26 00:06:34,176 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/193062982; current total saved count: 277
+2026-04-26 00:06:34,439 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/193062671 "HTTP/1.1 200 OK"
+2026-04-26 00:06:34,448 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/193062671; current total saved count: 278
+2026-04-26 00:06:34,673 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954710 "HTTP/1.1 200 OK"
+2026-04-26 00:06:34,680 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954710; current total saved count: 279
+2026-04-26 00:06:37,853 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/193061971 "HTTP/1.1 200 OK"
+2026-04-26 00:06:37,861 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/193061971; current total saved count: 280
+2026-04-26 00:06:37,881 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/193060666 "HTTP/1.1 200 OK"
+2026-04-26 00:06:37,889 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/193060666; current total saved count: 281
+2026-04-26 00:06:39,025 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/157954695 "HTTP/1.1 200 OK"
+2026-04-26 00:06:39,031 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/157954695; current total saved count: 282
+2026-04-26 00:06:39,848 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/210901744 "HTTP/1.1 200 OK"
+2026-04-26 00:06:39,854 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/210901744; current total saved count: 283
+2026-04-26 00:06:40,266 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/210264664 "HTTP/1.1 200 OK"
+2026-04-26 00:06:40,273 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/210264664; current total saved count: 284
+2026-04-26 00:06:41,901 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/210266072 "HTTP/1.1 200 OK"
+2026-04-26 00:06:41,907 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/210266072; current total saved count: 285
+2026-04-26 00:06:42,086 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/210261252 "HTTP/1.1 200 OK"
+2026-04-26 00:06:42,092 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/210261252; current total saved count: 286
+2026-04-26 00:06:43,436 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/210264146 "HTTP/1.1 200 OK"
+2026-04-26 00:06:43,444 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/210264146; current total saved count: 287
+2026-04-26 00:06:43,444 | INFO | kolesa_http_parser | current total saved count: 287
+2026-04-26 00:06:43,444 | INFO | kolesa_http_parser | current search page 11: https://kolesa.kz/cars/?page=11
+2026-04-26 00:06:45,401 | INFO | httpx | HTTP Request: GET https://kolesa.kz/cars/?page=11 "HTTP/1.1 200 OK"
+2026-04-26 00:06:45,425 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209566292
+2026-04-26 00:06:45,425 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/210264146
+2026-04-26 00:06:45,428 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215362774
+2026-04-26 00:06:45,428 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/213421073
+2026-04-26 00:06:45,428 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218218788
+2026-04-26 00:06:45,428 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215200745
+2026-04-26 00:06:45,429 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217671773
+2026-04-26 00:06:45,429 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209615181
+2026-04-26 00:06:45,429 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218116264
+2026-04-26 00:06:45,429 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/214549656
+2026-04-26 00:06:45,429 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209166512
+2026-04-26 00:06:45,429 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/202825207
+2026-04-26 00:06:45,430 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/209640734
+2026-04-26 00:06:45,430 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217306220
+2026-04-26 00:06:45,430 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/193066878
+2026-04-26 00:06:45,430 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/208512316
+2026-04-26 00:06:45,430 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/208508658
+2026-04-26 00:06:45,430 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/208512498
+2026-04-26 00:06:45,431 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/208512702
+2026-04-26 00:06:45,431 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/212462590
+2026-04-26 00:06:45,431 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217894986
+2026-04-26 00:06:45,431 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/206743262
+2026-04-26 00:06:45,431 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216765846
+2026-04-26 00:06:45,431 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217825431
+2026-04-26 00:06:45,431 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218014760
+2026-04-26 00:06:45,431 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216887817
+2026-04-26 00:06:45,432 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217606718
+2026-04-26 00:06:45,432 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216722937
+2026-04-26 00:06:45,432 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217255908
+2026-04-26 00:06:45,432 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216559233
+2026-04-26 00:06:45,432 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217964906
+2026-04-26 00:06:45,432 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217958320
+2026-04-26 00:06:45,433 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217964499
+2026-04-26 00:06:48,091 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/209640734 "HTTP/1.1 200 OK"
+2026-04-26 00:06:48,098 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/209640734; current total saved count: 288
+2026-04-26 00:06:48,224 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/193066878 "HTTP/1.1 200 OK"
+2026-04-26 00:06:48,232 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/193066878; current total saved count: 289
+2026-04-26 00:06:49,361 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217306220 "HTTP/1.1 200 OK"
+2026-04-26 00:06:49,367 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217306220; current total saved count: 290
+2026-04-26 00:06:51,064 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/208512316 "HTTP/1.1 200 OK"
+2026-04-26 00:06:51,071 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/208512316; current total saved count: 291
+2026-04-26 00:06:52,425 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/208508658 "HTTP/1.1 200 OK"
+2026-04-26 00:06:52,432 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/208508658; current total saved count: 292
+2026-04-26 00:06:53,043 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/208512498 "HTTP/1.1 200 OK"
+2026-04-26 00:06:53,051 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/208512498; current total saved count: 293
+2026-04-26 00:06:53,547 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/208512702 "HTTP/1.1 200 OK"
+2026-04-26 00:06:53,554 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/208512702; current total saved count: 294
+2026-04-26 00:06:55,405 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/212462590 "HTTP/1.1 200 OK"
+2026-04-26 00:06:55,412 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/212462590; current total saved count: 295
+2026-04-26 00:06:56,745 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/206743262 "HTTP/1.1 200 OK"
+2026-04-26 00:06:56,751 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/206743262; current total saved count: 296
+2026-04-26 00:06:57,499 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217894986 "HTTP/1.1 200 OK"
+2026-04-26 00:06:57,506 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217894986; current total saved count: 297
+2026-04-26 00:06:59,276 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217825431 "HTTP/1.1 200 OK"
+2026-04-26 00:06:59,284 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217825431; current total saved count: 298
+2026-04-26 00:06:59,679 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216765846 "HTTP/1.1 200 OK"
+2026-04-26 00:06:59,687 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216765846; current total saved count: 299
+2026-04-26 00:07:00,244 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218014760 "HTTP/1.1 200 OK"
+2026-04-26 00:07:00,251 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218014760; current total saved count: 300
+2026-04-26 00:07:02,277 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216722937 "HTTP/1.1 200 OK"
+2026-04-26 00:07:02,284 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216722937; current total saved count: 301
+2026-04-26 00:07:02,326 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216887817 "HTTP/1.1 200 OK"
+2026-04-26 00:07:02,332 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216887817; current total saved count: 302
+2026-04-26 00:07:04,340 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217606718 "HTTP/1.1 200 OK"
+2026-04-26 00:07:04,348 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217606718; current total saved count: 303
+2026-04-26 00:07:04,517 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217255908 "HTTP/1.1 200 OK"
+2026-04-26 00:07:04,525 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217255908; current total saved count: 304
+2026-04-26 00:07:05,086 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216559233 "HTTP/1.1 200 OK"
+2026-04-26 00:07:05,093 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216559233; current total saved count: 305
+2026-04-26 00:07:07,692 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217964499 "HTTP/1.1 200 OK"
+2026-04-26 00:07:07,699 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217964499; current total saved count: 306
+2026-04-26 00:07:07,995 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217964906 "HTTP/1.1 200 OK"
+2026-04-26 00:07:08,003 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217964906; current total saved count: 307
+2026-04-26 00:07:09,040 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217958320 "HTTP/1.1 200 OK"
+2026-04-26 00:07:09,048 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217958320; current total saved count: 308
+2026-04-26 00:07:09,048 | INFO | kolesa_http_parser | current total saved count: 308
+2026-04-26 00:07:09,048 | INFO | kolesa_http_parser | current search page 12: https://kolesa.kz/cars/?page=12
+2026-04-26 00:07:12,217 | INFO | httpx | HTTP Request: GET https://kolesa.kz/cars/?page=12 "HTTP/1.1 200 OK"
+2026-04-26 00:07:12,239 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217327267
+2026-04-26 00:07:12,239 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/200168877
+2026-04-26 00:07:12,240 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217964499
+2026-04-26 00:07:12,241 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215362774
+2026-04-26 00:07:12,242 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/213421073
+2026-04-26 00:07:12,242 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218218788
+2026-04-26 00:07:12,242 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215200745
+2026-04-26 00:07:12,243 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217671773
+2026-04-26 00:07:12,243 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209615181
+2026-04-26 00:07:12,243 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218116264
+2026-04-26 00:07:12,243 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/214549656
+2026-04-26 00:07:12,243 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209166512
+2026-04-26 00:07:12,244 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/202825207
+2026-04-26 00:07:12,244 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217724476
+2026-04-26 00:07:12,244 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217855070
+2026-04-26 00:07:12,244 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217905537
+2026-04-26 00:07:12,245 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217020774
+2026-04-26 00:07:12,245 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217852655
+2026-04-26 00:07:12,245 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217851117
+2026-04-26 00:07:12,245 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216425809
+2026-04-26 00:07:12,245 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217739507
+2026-04-26 00:07:12,245 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217736791
+2026-04-26 00:07:12,245 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217739315
+2026-04-26 00:07:12,246 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218219366
+2026-04-26 00:07:12,246 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218218503
+2026-04-26 00:07:12,246 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216369208
+2026-04-26 00:07:12,246 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218217973
+2026-04-26 00:07:12,246 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218218904
+2026-04-26 00:07:12,246 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217405389
+2026-04-26 00:07:12,246 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218194181
+2026-04-26 00:07:12,246 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217274605
+2026-04-26 00:07:12,247 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218067702
+2026-04-26 00:07:12,247 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218059653
+2026-04-26 00:07:15,115 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217855070 "HTTP/1.1 200 OK"
+2026-04-26 00:07:15,122 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217855070; current total saved count: 309
+2026-04-26 00:07:15,675 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217724476 "HTTP/1.1 200 OK"
+2026-04-26 00:07:15,681 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217724476; current total saved count: 310
+2026-04-26 00:07:17,025 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217905537 "HTTP/1.1 200 OK"
+2026-04-26 00:07:17,032 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217905537; current total saved count: 311
+2026-04-26 00:07:17,964 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217020774 "HTTP/1.1 200 OK"
+2026-04-26 00:07:17,971 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217020774; current total saved count: 312
+2026-04-26 00:07:18,178 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217852655 "HTTP/1.1 200 OK"
+2026-04-26 00:07:18,184 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217852655; current total saved count: 313
+2026-04-26 00:07:19,986 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217851117 "HTTP/1.1 200 OK"
+2026-04-26 00:07:19,993 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217851117; current total saved count: 314
+2026-04-26 00:07:20,176 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216425809 "HTTP/1.1 200 OK"
+2026-04-26 00:07:20,183 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216425809; current total saved count: 315
+2026-04-26 00:07:22,071 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217736791 "HTTP/1.1 200 OK"
+2026-04-26 00:07:22,078 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217736791; current total saved count: 316
+2026-04-26 00:07:22,672 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217739507 "HTTP/1.1 200 OK"
+2026-04-26 00:07:22,678 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217739507; current total saved count: 317
+2026-04-26 00:07:24,524 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217739315 "HTTP/1.1 200 OK"
+2026-04-26 00:07:24,531 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217739315; current total saved count: 318
+2026-04-26 00:07:25,767 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218219366 "HTTP/1.1 200 OK"
+2026-04-26 00:07:25,773 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218219366; current total saved count: 319
+2026-04-26 00:07:26,743 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218218503 "HTTP/1.1 200 OK"
+2026-04-26 00:07:26,750 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218218503; current total saved count: 320
+2026-04-26 00:07:27,089 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216369208 "HTTP/1.1 200 OK"
+2026-04-26 00:07:27,096 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216369208; current total saved count: 321
+2026-04-26 00:07:28,675 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218217973 "HTTP/1.1 200 OK"
+2026-04-26 00:07:28,682 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218217973; current total saved count: 322
+2026-04-26 00:07:29,483 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217405389 "HTTP/1.1 200 OK"
+2026-04-26 00:07:29,490 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217405389; current total saved count: 323
+2026-04-26 00:07:31,005 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218218904 "HTTP/1.1 200 OK"
+2026-04-26 00:07:31,011 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218218904; current total saved count: 324
+2026-04-26 00:07:32,443 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218194181 "HTTP/1.1 200 OK"
+2026-04-26 00:07:32,449 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218194181; current total saved count: 325
+2026-04-26 00:07:34,004 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217274605 "HTTP/1.1 200 OK"
+2026-04-26 00:07:34,011 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217274605; current total saved count: 326
+2026-04-26 00:07:34,589 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218067702 "HTTP/1.1 200 OK"
+2026-04-26 00:07:34,595 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218067702; current total saved count: 327
+2026-04-26 00:07:36,373 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218059653 "HTTP/1.1 200 OK"
+2026-04-26 00:07:36,380 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218059653; current total saved count: 328
+2026-04-26 00:07:36,380 | INFO | kolesa_http_parser | current total saved count: 328
+2026-04-26 00:07:36,381 | INFO | kolesa_http_parser | current search page 13: https://kolesa.kz/cars/?page=13
+2026-04-26 00:07:40,073 | INFO | httpx | HTTP Request: GET https://kolesa.kz/cars/?page=13 "HTTP/1.1 200 OK"
+2026-04-26 00:07:40,097 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215362774
+2026-04-26 00:07:40,098 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/213421073
+2026-04-26 00:07:40,098 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218218788
+2026-04-26 00:07:40,098 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215200745
+2026-04-26 00:07:40,098 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217671773
+2026-04-26 00:07:40,099 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209615181
+2026-04-26 00:07:40,099 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218116264
+2026-04-26 00:07:40,099 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/214549656
+2026-04-26 00:07:40,099 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209166512
+2026-04-26 00:07:40,099 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/202825207
+2026-04-26 00:07:40,100 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217749268
+2026-04-26 00:07:40,100 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217939417
+2026-04-26 00:07:40,100 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217030598
+2026-04-26 00:07:40,100 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218067095
+2026-04-26 00:07:40,100 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/215302739
+2026-04-26 00:07:40,100 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218066621
+2026-04-26 00:07:40,101 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218015042
+2026-04-26 00:07:40,101 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/212405703
+2026-04-26 00:07:40,101 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216946744
+2026-04-26 00:07:40,101 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217964271
+2026-04-26 00:07:40,101 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217964053
+2026-04-26 00:07:40,101 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217963371
+2026-04-26 00:07:40,101 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217963589
+2026-04-26 00:07:40,101 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217850071
+2026-04-26 00:07:40,102 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216254052
+2026-04-26 00:07:40,102 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216998103
+2026-04-26 00:07:40,102 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218214746
+2026-04-26 00:07:40,102 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217876215
+2026-04-26 00:07:40,102 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/215468363
+2026-04-26 00:07:40,102 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216852485
+2026-04-26 00:07:40,102 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217739063
+2026-04-26 00:07:40,103 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217738812
+2026-04-26 00:07:40,103 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217738638
+2026-04-26 00:07:42,027 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217749268 "HTTP/1.1 200 OK"
+2026-04-26 00:07:42,034 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217749268; current total saved count: 329
+2026-04-26 00:07:42,409 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217030598 "HTTP/1.1 200 OK"
+2026-04-26 00:07:42,416 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217030598; current total saved count: 330
+2026-04-26 00:07:44,678 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217939417 "HTTP/1.1 200 OK"
+2026-04-26 00:07:44,685 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217939417; current total saved count: 331
+2026-04-26 00:07:44,791 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/215302739 "HTTP/1.1 200 OK"
+2026-04-26 00:07:44,798 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/215302739; current total saved count: 332
+2026-04-26 00:07:45,666 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218067095 "HTTP/1.1 200 OK"
+2026-04-26 00:07:45,672 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218067095; current total saved count: 333
+2026-04-26 00:07:46,918 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218015042 "HTTP/1.1 200 OK"
+2026-04-26 00:07:46,925 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218015042; current total saved count: 334
+2026-04-26 00:07:47,119 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218066621 "HTTP/1.1 200 OK"
+2026-04-26 00:07:47,126 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218066621; current total saved count: 335
+2026-04-26 00:07:48,456 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/212405703 "HTTP/1.1 200 OK"
+2026-04-26 00:07:48,463 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/212405703; current total saved count: 336
+2026-04-26 00:07:49,274 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216946744 "HTTP/1.1 200 OK"
+2026-04-26 00:07:49,281 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216946744; current total saved count: 337
+2026-04-26 00:07:50,192 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217964271 "HTTP/1.1 200 OK"
+2026-04-26 00:07:50,200 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217964271; current total saved count: 338
+2026-04-26 00:07:52,040 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217964053 "HTTP/1.1 200 OK"
+2026-04-26 00:07:52,047 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217964053; current total saved count: 339
+2026-04-26 00:07:52,808 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217963371 "HTTP/1.1 200 OK"
+2026-04-26 00:07:52,815 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217963371; current total saved count: 340
+2026-04-26 00:07:53,832 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217850071 "HTTP/1.1 200 OK"
+2026-04-26 00:07:53,839 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217850071; current total saved count: 341
+2026-04-26 00:07:54,180 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217963589 "HTTP/1.1 200 OK"
+2026-04-26 00:07:54,186 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217963589; current total saved count: 342
+2026-04-26 00:07:56,339 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216998103 "HTTP/1.1 200 OK"
+2026-04-26 00:07:56,346 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216998103; current total saved count: 343
+2026-04-26 00:07:56,961 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216254052 "HTTP/1.1 200 OK"
+2026-04-26 00:07:56,968 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216254052; current total saved count: 344
+2026-04-26 00:07:57,440 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218214746 "HTTP/1.1 200 OK"
+2026-04-26 00:07:57,447 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218214746; current total saved count: 345
+2026-04-26 00:07:59,612 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/215468363 "HTTP/1.1 200 OK"
+2026-04-26 00:07:59,620 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/215468363; current total saved count: 346
+2026-04-26 00:08:00,162 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216852485 "HTTP/1.1 200 OK"
+2026-04-26 00:08:00,168 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216852485; current total saved count: 347
+2026-04-26 00:08:00,459 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217876215 "HTTP/1.1 200 OK"
+2026-04-26 00:08:00,468 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217876215; current total saved count: 348
+2026-04-26 00:08:01,491 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217739063 "HTTP/1.1 200 OK"
+2026-04-26 00:08:01,498 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217739063; current total saved count: 349
+2026-04-26 00:08:02,768 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217738638 "HTTP/1.1 200 OK"
+2026-04-26 00:08:02,775 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217738638; current total saved count: 350
+2026-04-26 00:08:04,226 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217738812 "HTTP/1.1 200 OK"
+2026-04-26 00:08:04,233 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217738812; current total saved count: 351
+2026-04-26 00:08:04,234 | INFO | kolesa_http_parser | current total saved count: 351
+2026-04-26 00:08:04,234 | INFO | kolesa_http_parser | current search page 14: https://kolesa.kz/cars/?page=14
+2026-04-26 00:08:07,970 | INFO | httpx | HTTP Request: GET https://kolesa.kz/cars/?page=14 "HTTP/1.1 200 OK"
+2026-04-26 00:08:07,989 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217012564
+2026-04-26 00:08:07,989 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217738812
+2026-04-26 00:08:07,990 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217738638
+2026-04-26 00:08:07,991 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215362774
+2026-04-26 00:08:07,991 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/213421073
+2026-04-26 00:08:07,992 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218218788
+2026-04-26 00:08:07,992 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/215200745
+2026-04-26 00:08:07,992 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/217671773
+2026-04-26 00:08:07,992 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209615181
+2026-04-26 00:08:07,992 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/218116264
+2026-04-26 00:08:07,993 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/214549656
+2026-04-26 00:08:07,993 | INFO | kolesa_http_parser | skipped duplicate https://kolesa.kz/a/show/209166512
+2026-04-26 00:08:07,993 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217287631
+2026-04-26 00:08:07,993 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217156733
+2026-04-26 00:08:07,993 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217738434
+2026-04-26 00:08:07,994 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217738203
+2026-04-26 00:08:07,994 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217738102
+2026-04-26 00:08:07,994 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/203489316
+2026-04-26 00:08:07,994 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217562055
+2026-04-26 00:08:07,994 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218218412
+2026-04-26 00:08:07,995 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/216765398
+2026-04-26 00:08:07,995 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218065848
+2026-04-26 00:08:07,995 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/215220238
+2026-04-26 00:08:07,995 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218066582
+2026-04-26 00:08:07,995 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/212698205
+2026-04-26 00:08:07,995 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218064836
+2026-04-26 00:08:07,996 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217668228
+2026-04-26 00:08:07,996 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/215848308
+2026-04-26 00:08:07,996 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217181412
+2026-04-26 00:08:07,996 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/208246632
+2026-04-26 00:08:07,996 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217370697
+2026-04-26 00:08:07,996 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/217963166
+2026-04-26 00:08:07,997 | INFO | kolesa_http_parser | listing URL https://kolesa.kz/a/show/218107385
+2026-04-26 00:08:09,863 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217287631 "HTTP/1.1 200 OK"
+2026-04-26 00:08:09,870 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217287631; current total saved count: 352
+2026-04-26 00:08:09,987 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217738434 "HTTP/1.1 200 OK"
+2026-04-26 00:08:09,996 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217738434; current total saved count: 353
+2026-04-26 00:08:12,311 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217156733 "HTTP/1.1 200 OK"
+2026-04-26 00:08:12,318 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217156733; current total saved count: 354
+2026-04-26 00:08:12,475 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217738102 "HTTP/1.1 200 OK"
+2026-04-26 00:08:12,481 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217738102; current total saved count: 355
+2026-04-26 00:08:14,108 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/203489316 "HTTP/1.1 200 OK"
+2026-04-26 00:08:14,115 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/203489316; current total saved count: 356
+2026-04-26 00:08:14,303 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217738203 "HTTP/1.1 200 OK"
+2026-04-26 00:08:14,309 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217738203; current total saved count: 357
+2026-04-26 00:08:16,112 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217562055 "HTTP/1.1 200 OK"
+2026-04-26 00:08:16,119 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217562055; current total saved count: 358
+2026-04-26 00:08:16,334 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218218412 "HTTP/1.1 200 OK"
+2026-04-26 00:08:16,340 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218218412; current total saved count: 359
+2026-04-26 00:08:17,719 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/216765398 "HTTP/1.1 200 OK"
+2026-04-26 00:08:17,726 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/216765398; current total saved count: 360
+2026-04-26 00:08:18,523 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218065848 "HTTP/1.1 200 OK"
+2026-04-26 00:08:18,529 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218065848; current total saved count: 361
+2026-04-26 00:08:19,195 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/215220238 "HTTP/1.1 200 OK"
+2026-04-26 00:08:19,202 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/215220238; current total saved count: 362
+2026-04-26 00:08:21,422 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/212698205 "HTTP/1.1 200 OK"
+2026-04-26 00:08:21,429 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/212698205; current total saved count: 363
+2026-04-26 00:08:21,948 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218066582 "HTTP/1.1 200 OK"
+2026-04-26 00:08:21,955 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218066582; current total saved count: 364
+2026-04-26 00:08:22,741 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/218064836 "HTTP/1.1 200 OK"
+2026-04-26 00:08:22,749 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/218064836; current total saved count: 365
+2026-04-26 00:08:25,554 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/215848308 "HTTP/1.1 200 OK"
+2026-04-26 00:08:25,561 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/215848308; current total saved count: 366
+2026-04-26 00:08:25,861 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217181412 "HTTP/1.1 200 OK"
+2026-04-26 00:08:25,869 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217181412; current total saved count: 367
+2026-04-26 00:08:26,028 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217668228 "HTTP/1.1 200 OK"
+2026-04-26 00:08:26,045 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217668228; current total saved count: 368
+2026-04-26 00:08:28,809 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/217370697 "HTTP/1.1 200 OK"
+2026-04-26 00:08:28,816 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/217370697; current total saved count: 369
+2026-04-26 00:08:30,055 | INFO | httpx | HTTP Request: GET https://kolesa.kz/a/show/208246632 "HTTP/1.1 200 OK"
+2026-04-26 00:08:30,063 | INFO | kolesa_http_parser | saved listing https://kolesa.kz/a/show/208246632; current total saved count: 370
+2026-04-26 00:08:49,395 | WARNING | kolesa_http_client | HTTP error for https://kolesa.kz/a/show/217963166: ; consecutive errors=1
+2026-04-26 00:08:51,250 | WARNING | kolesa_http_client | HTTP error for https://kolesa.kz/a/show/218107385: ; consecutive errors=2
+2026-04-26 00:09:14,177 | WARNING | kolesa_http_client | HTTP error for https://kolesa.kz/a/show/217963166: ; consecutive errors=3
+2026-04-26 00:09:15,343 | WARNING | kolesa_http_client | HTTP error for https://kolesa.kz/a/show/218107385: ; consecutive errors=4
+2026-04-26 00:09:41,668 | WARNING | kolesa_http_client | HTTP error for https://kolesa.kz/a/show/218107385: ; consecutive errors=5
+2026-04-26 00:09:42,410 | WARNING | kolesa_http_client | HTTP error for https://kolesa.kz/a/show/217963166: ; consecutive errors=6
+2026-04-26 00:09:53,586 | INFO | kolesa_http_parser | current total saved count: 370
+2026-04-26 00:09:53,587 | INFO | kolesa_http_parser | current search page 15: https://kolesa.kz/cars/?page=15
+2026-04-26 00:10:15,129 | WARNING | kolesa_http_client | HTTP error for https://kolesa.kz/cars/?page=15: ; consecutive errors=7
+2026-04-26 00:10:39,000 | WARNING | kolesa_http_client | HTTP error for https://kolesa.kz/cars/?page=15: ; consecutive errors=8
+2026-04-26 00:11:06,781 | WARNING | kolesa_http_client | HTTP error for https://kolesa.kz/cars/?page=15: ; consecutive errors=9
+2026-04-26 00:11:16,656 | INFO | kolesa_http_parser | current search page 16: https://kolesa.kz/cars/?page=16
+2026-04-26 00:11:39,209 | WARNING | kolesa_http_client | HTTP error for https://kolesa.kz/cars/?page=16: ; consecutive errors=10
+2026-04-26 00:12:03,350 | WARNING | kolesa_http_client | HTTP error for https://kolesa.kz/cars/?page=16: ; consecutive errors=11
+2026-04-26 00:12:30,692 | WARNING | kolesa_http_client | HTTP error for https://kolesa.kz/cars/?page=16: ; consecutive errors=12
+2026-04-26 00:12:41,504 | INFO | kolesa_http_parser | current search page 17: https://kolesa.kz/cars/?page=17
+2026-04-26 00:16:14,684 | INFO | kolesa_parser | selected mode export
