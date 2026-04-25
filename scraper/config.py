@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -19,12 +20,17 @@ MAX_PER_MODEL = 700
 MAX_PER_BRAND = 5000
 DEFAULT_TEST_LIMIT = 100
 
-HTTP_CONCURRENCY = 3
-MIN_DELAY_SECONDS = 2.0
-MAX_DELAY_SECONDS = 5.5
-REQUEST_TIMEOUT_SECONDS = 20
-MAX_RETRIES = 3
-ERROR_STOP_THRESHOLD = 20
+HTTP_CONCURRENCY = 1
+MIN_DELAY_SECONDS = 5.0
+MAX_DELAY_SECONDS = 12.0
+REQUEST_TIMEOUT_SECONDS = 30
+MAX_RETRIES = 2
+ERROR_STOP_THRESHOLD = 5
+RETRY_BACKOFF_SECONDS = (20.0, 180.0)
+BLOCK_STOP_MESSAGE = (
+    "Possible temporary rate limit or block. Stopped safely. "
+    "Try later with safe-mode or night-mode."
+)
 
 DEFAULT_HEADLESS = True
 DESCRIPTION_WAIT_MS = 5000
@@ -36,3 +42,45 @@ USER_AGENT = (
     "Chrome/124.0.0.0 Safari/537.36"
 )
 ACCEPT_LANGUAGE = "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+
+
+@dataclass(frozen=True)
+class CrawlModeSettings:
+    name: str
+    detail_delay_seconds: tuple[float, float]
+    search_delay_seconds: tuple[float, float]
+    max_consecutive_errors: int
+    night_short_pause_every: int | None = None
+    night_short_pause_seconds: tuple[float, float] | None = None
+    night_long_pause_every: int | None = None
+    night_long_pause_seconds: tuple[float, float] | None = None
+
+
+CRAWL_MODE_SETTINGS = {
+    "normal": CrawlModeSettings(
+        name="normal",
+        detail_delay_seconds=(MIN_DELAY_SECONDS, MAX_DELAY_SECONDS),
+        search_delay_seconds=(15.0, 45.0),
+        max_consecutive_errors=ERROR_STOP_THRESHOLD,
+    ),
+    "safe": CrawlModeSettings(
+        name="safe",
+        detail_delay_seconds=(5.0, 12.0),
+        search_delay_seconds=(20.0, 45.0),
+        max_consecutive_errors=3,
+    ),
+    "night": CrawlModeSettings(
+        name="night",
+        detail_delay_seconds=(8.0, 18.0),
+        search_delay_seconds=(45.0, 90.0),
+        max_consecutive_errors=3,
+        night_short_pause_every=100,
+        night_short_pause_seconds=(180.0, 480.0),
+        night_long_pause_every=500,
+        night_long_pause_seconds=(600.0, 1200.0),
+    ),
+}
+
+
+def get_crawl_mode_settings(mode: str) -> CrawlModeSettings:
+    return CRAWL_MODE_SETTINGS.get(mode, CRAWL_MODE_SETTINGS["normal"])

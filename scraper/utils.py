@@ -154,10 +154,103 @@ def normalize_characteristic_key(text: Optional[str]) -> str:
     return text
 
 
+BLOCK_STATUS_CODES = {403, 429}
+VISIBLE_BLOCK_PHRASES = [
+    "captcha",
+    "\u043a\u0430\u043f\u0447\u0430",
+    "\u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438",
+    "\u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435, \u0447\u0442\u043e \u0432\u044b \u043d\u0435 \u0440\u043e\u0431\u043e\u0442",
+    "\u0434\u043e\u0441\u0442\u0443\u043f \u043e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d",
+    "\u0441\u043b\u0438\u0448\u043a\u043e\u043c \u043c\u043d\u043e\u0433\u043e \u0437\u0430\u043f\u0440\u043e\u0441\u043e\u0432",
+    "access denied",
+    "security check",
+    "are you human",
+    "verify you are human",
+    "temporarily blocked",
+]
+
+
+def is_blocked_response(status_code: int, html: str) -> tuple[bool, str]:
+    """Return true only for clear block/rate-limit/captcha responses."""
+    if status_code in BLOCK_STATUS_CODES:
+        return True, f"HTTP {status_code}"
+    if status_code != 200:
+        return False, ""
+
+    title, visible_text = extract_visible_title_and_text(html)
+    text_for_detection = f"{title}\n{visible_text}".lower()
+    for phrase in VISIBLE_BLOCK_PHRASES:
+        if phrase in text_for_detection:
+            return True, f"visible challenge phrase: {phrase}"
+
+    return False, ""
+
+
+def looks_like_normal_listing_title(html: str) -> bool:
+    title, _ = extract_visible_title_and_text(html)
+    lowered = title.lower()
+    if not lowered:
+        return False
+
+    has_sale_word = "\u043f\u0440\u043e\u0434\u0430\u0436\u0430" in lowered
+    has_year_word = "\u0433\u043e\u0434" in lowered
+    has_listing_context = any(
+        word in lowered
+        for word in (
+            "\u043a\u0443\u043f\u0438\u0442\u044c",
+            "\u0446\u0435\u043d\u0430",
+            "\u043a\u043e\u043b\u0451\u0441\u0430",
+            "\u043a\u043e\u043b\u0435\u0441\u0430",
+        )
+    )
+    return has_sale_word and has_year_word and has_listing_context
+
+
+def extract_visible_title_and_text(html: str) -> tuple[str, str]:
+    try:
+        from bs4 import BeautifulSoup
+
+        soup = BeautifulSoup(html or "", "lxml")
+        title = normalize_text(soup.title.get_text(" ", strip=True) if soup.title else "") or ""
+        for node in soup(["script", "style", "meta", "noscript", "svg"]):
+            node.decompose()
+        visible_text = normalize_text(soup.get_text(" ", strip=True)) or ""
+        return title, visible_text
+    except Exception:
+        return _extract_visible_title_and_text_fallback(html)
+
+
+def _extract_visible_title_and_text_fallback(html: str) -> tuple[str, str]:
+    title_match = re.search(r"<title[^>]*>(.*?)</title>", html or "", flags=re.IGNORECASE | re.DOTALL)
+    title = normalize_text(re.sub(r"<[^>]+>", " ", title_match.group(1))) if title_match else ""
+
+    stripped = re.sub(
+        r"<(script|style|meta|noscript|svg)\b[^>]*>.*?</\1>",
+        " ",
+        html or "",
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    stripped = re.sub(r"<meta\b[^>]*>", " ", stripped, flags=re.IGNORECASE | re.DOTALL)
+    visible_text = normalize_text(re.sub(r"<[^>]+>", " ", stripped)) or ""
+    return title or "", visible_text
+
+
 def looks_like_captcha_or_block_page(html: str) -> bool:
     """Detect obvious block/captcha pages without treating normal footer text as a captcha."""
+    blocked, _ = is_blocked_response(200, html)
+    return blocked
     lowered = html[:20000].lower()
     indicators = [
+        "captcha",
+        "security check",
+        "access denied",
+        "forbidden",
+        "too many requests",
+        "blocked",
+        "unavailable",
+        "deny",
+        "\u0441\u043b\u0438\u0448\u043a\u043e\u043c \u043c\u043d\u043e\u0433\u043e \u0437\u0430\u043f\u0440\u043e\u0441\u043e\u0432",
+        "\u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0430",
         "captcha-form",
         "captcha__",
         "/captcha/",

@@ -4,6 +4,7 @@ import logging
 
 from database.db import CarDatabase
 from scraper.config import (
+    BLOCK_STOP_MESSAGE,
     DEFAULT_ENGINE,
     DEFAULT_HEADLESS,
     DEFAULT_TEST_LIMIT,
@@ -37,8 +38,17 @@ def str_to_bool(value: str | bool) -> bool:
     raise argparse.ArgumentTypeError("value must be true or false")
 
 
+def selected_crawl_mode(args: argparse.Namespace) -> str:
+    if getattr(args, "night_mode", False):
+        return "night"
+    if getattr(args, "safe_mode", False):
+        return "safe"
+    return "normal"
+
+
 async def run_collect(args: argparse.Namespace, db: CarDatabase) -> None:
     logger = logging.getLogger("kolesa_parser")
+    crawl_mode = selected_crawl_mode(args)
     current_count = db.count_all_cars()
     target_total = current_count + args.add if args.add is not None else args.limit
     if target_total is None:
@@ -47,45 +57,78 @@ async def run_collect(args: argparse.Namespace, db: CarDatabase) -> None:
         logger.warning("target %s is above TOTAL_LIMIT=%s; capping at TOTAL_LIMIT", target_total, TOTAL_LIMIT)
         target_total = TOTAL_LIMIT
 
-    logger.info("selected mode collect")
-    logger.info("selected engine %s", args.engine)
-    logger.info("target limit %s", target_total)
+    concurrency = 1 if crawl_mode in {"safe", "night"} else args.concurrency
+    if concurrency != args.concurrency:
+        logger.info("%s mode forces concurrency to 1", crawl_mode)
+
+    logger.info("selected command collect")
+    logger.info("mode: %s", crawl_mode)
+    logger.info("engine: %s", args.engine)
+    logger.info("target total limit: %s", target_total)
     if args.add is not None:
         logger.info("add mode target: current %s + add %s = %s", current_count, args.add, target_total)
-    logger.info("current database count at start: %s", current_count)
-    logger.info("concurrency %s", args.concurrency)
+    logger.info("current DB count: %s", current_count)
+    logger.info("concurrency: %s", concurrency)
+    logger.info("stop_on_block: %s", args.stop_on_block)
+    logger.info("max runtime hours: %s", args.max_runtime_hours)
 
     if args.engine == "http":
         from scraper.kolesa_http_parser import KolesaHTTPParser
 
-        parser = KolesaHTTPParser(db=db, concurrency=args.concurrency)
+        parser = KolesaHTTPParser(
+            db=db,
+            concurrency=concurrency,
+            mode=crawl_mode,
+            max_runtime_hours=args.max_runtime_hours,
+            stop_on_block=args.stop_on_block,
+        )
     else:
         from scraper.kolesa_playwright_parser import KolesaPlaywrightParser
 
         parser = KolesaPlaywrightParser(db=db, headless=args.headless)
 
     saved = await parser.collect_until_total(target_total)
+    if getattr(parser, "block_detected", False):
+        print(BLOCK_STOP_MESSAGE)
+    elif getattr(parser, "stop_reason", None):
+        print(f"Stopped safely: {parser.stop_reason}")
+    logger.info("final DB count: %s", db.count_all_cars())
     print(f"Saved new listings: {saved}")
     print(f"Current total cars: {db.count_all_cars()}")
 
 
 async def run_update(args: argparse.Namespace, db: CarDatabase) -> None:
     logger = logging.getLogger("kolesa_parser")
-    logger.info("selected mode update")
-    logger.info("selected engine %s", args.engine)
-    logger.info("current database count at start: %s", db.count_all_cars())
-    logger.info("concurrency %s", args.concurrency)
+    crawl_mode = selected_crawl_mode(args)
+    concurrency = 1 if crawl_mode in {"safe", "night"} else args.concurrency
+
+    logger.info("selected command update")
+    logger.info("mode: %s", crawl_mode)
+    logger.info("engine: %s", args.engine)
+    logger.info("current DB count: %s", db.count_all_cars())
+    logger.info("concurrency: %s", concurrency)
+    logger.info("stop_on_block: %s", args.stop_on_block)
 
     if args.engine == "http":
         from scraper.kolesa_http_parser import KolesaHTTPParser
 
-        parser = KolesaHTTPParser(db=db, concurrency=args.concurrency)
+        parser = KolesaHTTPParser(
+            db=db,
+            concurrency=concurrency,
+            mode=crawl_mode,
+            stop_on_block=args.stop_on_block,
+        )
     else:
         from scraper.kolesa_playwright_parser import KolesaPlaywrightParser
 
         parser = KolesaPlaywrightParser(db=db, headless=args.headless)
 
     saved = await parser.update(pages=args.pages)
+    if getattr(parser, "block_detected", False):
+        print(BLOCK_STOP_MESSAGE)
+    elif getattr(parser, "stop_reason", None):
+        print(f"Stopped safely: {parser.stop_reason}")
+    logger.info("final DB count: %s", db.count_all_cars())
     print(f"Saved new listings: {saved}")
     print(f"Current total cars: {db.count_all_cars()}")
 
@@ -117,6 +160,27 @@ def run_export(db: CarDatabase) -> None:
     print(f"ML export: {ml_path}")
 
 
+def add_safety_args(command_parser: argparse.ArgumentParser, include_runtime: bool = False) -> None:
+    mode_group = command_parser.add_mutually_exclusive_group()
+    mode_group.add_argument("--safe-mode", action="store_true", help="Very conservative HTTP collection mode.")
+    mode_group.add_argument("--night-mode", action="store_true", help="Slow unattended HTTP collection mode.")
+    command_parser.add_argument(
+        "--stop-on-block",
+        type=str_to_bool,
+        nargs="?",
+        const=True,
+        default=True,
+        help="Stop safely on possible blocks, rate limits, captcha pages, or repeated timeouts.",
+    )
+    if include_runtime:
+        command_parser.add_argument(
+            "--max-runtime-hours",
+            type=float,
+            default=None,
+            help="Stop gracefully after this many hours and keep saved data.",
+        )
+
+
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Parse public Kolesa.kz car listings into SQLite.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -128,12 +192,14 @@ def build_arg_parser() -> argparse.ArgumentParser:
     collect.add_argument("--engine", choices=["http", "playwright"], default=DEFAULT_ENGINE)
     collect.add_argument("--concurrency", type=int, default=HTTP_CONCURRENCY)
     collect.add_argument("--headless", type=str_to_bool, default=DEFAULT_HEADLESS)
+    add_safety_args(collect, include_runtime=True)
 
     update = subparsers.add_parser("update", help="Parse only the first N search pages.")
     update.add_argument("--pages", type=int, default=5)
     update.add_argument("--engine", choices=["http", "playwright"], default=DEFAULT_ENGINE)
     update.add_argument("--concurrency", type=int, default=HTTP_CONCURRENCY)
     update.add_argument("--headless", type=str_to_bool, default=DEFAULT_HEADLESS)
+    add_safety_args(update)
 
     subparsers.add_parser("report", help="Print counts and export model report.")
     subparsers.add_parser("export", help="Export full and ML-friendly CSV files.")
