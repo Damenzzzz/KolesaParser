@@ -1,0 +1,4 @@
+playwright
+pandas
+tqdm
+python-dotenv

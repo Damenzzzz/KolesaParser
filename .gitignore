@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+data/cars.db
+data/exports/*.csv
+logs/*.log
