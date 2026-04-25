@@ -44,6 +44,7 @@ PHOTO_SELECTORS = [
     ".gallery img",
     ".gallery button",
     ".gallery__thumbs button",
+    'picture img[src*="kolesa"]',
 ]
 
 PUBLISHED_AT_SELECTORS = [

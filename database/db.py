@@ -60,6 +60,19 @@ ML_COLUMNS = [
 ]
 
 
+IMPORTANT_COLUMNS = [
+    "brand",
+    "model",
+    "year",
+    "price",
+    "city",
+    "mileage_km",
+    "engine_volume_l",
+    "fuel_type",
+    "transmission",
+]
+
+
 class CarDatabase:
     def __init__(self, db_path: Path = DB_PATH) -> None:
         self.db_path = Path(db_path)
@@ -73,6 +86,7 @@ class CarDatabase:
         self.conn.close()
 
     def init_db(self) -> None:
+        """Create tables if needed. Existing data is never deleted here."""
         self.conn.execute(
             """
             CREATE TABLE IF NOT EXISTS cars (
@@ -125,21 +139,42 @@ class CarDatabase:
         self.conn.execute("CREATE INDEX IF NOT EXISTS idx_cars_brand_model ON cars(brand, model)")
         self.conn.commit()
 
+    def insert_car(self, car: dict[str, Any]) -> bool:
+        now = datetime.now(timezone.utc).isoformat()
+        row = {column: car.get(column) for column in CAR_COLUMNS}
+        row["is_active"] = 1 if row.get("is_active") is None else row["is_active"]
+        row["created_at"] = row.get("created_at") or now
+        row["updated_at"] = now
+
+        placeholders = ", ".join("?" for _ in CAR_COLUMNS)
+        columns_sql = ", ".join(CAR_COLUMNS)
+        values = [row[column] for column in CAR_COLUMNS]
+
+        cursor = self.conn.execute(
+            f"INSERT OR IGNORE INTO cars ({columns_sql}) VALUES ({placeholders})",
+            values,
+        )
+        self.conn.commit()
+        return cursor.rowcount == 1
+
     def car_exists(self, listing_id: Optional[str], url: Optional[str]) -> bool:
         row = self.conn.execute(
             """
             SELECT id FROM cars
             WHERE (? IS NOT NULL AND listing_id = ?)
-            OR (? IS NOT NULL AND url = ?)
+               OR (? IS NOT NULL AND url = ?)
             LIMIT 1
             """,
             (listing_id, listing_id, url, url),
         ).fetchone()
         return row is not None
 
-    def count_total(self) -> int:
+    def count_all_cars(self) -> int:
         row = self.conn.execute("SELECT COUNT(*) AS count FROM cars").fetchone()
         return int(row["count"])
+
+    def count_total(self) -> int:
+        return self.count_all_cars()
 
     def count_by_brand(self, brand: Optional[str]) -> int:
         if not brand:
@@ -162,28 +197,7 @@ class CarDatabase:
         ).fetchone()
         return int(row["count"])
 
-    def insert_car(self, car: dict[str, Any]) -> bool:
-        now = datetime.now(timezone.utc).isoformat()
-        row = {column: car.get(column) for column in CAR_COLUMNS}
-        row["is_active"] = 1 if row.get("is_active") is None else row["is_active"]
-        row["created_at"] = row.get("created_at") or now
-        row["updated_at"] = now
-
-        placeholders = ", ".join("?" for _ in CAR_COLUMNS)
-        columns_sql = ", ".join(CAR_COLUMNS)
-        values = [row[column] for column in CAR_COLUMNS]
-
-        try:
-            cursor = self.conn.execute(
-                f"INSERT INTO cars ({columns_sql}) VALUES ({placeholders})",
-                values,
-            )
-            self.conn.commit()
-            return cursor.rowcount == 1
-        except sqlite3.IntegrityError:
-            return False
-
-    def top_brands(self, limit: int = 10) -> list[sqlite3.Row]:
+    def get_top_brands(self, limit: int = 20) -> list[sqlite3.Row]:
         return self.conn.execute(
             """
             SELECT COALESCE(brand, 'Unknown') AS brand, COUNT(*) AS count
@@ -195,7 +209,7 @@ class CarDatabase:
             (limit,),
         ).fetchall()
 
-    def top_models(self, limit: int = 10) -> list[sqlite3.Row]:
+    def get_top_models(self, limit: int = 30) -> list[sqlite3.Row]:
         return self.conn.execute(
             """
             SELECT
@@ -209,6 +223,27 @@ class CarDatabase:
             """,
             (limit,),
         ).fetchall()
+
+    def top_brands(self, limit: int = 20) -> list[sqlite3.Row]:
+        return self.get_top_brands(limit)
+
+    def top_models(self, limit: int = 30) -> list[sqlite3.Row]:
+        return self.get_top_models(limit)
+
+    def missing_value_stats(self, columns: list[str] = IMPORTANT_COLUMNS) -> list[dict[str, int]]:
+        safe_columns = [column for column in columns if column in CAR_COLUMNS]
+        total = self.count_all_cars()
+        rows = []
+        for column in safe_columns:
+            missing = self.conn.execute(
+                f"""
+                SELECT COUNT(*) AS count
+                FROM cars
+                WHERE {column} IS NULL OR trim(CAST({column} AS TEXT)) = ''
+                """
+            ).fetchone()
+            rows.append({"column": column, "missing": int(missing["count"]), "total": total})
+        return rows
 
     def model_report_dataframe(self) -> "pd.DataFrame":
         import pandas as pd
@@ -237,14 +272,14 @@ class CarDatabase:
         self.model_report_dataframe().to_csv(path, index=False)
         return path
 
-    def export_full(self) -> Path:
+    def export_full_csv(self) -> Path:
         import pandas as pd
 
         path = EXPORTS_DIR / "cars_full.csv"
         pd.read_sql_query("SELECT * FROM cars ORDER BY id ASC", self.conn).to_csv(path, index=False)
         return path
 
-    def export_ml(self) -> Path:
+    def export_ml_csv(self) -> Path:
         import pandas as pd
 
         path = EXPORTS_DIR / "cars_ml.csv"
@@ -254,3 +289,9 @@ class CarDatabase:
             index=False,
         )
         return path
+
+    def export_full(self) -> Path:
+        return self.export_full_csv()
+
+    def export_ml(self) -> Path:
+        return self.export_ml_csv()
