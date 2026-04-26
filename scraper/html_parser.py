@@ -35,9 +35,13 @@ def _tree(html: str):
     if HTMLParser is not None:
         return HTMLParser(html)
 
-    from bs4 import BeautifulSoup
+    from bs4 import BeautifulSoup, FeatureNotFound
 
-    return BeautifulSoup(html, "lxml")
+    try:
+        return BeautifulSoup(html, "lxml")
+    except FeatureNotFound:
+        logger.warning("lxml parser not available; falling back to html.parser")
+        return BeautifulSoup(html, "html.parser")
 
 
 def _select(root, selector: str) -> list:

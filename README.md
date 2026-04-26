@@ -57,6 +57,8 @@ python main.py collect --add 5000 --night-mode --max-runtime-hours 8
 
 The first search page request starts immediately and logs a `0.0s` pause. Later search pages and all listing detail pages use the configured random pauses.
 
+Normal mode is available, but it is not recommended for large runs. Use it only for small local checks.
+
 Safe mode is for careful testing:
 
 - concurrency: 1
@@ -64,6 +66,16 @@ Safe mode is for careful testing:
 - search page delay: random 20-45 seconds
 - max consecutive errors: 3
 - stops on 403, 429, captcha/security pages, access denied pages, or repeated timeouts
+
+Balanced mode is the normal practical collection mode:
+
+- concurrency: 1
+- detail page delay: random 3-7 seconds
+- search page delay: random 20-45 seconds
+- after every 100 saved listings: sleep random 2-5 minutes
+- after every 500 saved listings: sleep random 8-15 minutes
+- supports `--max-runtime-hours`
+- stops safely on 403, 429, real captcha/security challenge pages, or repeated timeouts
 
 Night mode is for slow unattended collection:
 
@@ -81,7 +93,25 @@ Recommended test:
 python main.py collect --add 100 --safe-mode
 ```
 
-Slow larger run:
+Practical collection:
+
+```bash
+python main.py collect --add 100 --balanced-mode
+```
+
+Larger balanced run:
+
+```bash
+python main.py collect --limit 15000 --balanced-mode --max-runtime-hours 8
+```
+
+Custom balanced delays:
+
+```bash
+python main.py collect --add 500 --balanced-mode --detail-delay-min 2 --detail-delay-max 5 --search-delay-min 15 --search-delay-max 30
+```
+
+Very slow unattended run:
 
 ```bash
 python main.py collect --limit 15000 --night-mode --max-runtime-hours 8
@@ -143,7 +173,25 @@ Careful test:
 python main.py collect --add 100 --safe-mode
 ```
 
-Slow larger run:
+Practical collection:
+
+```bash
+python main.py collect --add 100 --balanced-mode
+```
+
+Larger balanced run:
+
+```bash
+python main.py collect --limit 15000 --balanced-mode --max-runtime-hours 8
+```
+
+Custom delay override:
+
+```bash
+python main.py collect --add 500 --balanced-mode --detail-delay-min 2 --detail-delay-max 5 --search-delay-min 15 --search-delay-max 30
+```
+
+Very slow unattended run:
 
 ```bash
 python main.py collect --limit 15000 --night-mode --max-runtime-hours 8

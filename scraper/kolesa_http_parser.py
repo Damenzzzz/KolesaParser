@@ -14,6 +14,7 @@ from scraper.config import (
     START_URL,
     TOTAL_LIMIT,
     get_crawl_mode_settings,
+    CrawlModeSettings,
 )
 from scraper.html_parser import extract_listing_urls, parse_listing_page
 from scraper.http_client import KolesaHTTPClient
@@ -30,11 +31,12 @@ class KolesaHTTPParser:
         mode: str = "normal",
         max_runtime_hours: float | None = None,
         stop_on_block: bool = True,
+        settings: CrawlModeSettings | None = None,
     ) -> None:
         self.db = db
         self.mode = mode
-        self.settings = get_crawl_mode_settings(mode)
-        self.concurrency = 1 if mode in {"safe", "night"} else max(1, concurrency)
+        self.settings = settings or get_crawl_mode_settings(mode)
+        self.concurrency = 1 if mode in {"safe", "balanced", "night"} else max(1, concurrency)
         self.max_runtime_seconds = max_runtime_hours * 3600 if max_runtime_hours else None
         self.stop_on_block = stop_on_block
         self.started_at: float | None = None
@@ -273,25 +275,28 @@ class KolesaHTTPParser:
 
     async def _after_successful_save(self, client: KolesaHTTPClient, target_total: int) -> None:
         self.saved_this_run += 1
+        self.logger.info("saved count this run: %s", self.saved_this_run)
         self._print_current_db_count()
 
-        if self.mode != "night" or not self._should_continue(target_total, client):
+        if not self.settings.short_pause_every and not self.settings.long_pause_every:
+            return
+        if not self._should_continue(target_total, client):
             return
 
-        long_every = self.settings.night_long_pause_every
-        short_every = self.settings.night_short_pause_every
+        long_every = self.settings.long_pause_every
+        short_every = self.settings.short_pause_every
         if (
             long_every
-            and self.settings.night_long_pause_seconds
+            and self.settings.long_pause_seconds
             and self.saved_this_run % long_every == 0
         ):
-            await self._pause(self.settings.night_long_pause_seconds, "night long pause after saved batch")
+            await self._pause(self.settings.long_pause_seconds, f"{self.mode} long pause after saved batch")
         elif (
             short_every
-            and self.settings.night_short_pause_seconds
+            and self.settings.short_pause_seconds
             and self.saved_this_run % short_every == 0
         ):
-            await self._pause(self.settings.night_short_pause_seconds, "night short pause after saved batch")
+            await self._pause(self.settings.short_pause_seconds, f"{self.mode} short pause after saved batch")
 
     async def _pause(self, delay_range: tuple[float, float], reason: str) -> None:
         delay = random.uniform(*delay_range)
@@ -317,6 +322,8 @@ class KolesaHTTPParser:
         self.logger.info("engine: http")
         self.logger.info("selected command: %s", command)
         self.logger.info("concurrency: %s", self.concurrency)
+        self.logger.info("detail delay seconds: %s-%s", *self.settings.detail_delay_seconds)
+        self.logger.info("search delay seconds: %s-%s", *self.settings.search_delay_seconds)
         self.logger.info("current DB count: %s", self.last_printed_db_count)
         self.logger.info("target total limit: %s", target_total)
         self.logger.info("max runtime hours: %s", self.max_runtime_seconds / 3600 if self.max_runtime_seconds else None)

@@ -50,10 +50,10 @@ class CrawlModeSettings:
     detail_delay_seconds: tuple[float, float]
     search_delay_seconds: tuple[float, float]
     max_consecutive_errors: int
-    night_short_pause_every: int | None = None
-    night_short_pause_seconds: tuple[float, float] | None = None
-    night_long_pause_every: int | None = None
-    night_long_pause_seconds: tuple[float, float] | None = None
+    short_pause_every: int | None = None
+    short_pause_seconds: tuple[float, float] | None = None
+    long_pause_every: int | None = None
+    long_pause_seconds: tuple[float, float] | None = None
 
 
 CRAWL_MODE_SETTINGS = {
@@ -69,15 +69,25 @@ CRAWL_MODE_SETTINGS = {
         search_delay_seconds=(20.0, 45.0),
         max_consecutive_errors=3,
     ),
+    "balanced": CrawlModeSettings(
+        name="balanced",
+        detail_delay_seconds=(3.0, 7.0),
+        search_delay_seconds=(20.0, 45.0),
+        max_consecutive_errors=3,
+        short_pause_every=100,
+        short_pause_seconds=(120.0, 300.0),
+        long_pause_every=500,
+        long_pause_seconds=(480.0, 900.0),
+    ),
     "night": CrawlModeSettings(
         name="night",
         detail_delay_seconds=(8.0, 18.0),
         search_delay_seconds=(45.0, 90.0),
         max_consecutive_errors=3,
-        night_short_pause_every=100,
-        night_short_pause_seconds=(180.0, 480.0),
-        night_long_pause_every=500,
-        night_long_pause_seconds=(600.0, 1200.0),
+        short_pause_every=100,
+        short_pause_seconds=(180.0, 480.0),
+        long_pause_every=500,
+        long_pause_seconds=(600.0, 1200.0),
     ),
 }
 

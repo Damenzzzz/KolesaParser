@@ -1,10 +1,12 @@
 import argparse
 import asyncio
 import logging
+from dataclasses import replace
 
 from database.db import CarDatabase
 from scraper.config import (
     BLOCK_STOP_MESSAGE,
+    CrawlModeSettings,
     DEFAULT_ENGINE,
     DEFAULT_HEADLESS,
     DEFAULT_TEST_LIMIT,
@@ -12,6 +14,7 @@ from scraper.config import (
     LOG_FILE,
     LOGS_DIR,
     TOTAL_LIMIT,
+    get_crawl_mode_settings,
 )
 
 
@@ -41,14 +44,48 @@ def str_to_bool(value: str | bool) -> bool:
 def selected_crawl_mode(args: argparse.Namespace) -> str:
     if getattr(args, "night_mode", False):
         return "night"
+    if getattr(args, "balanced_mode", False):
+        return "balanced"
     if getattr(args, "safe_mode", False):
         return "safe"
     return "normal"
 
 
+def build_mode_settings(args: argparse.Namespace, crawl_mode: str) -> CrawlModeSettings:
+    settings = get_crawl_mode_settings(crawl_mode)
+    detail_min = getattr(args, "detail_delay_min", None)
+    detail_max = getattr(args, "detail_delay_max", None)
+    search_min = getattr(args, "search_delay_min", None)
+    search_max = getattr(args, "search_delay_max", None)
+
+    detail_delay = (
+        settings.detail_delay_seconds[0] if detail_min is None else detail_min,
+        settings.detail_delay_seconds[1] if detail_max is None else detail_max,
+    )
+    search_delay = (
+        settings.search_delay_seconds[0] if search_min is None else search_min,
+        settings.search_delay_seconds[1] if search_max is None else search_max,
+    )
+
+    return replace(settings, detail_delay_seconds=detail_delay, search_delay_seconds=search_delay)
+
+
+def validate_delay_settings(settings: CrawlModeSettings) -> None:
+    for label, delay_range in (
+        ("detail delay", settings.detail_delay_seconds),
+        ("search delay", settings.search_delay_seconds),
+    ):
+        if delay_range[0] < 0 or delay_range[1] < 0:
+            raise ValueError(f"{label} values must be non-negative")
+        if delay_range[0] > delay_range[1]:
+            raise ValueError(f"{label} min must be less than or equal to max")
+
+
 async def run_collect(args: argparse.Namespace, db: CarDatabase) -> None:
     logger = logging.getLogger("kolesa_parser")
     crawl_mode = selected_crawl_mode(args)
+    settings = build_mode_settings(args, crawl_mode)
+    validate_delay_settings(settings)
     current_count = db.count_all_cars()
     target_total = current_count + args.add if args.add is not None else args.limit
     if target_total is None:
@@ -57,7 +94,7 @@ async def run_collect(args: argparse.Namespace, db: CarDatabase) -> None:
         logger.warning("target %s is above TOTAL_LIMIT=%s; capping at TOTAL_LIMIT", target_total, TOTAL_LIMIT)
         target_total = TOTAL_LIMIT
 
-    concurrency = 1 if crawl_mode in {"safe", "night"} else args.concurrency
+    concurrency = 1 if crawl_mode in {"safe", "balanced", "night"} else args.concurrency
     if concurrency != args.concurrency:
         logger.info("%s mode forces concurrency to 1", crawl_mode)
 
@@ -69,6 +106,8 @@ async def run_collect(args: argparse.Namespace, db: CarDatabase) -> None:
         logger.info("add mode target: current %s + add %s = %s", current_count, args.add, target_total)
     logger.info("current DB count: %s", current_count)
     logger.info("concurrency: %s", concurrency)
+    logger.info("detail delay seconds: %s-%s", *settings.detail_delay_seconds)
+    logger.info("search delay seconds: %s-%s", *settings.search_delay_seconds)
     logger.info("stop_on_block: %s", args.stop_on_block)
     logger.info("max runtime hours: %s", args.max_runtime_hours)
 
@@ -81,6 +120,7 @@ async def run_collect(args: argparse.Namespace, db: CarDatabase) -> None:
             mode=crawl_mode,
             max_runtime_hours=args.max_runtime_hours,
             stop_on_block=args.stop_on_block,
+            settings=settings,
         )
     else:
         from scraper.kolesa_playwright_parser import KolesaPlaywrightParser
@@ -100,13 +140,17 @@ async def run_collect(args: argparse.Namespace, db: CarDatabase) -> None:
 async def run_update(args: argparse.Namespace, db: CarDatabase) -> None:
     logger = logging.getLogger("kolesa_parser")
     crawl_mode = selected_crawl_mode(args)
-    concurrency = 1 if crawl_mode in {"safe", "night"} else args.concurrency
+    settings = build_mode_settings(args, crawl_mode)
+    validate_delay_settings(settings)
+    concurrency = 1 if crawl_mode in {"safe", "balanced", "night"} else args.concurrency
 
     logger.info("selected command update")
     logger.info("mode: %s", crawl_mode)
     logger.info("engine: %s", args.engine)
     logger.info("current DB count: %s", db.count_all_cars())
     logger.info("concurrency: %s", concurrency)
+    logger.info("detail delay seconds: %s-%s", *settings.detail_delay_seconds)
+    logger.info("search delay seconds: %s-%s", *settings.search_delay_seconds)
     logger.info("stop_on_block: %s", args.stop_on_block)
 
     if args.engine == "http":
@@ -117,6 +161,7 @@ async def run_update(args: argparse.Namespace, db: CarDatabase) -> None:
             concurrency=concurrency,
             mode=crawl_mode,
             stop_on_block=args.stop_on_block,
+            settings=settings,
         )
     else:
         from scraper.kolesa_playwright_parser import KolesaPlaywrightParser
@@ -163,7 +208,12 @@ def run_export(db: CarDatabase) -> None:
 def add_safety_args(command_parser: argparse.ArgumentParser, include_runtime: bool = False) -> None:
     mode_group = command_parser.add_mutually_exclusive_group()
     mode_group.add_argument("--safe-mode", action="store_true", help="Very conservative HTTP collection mode.")
+    mode_group.add_argument("--balanced-mode", action="store_true", help="Practical HTTP collection mode.")
     mode_group.add_argument("--night-mode", action="store_true", help="Slow unattended HTTP collection mode.")
+    command_parser.add_argument("--detail-delay-min", type=float, default=None)
+    command_parser.add_argument("--detail-delay-max", type=float, default=None)
+    command_parser.add_argument("--search-delay-min", type=float, default=None)
+    command_parser.add_argument("--search-delay-max", type=float, default=None)
     command_parser.add_argument(
         "--stop-on-block",
         type=str_to_bool,

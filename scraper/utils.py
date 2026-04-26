@@ -180,6 +180,10 @@ def is_blocked_response(status_code: int, html: str) -> tuple[bool, str]:
     title, visible_text = extract_visible_title_and_text(html)
     text_for_detection = f"{title}\n{visible_text}".lower()
     for phrase in VISIBLE_BLOCK_PHRASES:
+        if phrase == "captcha":
+            if re.search(r"\bcaptcha\b", text_for_detection):
+                return True, f"visible challenge phrase: {phrase}"
+            continue
         if phrase in text_for_detection:
             return True, f"visible challenge phrase: {phrase}"
 
