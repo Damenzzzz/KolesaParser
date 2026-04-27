@@ -57,6 +57,7 @@ ML_COLUMNS = [
     "steering_wheel",
     "color",
     "condition",
+    "generation",
 ]
 
 
@@ -162,7 +163,7 @@ class CarDatabase:
             """
             SELECT id FROM cars
             WHERE (? IS NOT NULL AND listing_id = ?)
-               OR (? IS NOT NULL AND url = ?)
+            OR (? IS NOT NULL AND url = ?)
             LIMIT 1
             """,
             (listing_id, listing_id, url, url),
