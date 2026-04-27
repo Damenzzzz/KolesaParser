@@ -14,6 +14,7 @@ from scraper.config import (
     LOG_FILE,
     LOGS_DIR,
     TOTAL_LIMIT,
+    TARGET_MODELS,
     get_crawl_mode_settings,
 )
 
@@ -178,11 +179,63 @@ async def run_update(args: argparse.Namespace, db: CarDatabase) -> None:
     print(f"Current total cars: {db.count_all_cars()}")
 
 
+async def run_collect_targets(args: argparse.Namespace, db: CarDatabase) -> None:
+    logger = logging.getLogger("kolesa_parser")
+    crawl_mode = selected_crawl_mode(args)
+    settings = build_mode_settings(args, crawl_mode)
+    validate_delay_settings(settings)
+    concurrency = 1 if crawl_mode in {"safe", "balanced", "night"} else args.concurrency
+
+    logger.info("selected command collect-targets")
+    logger.info("mode: %s", crawl_mode)
+    logger.info("engine: %s", args.engine)
+    logger.info("current DB count: %s", db.count_all_cars())
+    logger.info("target model count: %s", len(TARGET_MODELS))
+    logger.info("concurrency: %s", concurrency)
+    logger.info("detail delay seconds: %s-%s", *settings.detail_delay_seconds)
+    logger.info("search delay seconds: %s-%s", *settings.search_delay_seconds)
+    logger.info("stop_on_block: %s", args.stop_on_block)
+    logger.info("max runtime hours: %s", args.max_runtime_hours)
+
+    if args.engine == "http":
+        from scraper.kolesa_http_parser import KolesaHTTPParser
+
+        parser = KolesaHTTPParser(
+            db=db,
+            concurrency=concurrency,
+            mode=crawl_mode,
+            max_runtime_hours=args.max_runtime_hours,
+            stop_on_block=args.stop_on_block,
+            settings=settings,
+        )
+    else:
+        from scraper.kolesa_playwright_parser import KolesaPlaywrightParser
+
+        parser = KolesaPlaywrightParser(
+            db=db,
+            headless=args.headless,
+            mode=crawl_mode,
+            max_runtime_hours=args.max_runtime_hours,
+            settings=settings,
+        )
+
+    saved = await parser.collect_targets()
+    if getattr(parser, "block_detected", False):
+        print(BLOCK_STOP_MESSAGE)
+    elif getattr(parser, "stop_reason", None):
+        print(f"Stopped safely: {parser.stop_reason}")
+    logger.info("final DB count: %s", db.count_all_cars())
+    print(f"Saved new target listings: {saved}")
+    print(f"Current total cars: {db.count_all_cars()}")
+
+
 def run_report(db: CarDatabase) -> None:
     total = db.count_all_cars()
     model_report_path = db.export_model_report()
+    completed_targets, total_targets = db.completed_target_count()
 
     print(f"Total cars: {total}")
+    print(f"Completed target models: {completed_targets} / {total_targets}")
     print("\nTop brands:")
     for row in db.get_top_brands():
         print(f"  {row['brand']}: {row['count']}")
@@ -196,6 +249,17 @@ def run_report(db: CarDatabase) -> None:
         print(f"  {row['column']}: {row['missing']} / {row['total']}")
 
     print(f"\nModel report exported to: {model_report_path}")
+
+
+def run_target_report(db: CarDatabase) -> None:
+    rows = db.target_model_report_rows()
+    path = db.export_target_model_report()
+    for row in rows:
+        print(
+            f"{row['brand']} {row['model']}: "
+            f"{row['current_count']} / {row['target_limit']}, remaining {row['remaining']}"
+        )
+    print(f"\nTarget model report exported to: {path}")
 
 
 def run_export(db: CarDatabase) -> None:
@@ -244,6 +308,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
     collect.add_argument("--headless", type=str_to_bool, default=DEFAULT_HEADLESS)
     add_safety_args(collect, include_runtime=True)
 
+    collect_targets = subparsers.add_parser("collect-targets", help="Collect only configured target brand/model pairs.")
+    collect_targets.add_argument("--engine", choices=["http", "playwright"], default=DEFAULT_ENGINE)
+    collect_targets.add_argument("--concurrency", type=int, default=HTTP_CONCURRENCY)
+    collect_targets.add_argument("--headless", type=str_to_bool, default=DEFAULT_HEADLESS)
+    add_safety_args(collect_targets, include_runtime=True)
+
     update = subparsers.add_parser("update", help="Parse only the first N search pages.")
     update.add_argument("--pages", type=int, default=5)
     update.add_argument("--engine", choices=["http", "playwright"], default=DEFAULT_ENGINE)
@@ -252,6 +322,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     add_safety_args(update)
 
     subparsers.add_parser("report", help="Print counts and export model report.")
+    subparsers.add_parser("target-report", help="Print target model progress and export target report.")
     subparsers.add_parser("export", help="Export full and ML-friendly CSV files.")
 
     return parser
@@ -265,11 +336,16 @@ def main() -> None:
     try:
         if args.command == "collect":
             asyncio.run(run_collect(args, db))
+        elif args.command == "collect-targets":
+            asyncio.run(run_collect_targets(args, db))
         elif args.command == "update":
             asyncio.run(run_update(args, db))
         elif args.command == "report":
             logging.getLogger("kolesa_parser").info("selected mode report")
             run_report(db)
+        elif args.command == "target-report":
+            logging.getLogger("kolesa_parser").info("selected mode target-report")
+            run_target_report(db)
         elif args.command == "export":
             logging.getLogger("kolesa_parser").info("selected mode export")
             run_export(db)

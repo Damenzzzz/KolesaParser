@@ -29,7 +29,7 @@ ERROR_STOP_THRESHOLD = 5
 RETRY_BACKOFF_SECONDS = (20.0, 180.0)
 BLOCK_STOP_MESSAGE = (
     "Possible temporary rate limit or block. Stopped safely. "
-    "Try later with safe-mode or night-mode."
+    "Try later with safe-mode, balanced-mode, or night-mode."
 )
 
 DEFAULT_HEADLESS = True
@@ -65,8 +65,8 @@ CRAWL_MODE_SETTINGS = {
     ),
     "safe": CrawlModeSettings(
         name="safe",
-        detail_delay_seconds=(5.0, 12.0),
-        search_delay_seconds=(20.0, 45.0),
+        detail_delay_seconds=(8.0, 20.0),
+        search_delay_seconds=(45.0, 120.0),
         max_consecutive_errors=3,
     ),
     "balanced": CrawlModeSettings(
@@ -81,16 +81,47 @@ CRAWL_MODE_SETTINGS = {
     ),
     "night": CrawlModeSettings(
         name="night",
-        detail_delay_seconds=(8.0, 18.0),
-        search_delay_seconds=(45.0, 90.0),
+        detail_delay_seconds=(15.0, 35.0),
+        search_delay_seconds=(120.0, 300.0),
         max_consecutive_errors=3,
-        short_pause_every=100,
-        short_pause_seconds=(180.0, 480.0),
-        long_pause_every=500,
-        long_pause_seconds=(600.0, 1200.0),
+        short_pause_every=50,
+        short_pause_seconds=(300.0, 900.0),
+        long_pause_every=200,
+        long_pause_seconds=(1200.0, 2700.0),
     ),
 }
 
 
 def get_crawl_mode_settings(mode: str) -> CrawlModeSettings:
     return CRAWL_MODE_SETTINGS.get(mode, CRAWL_MODE_SETTINGS["normal"])
+
+
+TARGET_MODELS = [
+    {"brand": "Toyota", "model": "Camry", "limit": 1200, "aliases": ["Camry", "\u041a\u0430\u043c\u0440\u0438"]},
+    {"brand": "Toyota", "model": "Corolla", "limit": 1000, "aliases": ["Corolla", "\u041a\u043e\u0440\u043e\u043b\u043b\u0430"]},
+    {"brand": "Toyota", "model": "RAV4", "limit": 1000, "aliases": ["RAV4", "Rav 4", "RAV 4", "\u0420\u0410\u04124"]},
+    {"brand": "Toyota", "model": "Prado", "limit": 900, "aliases": ["Prado", "Land Cruiser Prado", "LC Prado"]},
+    {"brand": "Hyundai", "model": "Tucson", "limit": 1000, "aliases": ["Tucson", "\u0422\u0443\u0441\u0441\u0430\u043d"]},
+    {"brand": "Hyundai", "model": "Elantra", "limit": 900, "aliases": ["Elantra", "\u042d\u043b\u0430\u043d\u0442\u0440\u0430"]},
+    {"brand": "Hyundai", "model": "Sonata", "limit": 1000, "aliases": ["Sonata", "\u0421\u043e\u043d\u0430\u0442\u0430"]},
+    {"brand": "Kia", "model": "Sportage", "limit": 1000, "aliases": ["Sportage", "\u0421\u043f\u043e\u0440\u0442\u0435\u0439\u0434\u0436"]},
+    {"brand": "Kia", "model": "K5", "limit": 1000, "aliases": ["K5"]},
+    {"brand": "Kia", "model": "Rio", "limit": 900, "aliases": ["Rio", "\u0420\u0438\u043e"]},
+    {"brand": "Lexus", "model": "RX", "limit": 1000, "aliases": ["RX", "RX-Series", "RX Series"]},
+    {"brand": "Lexus", "model": "ES", "limit": 800, "aliases": ["ES", "ES-Series", "ES Series"]},
+    {"brand": "Lexus", "model": "LX", "limit": 700, "aliases": ["LX", "LX-Series", "LX Series"]},
+    {"brand": "BMW", "model": "X5", "limit": 1000, "aliases": ["X5"]},
+    {"brand": "Toyota", "model": "Land Cruiser 150", "limit": 700, "aliases": ["Land Cruiser 150", "LC 150"]},
+    {
+        "brand": "BMW",
+        "model": "5-Series",
+        "limit": 900,
+        "aliases": ["5-Series", "5 Series", "5 \u0441\u0435\u0440\u0438\u044f", "520", "523", "525", "528", "530", "535", "540"],
+    },
+    {
+        "brand": "BMW",
+        "model": "3-Series",
+        "limit": 700,
+        "aliases": ["3-Series", "3 Series", "3 \u0441\u0435\u0440\u0438\u044f", "316", "318", "320", "325", "328", "330"],
+    },
+]

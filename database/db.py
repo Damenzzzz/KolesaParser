@@ -1,3 +1,4 @@
+import csv
 import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
@@ -71,6 +72,7 @@ IMPORTANT_COLUMNS = [
     "engine_volume_l",
     "fuel_type",
     "transmission",
+    "generation",
 ]
 
 
@@ -198,6 +200,10 @@ class CarDatabase:
         ).fetchone()
         return int(row["count"])
 
+    def get_target_current_count(self, brand: str, model: str) -> int:
+        target = self._target_for(brand, model)
+        return len(self._matching_target_rows(target))
+
     def get_top_brands(self, limit: int = 20) -> list[sqlite3.Row]:
         return self.conn.execute(
             """
@@ -270,25 +276,104 @@ class CarDatabase:
 
     def export_model_report(self) -> Path:
         path = EXPORTS_DIR / "model_report.csv"
-        self.model_report_dataframe().to_csv(path, index=False)
+        rows = self.conn.execute(
+            """
+            SELECT
+                brand,
+                model,
+                COUNT(*) AS count,
+                AVG(price) AS avg_price,
+                MIN(price) AS min_price,
+                MAX(price) AS max_price,
+                MIN(year) AS min_year,
+                MAX(year) AS max_year,
+                AVG(mileage_km) AS avg_mileage
+            FROM cars
+            GROUP BY brand, model
+            ORDER BY count DESC, brand ASC, model ASC
+            """
+        ).fetchall()
+        fieldnames = [
+            "brand",
+            "model",
+            "count",
+            "avg_price",
+            "min_price",
+            "max_price",
+            "min_year",
+            "max_year",
+            "avg_mileage",
+        ]
+        self._write_csv(path, fieldnames, [dict(row) for row in rows])
         return path
 
-    def export_full_csv(self) -> Path:
-        import pandas as pd
+    def target_model_report_rows(self) -> list[dict[str, Any]]:
+        from scraper.config import TARGET_MODELS
 
+        rows = []
+        for target in TARGET_MODELS:
+            matching_rows = self._matching_target_rows(target)
+            prices = [row["price"] for row in matching_rows if row["price"] is not None]
+            years = [row["year"] for row in matching_rows if row["year"] is not None]
+            mileages = [row["mileage_km"] for row in matching_rows if row["mileage_km"] is not None]
+            target_limit = int(target["limit"])
+            current_count = len(matching_rows)
+            rows.append(
+                {
+                    "brand": target["brand"],
+                    "model": target["model"],
+                    "target_limit": target_limit,
+                    "current_count": current_count,
+                    "remaining": max(0, target_limit - current_count),
+                    "avg_price": self._average(prices),
+                    "min_price": min(prices) if prices else None,
+                    "max_price": max(prices) if prices else None,
+                    "min_year": min(years) if years else None,
+                    "max_year": max(years) if years else None,
+                    "avg_mileage": self._average(mileages),
+                }
+            )
+        return rows
+
+    def export_target_model_report(self) -> Path:
+        path = EXPORTS_DIR / "target_model_report.csv"
+        rows = self.target_model_report_rows()
+        fieldnames = [
+            "brand",
+            "model",
+            "target_limit",
+            "current_count",
+            "remaining",
+            "avg_price",
+            "min_price",
+            "max_price",
+            "min_year",
+            "max_year",
+            "avg_mileage",
+        ]
+        with path.open("w", newline="", encoding="utf-8") as csv_file:
+            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(rows)
+        return path
+
+    def completed_target_count(self) -> tuple[int, int]:
+        rows = self.target_model_report_rows()
+        completed = sum(1 for row in rows if row["remaining"] == 0)
+        return completed, len(rows)
+
+    def export_full_csv(self) -> Path:
         path = EXPORTS_DIR / "cars_full.csv"
-        pd.read_sql_query("SELECT * FROM cars ORDER BY id ASC", self.conn).to_csv(path, index=False)
+        cursor = self.conn.execute("SELECT * FROM cars ORDER BY id ASC")
+        fieldnames = [description[0] for description in cursor.description]
+        self._write_csv(path, fieldnames, [dict(row) for row in cursor.fetchall()])
         return path
 
     def export_ml_csv(self) -> Path:
-        import pandas as pd
-
         path = EXPORTS_DIR / "cars_ml.csv"
         columns_sql = ", ".join(ML_COLUMNS)
-        pd.read_sql_query(f"SELECT {columns_sql} FROM cars ORDER BY id ASC", self.conn).to_csv(
-            path,
-            index=False,
-        )
+        cursor = self.conn.execute(f"SELECT {columns_sql} FROM cars ORDER BY id ASC")
+        self._write_csv(path, ML_COLUMNS, [dict(row) for row in cursor.fetchall()])
         return path
 
     def export_full(self) -> Path:
@@ -296,3 +381,35 @@ class CarDatabase:
 
     def export_ml(self) -> Path:
         return self.export_ml_csv()
+
+    def _target_for(self, brand: str, model: str) -> dict[str, Any]:
+        from scraper.target_models import find_target
+
+        target = find_target(brand, model)
+        if target:
+            return target
+        return {"brand": brand, "model": model, "limit": 0, "aliases": [model]}
+
+    def _matching_target_rows(self, target: dict[str, Any]) -> list[dict[str, Any]]:
+        from scraper.target_models import matches_target_model
+
+        candidates = self.conn.execute(
+            """
+            SELECT brand, model, generation, title, price, year, mileage_km
+            FROM cars
+            WHERE lower(brand) = lower(?)
+            """,
+            (target["brand"],),
+        ).fetchall()
+        return [dict(row) for row in candidates if matches_target_model(dict(row), target)]
+
+    def _average(self, values: list[int | float]) -> Optional[float]:
+        if not values:
+            return None
+        return round(sum(values) / len(values), 2)
+
+    def _write_csv(self, path: Path, fieldnames: list[str], rows: list[dict[str, Any]]) -> None:
+        with path.open("w", newline="", encoding="utf-8") as csv_file:
+            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(rows)

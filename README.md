@@ -17,7 +17,7 @@ The crawler is intentionally conservative. If Kolesa.kz starts blocking, rate-li
 If the parser prints this message, stop and try again later with safe mode or night mode:
 
 ```text
-Possible temporary rate limit or block. Stopped safely. Try later with safe-mode or night-mode.
+Possible temporary rate limit or block. Stopped safely. Try later with safe-mode, balanced-mode, or night-mode.
 ```
 
 Do not increase concurrency when blocks or timeouts happen.
@@ -62,8 +62,8 @@ Normal mode is available, but it is not recommended for large runs. Use it only 
 Safe mode is for careful testing:
 
 - concurrency: 1
-- detail page delay: random 5-12 seconds
-- search page delay: random 20-45 seconds
+- detail page delay: random 8-20 seconds
+- search page delay: random 45-120 seconds
 - max consecutive errors: 3
 - stops on 403, 429, captcha/security pages, access denied pages, or repeated timeouts
 
@@ -80,10 +80,10 @@ Balanced mode is the normal practical collection mode:
 Night mode is for slow unattended collection:
 
 - concurrency: 1
-- detail page delay: random 8-18 seconds
-- search page delay: random 45-90 seconds
-- after every 100 saved listings: sleep random 3-8 minutes
-- after every 500 saved listings: sleep random 10-20 minutes
+- detail page delay: random 15-35 seconds
+- search page delay: random 2-5 minutes
+- after every 50 saved listings: sleep random 5-15 minutes
+- after every 200 saved listings: sleep random 20-45 minutes
 - supports `--max-runtime-hours`
 - stops safely if too many errors happen
 
@@ -127,6 +127,54 @@ Add new unique cars:
 
 ```bash
 python main.py collect --add 5000 --night-mode --max-runtime-hours 8
+```
+
+## Targeted Model Collection
+
+`collect-targets` collects only selected brand/model pairs. This is better for ML work because it builds repeated examples for the same models instead of a wide random mix. When Kolesa search filtering works through the query URL, it is faster and cleaner than collecting everything and filtering later. Every detail page is still post-filtered before saving, so cars outside the configured target list are skipped.
+
+Configured targets include Toyota Camry, Corolla, RAV4, Prado; Hyundai Tucson, Elantra, Sonata; Kia Sportage, K5, Rio; Lexus RX, ES, LX; BMW X5, 5-Series, and 3-Series. Existing `data/cars.db` is never deleted. Running the same command later continues from the current database and skips duplicates by `listing_id` and `url`.
+
+Target collection test:
+
+```bash
+python main.py collect-targets --safe-mode
+```
+
+Practical target collection:
+
+```bash
+python main.py collect-targets --balanced-mode
+```
+
+Long slower run:
+
+```bash
+python main.py collect-targets --night-mode --max-runtime-hours 8
+```
+
+HTTP target collection:
+
+```bash
+python main.py collect-targets --engine http --balanced-mode
+```
+
+Optional Playwright fallback:
+
+```bash
+python main.py collect-targets --engine playwright --headless false --safe-mode
+```
+
+Target progress:
+
+```bash
+python main.py target-report
+```
+
+`target-report` prints progress per selected model and exports:
+
+```text
+data/exports/target_model_report.csv
 ```
 
 ## Balancing
@@ -207,6 +255,12 @@ Report:
 
 ```bash
 python main.py report
+```
+
+Target progress:
+
+```bash
+python main.py target-report
 ```
 
 Export:
