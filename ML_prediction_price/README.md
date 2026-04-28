@@ -85,6 +85,31 @@ If the key is missing, the code logs:
 LLM API key not found, using fallback explanation
 ```
 
+## Prompt to Car JSON
+
+There are two separate LLM-facing jobs, and both are needed:
+
+- `LLM/query_parser.py::extract_car_info(user_text)` converts a free-form user prompt into structured car JSON.
+- `LLM/main.py::explain_ranked_cars(query, cars)` explains already scored and ranked cars for Telegram.
+
+Prompt parsing also exposes:
+
+- `extract_json_from_text(text)`: extracts JSON from an LLM response even when extra text surrounds it.
+- `prompt_to_query_json(user_text)`: builds a query-like dict from parsed car info and simple constraints such as price or mileage ranges.
+- `extract_car_info_tool(user_text)`: optional LangChain tool wrapper when LangChain is installed.
+
+Local tests do not require an API key. If no LLM is configured, `extract_car_info` logs that fallback parsing is used and handles common prompts such as:
+
+```text
+Toyota Camry 2021 3.5 до 20 млн пробег 10-55 тысяч
+```
+
+Run the prompt parser check from the `Total_project` root:
+
+```bash
+python ML_prediction_price/test_query_parser.py
+```
+
 ## Integration Plan
 
 The intended flow is:

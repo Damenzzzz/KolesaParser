@@ -8,6 +8,11 @@ from typing import Any
 
 from dotenv import load_dotenv
 
+try:
+    from .query_parser import extract_car_info, extract_car_info_tool, extract_json_from_text, prompt_to_query_json
+except ImportError:
+    from query_parser import extract_car_info, extract_car_info_tool, extract_json_from_text, prompt_to_query_json
+
 
 logger = logging.getLogger(__name__)
 
