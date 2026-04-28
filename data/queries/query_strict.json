@@ -1,0 +1,21 @@
+{
+  "query_id": "toyota_camry_2023_2_5_low_mileage",
+  "brand": "Toyota",
+  "model": "Camry",
+  "city": "\u0410\u043b\u043c\u0430\u0442\u044b",
+  "year_from": 2023,
+  "year_to": 2023,
+  "price_min": null,
+  "price_max": 20000000,
+  "engine_volume_from": 2.5,
+  "engine_volume_to": 2.5,
+  "mileage_min": null,
+  "mileage_max": 70000,
+  "transmission": "automatic",
+  "fuel_type": null,
+  "body_type": null,
+  "parse_minutes": 10,
+  "max_results": 50,
+  "output_csv": "data/exports/queries/toyota_camry_2023_2_5_low_mileage.csv",
+  "output_json": "data/exports/queries/toyota_camry_2023_2_5_low_mileage.json"
+}

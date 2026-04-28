@@ -334,6 +334,48 @@ async def run_collect_brands(args: argparse.Namespace, db: CarDatabase) -> None:
     print(f"Current total cars: {db.count_all_cars()}")
 
 
+async def run_query_collect(args: argparse.Namespace, db: CarDatabase) -> None:
+    logger = logging.getLogger("kolesa_parser")
+    if args.checkpoint_export_every < 0:
+        raise ValueError("--checkpoint-export-every must be non-negative")
+
+    from scraper.query_collector import QueryCollector
+    from scraper.query_config import load_query_config, normalize_query_config
+
+    raw_config = load_query_config(args.config)
+    config = normalize_query_config(raw_config)
+    if args.minutes is not None:
+        config["parse_minutes"] = args.minutes
+
+    logger.info("selected command query-collect")
+    logger.info("engine: %s", args.engine)
+    logger.info("headless: %s", args.headless)
+    logger.info("loaded config: %s", raw_config)
+    logger.info("normalized config: %s", config)
+    logger.info("checkpoint export every: %s", args.checkpoint_export_every)
+
+    collector = QueryCollector(
+        db=db,
+        headless=args.headless,
+        checkpoint_export_every=args.checkpoint_export_every,
+    )
+    result = None
+    try:
+        result = await collector.collect(config)
+    finally:
+        output_csv = db.export_query_results(config["query_id"], config["output_csv"])
+        output_json = db.export_query_results_json(config["query_id"], config["output_json"])
+        print(f"Current query matched count: {db.count_query_results(config['query_id'])}")
+        print(f"Current total cars: {db.count_all_cars()}")
+        print(f"Query CSV: {output_csv}")
+        print(f"Query JSON: {output_json}")
+
+    if result and result.get("stop_reason"):
+        print(f"Stopped safely: {result['stop_reason']}")
+    if result:
+        print(f"Matched new query listings: {result['matched_this_run']}")
+
+
 def run_report(db: CarDatabase) -> None:
     total = db.count_all_cars()
     model_report_path = db.export_model_report()
@@ -391,6 +433,19 @@ def run_export(db: CarDatabase) -> None:
 
 
 def print_stop_counts(db: CarDatabase, args: argparse.Namespace) -> None:
+    if getattr(args, "command", None) == "query-collect" and getattr(args, "config", None):
+        try:
+            from scraper.query_config import load_query_config, normalize_query_config
+
+            config = normalize_query_config(load_query_config(args.config))
+            output_csv = db.export_query_results(config["query_id"], config["output_csv"])
+            output_json = db.export_query_results_json(config["query_id"], config["output_json"])
+            print(f"Current query matched count: {db.count_query_results(config['query_id'])}")
+            print(f"Query CSV: {output_csv}")
+            print(f"Query JSON: {output_json}")
+        except Exception as exc:
+            logging.getLogger("kolesa_parser").warning("could not print query stop counts: %s", exc)
+
     brand = getattr(args, "brand", None)
     if brand:
         try:
@@ -462,6 +517,18 @@ def build_arg_parser() -> argparse.ArgumentParser:
     )
     add_safety_args(collect_brands, include_runtime=True)
 
+    query_collect = subparsers.add_parser("query-collect", help="Collect public listings from a JSON query config.")
+    query_collect.add_argument("--config", required=True, help="Path to query JSON config.")
+    query_collect.add_argument("--minutes", type=float, default=None, help="Override parse_minutes from the JSON config.")
+    query_collect.add_argument("--engine", choices=["playwright"], default="playwright")
+    query_collect.add_argument("--headless", type=str_to_bool, default=DEFAULT_HEADLESS)
+    query_collect.add_argument(
+        "--checkpoint-export-every",
+        type=int,
+        default=0,
+        help="Export query checkpoint CSV after this many newly matched cars. 0 disables checkpoints.",
+    )
+
     update = subparsers.add_parser("update", help="Parse only the first N search pages.")
     update.add_argument("--pages", type=int, default=5)
     update.add_argument("--engine", choices=["http", "playwright"], default=DEFAULT_ENGINE)
@@ -489,6 +556,8 @@ def main() -> None:
             asyncio.run(run_collect_targets(args, db))
         elif args.command == "collect-brands":
             asyncio.run(run_collect_brands(args, db))
+        elif args.command == "query-collect":
+            asyncio.run(run_query_collect(args, db))
         elif args.command == "update":
             asyncio.run(run_update(args, db))
         elif args.command == "report":

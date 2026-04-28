@@ -23,7 +23,16 @@ def clean_price(text: Optional[str]) -> Optional[int]:
 def clean_mileage(text: Optional[str]) -> Optional[int]:
     if not text:
         return None
-    digits = re.sub(r"\D", "", text)
+    normalized = normalize_text(text) or ""
+    lowered = normalized.lower().replace("\u0451", "\u0435")
+    thousands_match = re.search(
+        r"(\d+(?:[.,]\d+)?)\s*(?:\u0442\u044b\u0441|\u0442\u044b\u0441\u044f\u0447|thousand|k)\b",
+        lowered,
+        flags=re.IGNORECASE,
+    )
+    if thousands_match:
+        return int(float(thousands_match.group(1).replace(",", ".")) * 1000)
+    digits = re.sub(r"\D", "", normalized)
     return int(digits) if digits else None
 
 
@@ -64,13 +73,20 @@ def normalize_fuel_type(text: Optional[str]) -> Optional[str]:
         return None
     lowered = text.lower().replace("ё", "е")
     mapping = [
-        ("газ-бензин", "petrol-gas"),
-        ("бензин-газ", "petrol-gas"),
+        ("gas-petrol", "gas-petrol"),
+        ("petrol-gas", "gas-petrol"),
+        ("газ-бензин", "gas-petrol"),
+        ("бензин-газ", "gas-petrol"),
+        ("petrol", "petrol"),
+        ("gasoline", "petrol"),
         ("бензин", "petrol"),
+        ("diesel", "diesel"),
         ("дизель", "diesel"),
-        ("газ", "gas"),
+        ("electric", "electric"),
         ("электро", "electric"),
+        ("hybrid", "hybrid"),
         ("гибрид", "hybrid"),
+        ("газ", "gas"),
     ]
     for needle, normalized in mapping:
         if needle in lowered:
@@ -83,13 +99,13 @@ def normalize_transmission(text: Optional[str]) -> Optional[str]:
     if not text:
         return None
     lowered = text.lower().replace("ё", "е")
-    if "автомат" in lowered:
+    if any(value in lowered for value in ("automatic", "auto", "автомат", "акпп")):
         return "automatic"
-    if "механ" in lowered:
+    if any(value in lowered for value in ("manual", "механ", "мкпп")):
         return "manual"
-    if "вариатор" in lowered:
-        return "cvt"
-    if "робот" in lowered:
+    if any(value in lowered for value in ("variator", "cvt", "вариатор")):
+        return "variator"
+    if any(value in lowered for value in ("robot", "робот")):
         return "robot"
     return lowered
 

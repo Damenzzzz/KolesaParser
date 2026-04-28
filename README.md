@@ -202,6 +202,56 @@ python main.py brand-report
 data/exports/brand_report.csv
 ```
 
+## JSON query collection
+
+`query-collect` is a separate mode for future Telegram bot and LLM integration. An LLM or another module produces JSON, and the parser reads it, uses brand/model/city to build the most specific Kolesa URL, tries year and price filters through the website, then tries engine volume and mileage filters when the page exposes them.
+
+Final validation always happens in Python after each detail page is parsed. Existing `collect-brands` commands still work unchanged. Query results are saved in the normal SQLite `cars` table, linked to the query with a separate `query_results` table, and exported to separate CSV and JSON result files for every query.
+
+Create `data/queries/query.json`:
+
+```json
+{
+  "query_id": "toyota_camry_2023_almaty_under_20m",
+  "brand": "Toyota",
+  "model": "Camry",
+  "city": "Алматы",
+  "year_from": 2023,
+  "year_to": 2023,
+  "price_min": null,
+  "price_max": 20000000,
+  "engine_volume_from": null,
+  "engine_volume_to": null,
+  "mileage_min": null,
+  "mileage_max": null,
+  "transmission": null,
+  "fuel_type": null,
+  "body_type": null,
+  "parse_minutes": 10,
+  "max_results": 50,
+  "output_csv": "data/exports/queries/toyota_camry_2023_almaty_under_20m.csv",
+  "output_json": "data/exports/queries/toyota_camry_2023_almaty_under_20m.json"
+}
+```
+
+Run:
+
+```bash
+python main.py query-collect --config data/queries/query.json --engine playwright --headless false
+```
+
+Run with a manual time override:
+
+```bash
+python main.py query-collect --config data/queries/query.json --minutes 10 --engine playwright --headless false
+```
+
+Run with checkpoint export:
+
+```bash
+python main.py query-collect --config data/queries/query_strict.json --engine playwright --headless false --checkpoint-export-every 10
+```
+
 ## Targeted Model Collection
 
 `collect-targets` is still available as the older model-focused mode. It collects only selected brand/model pairs and post-filters every detail page before saving, so cars outside the configured target list are skipped.

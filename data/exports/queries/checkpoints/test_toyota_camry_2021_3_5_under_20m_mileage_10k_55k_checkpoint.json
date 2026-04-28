@@ -1,0 +1,38 @@
+{
+  "query_id": "test_toyota_camry_2021_3_5_under_20m_mileage_10k_55k",
+  "count": 2,
+  "cars": [
+    {
+      "listing_id": "217776960",
+      "url": "https://kolesa.kz/a/show/217776960",
+      "brand": "Toyota",
+      "model": "Camry",
+      "year": 2021,
+      "price": 13000000,
+      "city": "Алматы",
+      "mileage_km": 50000,
+      "engine_volume_l": 3.5,
+      "fuel_type": "petrol",
+      "transmission": "automatic",
+      "body_type": "Седан",
+      "description": null,
+      "generated_description": "Toyota Camry 2021 in Алматы. Mileage: 50000 km. Engine: 3.5 L, petrol. Transmission: automatic. Price: 13000000 KZT."
+    },
+    {
+      "listing_id": "217885740",
+      "url": "https://kolesa.kz/a/show/217885740",
+      "brand": "Toyota",
+      "model": "Camry",
+      "year": 2021,
+      "price": 18000000,
+      "city": "Алматы",
+      "mileage_km": 35000,
+      "engine_volume_l": 3.5,
+      "fuel_type": "petrol",
+      "transmission": "automatic",
+      "body_type": "Седан",
+      "description": null,
+      "generated_description": "Toyota Camry 2021 in Алматы. Mileage: 35000 km. Engine: 3.5 L, petrol. Transmission: automatic. Price: 18000000 KZT."
+    }
+  ]
+}

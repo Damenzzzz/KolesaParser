@@ -1,0 +1,21 @@
+{
+    "query_id": "test_toyota_camry_2021_3_5_under_20m_mileage_10k_55k",
+    "brand": "Toyota",
+    "model": "Camry",
+    "city": null,
+    "year_from": 2021,
+    "year_to": 2021,
+    "price_min": null,
+    "price_max": 20000000,
+    "engine_volume_from": 3.5,
+    "engine_volume_to": 3.5,
+    "mileage_min": 10000,
+    "mileage_max": 55000,
+    "transmission": null,
+    "fuel_type": null,
+    "body_type": null,
+    "parse_minutes": 3,
+    "max_results": 10,
+    "output_csv": "data/exports/queries/test_toyota_camry_2021_3_5_under_20m_mileage_10k_55k.csv",
+    "output_json": "data/exports/queries/test_toyota_camry_2021_3_5_under_20m_mileage_10k_55k.json"
+}

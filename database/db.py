@@ -1,4 +1,5 @@
 import csv
+import json
 import logging
 import re
 import sqlite3
@@ -61,6 +62,46 @@ ML_COLUMNS = [
     "color",
     "condition",
     "generation",
+]
+
+
+QUERY_EXPORT_COLUMNS = [
+    "listing_id",
+    "url",
+    "brand",
+    "model",
+    "year",
+    "price",
+    "city",
+    "mileage_km",
+    "body_type",
+    "engine_volume_l",
+    "fuel_type",
+    "transmission",
+    "drive_type",
+    "steering_wheel",
+    "color",
+    "condition",
+    "description",
+    "generated_description",
+]
+
+
+QUERY_JSON_COLUMNS = [
+    "listing_id",
+    "url",
+    "brand",
+    "model",
+    "year",
+    "price",
+    "city",
+    "mileage_km",
+    "engine_volume_l",
+    "fuel_type",
+    "transmission",
+    "body_type",
+    "description",
+    "generated_description",
 ]
 
 
@@ -141,6 +182,25 @@ class CarDatabase:
         )
         self.conn.execute("CREATE INDEX IF NOT EXISTS idx_cars_brand ON cars(brand)")
         self.conn.execute("CREATE INDEX IF NOT EXISTS idx_cars_brand_model ON cars(brand, model)")
+        self.conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS query_results (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                query_id TEXT,
+                listing_id TEXT,
+                url TEXT,
+                matched_at TEXT
+            )
+            """
+        )
+        self.conn.execute("CREATE INDEX IF NOT EXISTS idx_query_results_query_id ON query_results(query_id)")
+        self.conn.execute("CREATE INDEX IF NOT EXISTS idx_query_results_listing_id ON query_results(listing_id)")
+        self.conn.execute(
+            """
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_query_results_unique
+            ON query_results(query_id, listing_id, url)
+            """
+        )
         self.conn.commit()
 
     def insert_car(self, car: dict[str, Any]) -> bool:
@@ -182,6 +242,19 @@ class CarDatabase:
             (listing_id, listing_id, url, url),
         ).fetchone()
         return row is not None
+
+    def get_car_by_listing(self, listing_id: Optional[str], url: Optional[str]) -> Optional[dict[str, Any]]:
+        row = self.conn.execute(
+            """
+            SELECT *
+            FROM cars
+            WHERE (? IS NOT NULL AND listing_id = ?)
+            OR (? IS NOT NULL AND url = ?)
+            LIMIT 1
+            """,
+            (listing_id, listing_id, url, url),
+        ).fetchone()
+        return dict(row) if row else None
 
     def count_all_cars(self) -> int:
         row = self.conn.execute("SELECT COUNT(*) AS count FROM cars").fetchone()
@@ -432,6 +505,102 @@ class CarDatabase:
         self._write_csv(tmp_path, CAR_COLUMNS, rows)
         tmp_path.replace(path)
         return path
+
+    def link_query_result(self, query_id: str, listing_id: Optional[str], url: Optional[str]) -> bool:
+        if not query_id or (not listing_id and not url):
+            return False
+        if self.query_result_exists(query_id, listing_id, url):
+            return False
+
+        matched_at = datetime.now(timezone.utc).isoformat()
+        cursor = self.conn.execute(
+            """
+            INSERT OR IGNORE INTO query_results (query_id, listing_id, url, matched_at)
+            VALUES (?, ?, ?, ?)
+            """,
+            (query_id, listing_id, url, matched_at),
+        )
+        self.conn.commit()
+        linked = cursor.rowcount == 1
+        if linked:
+            logging.getLogger("car_database").info("linked listing to query_id: %s %s", query_id, listing_id or url)
+        return linked
+
+    def query_result_exists(self, query_id: str, listing_id: Optional[str], url: Optional[str]) -> bool:
+        row = self.conn.execute(
+            """
+            SELECT id
+            FROM query_results
+            WHERE query_id = ?
+            AND ((? IS NOT NULL AND listing_id = ?) OR (? IS NOT NULL AND url = ?))
+            LIMIT 1
+            """,
+            (query_id, listing_id, listing_id, url, url),
+        ).fetchone()
+        return row is not None
+
+    def count_query_results(self, query_id: str) -> int:
+        row = self.conn.execute(
+            "SELECT COUNT(*) AS count FROM query_results WHERE query_id = ?",
+            (query_id,),
+        ).fetchone()
+        return int(row["count"])
+
+    def export_query_results(self, query_id: str, output_csv: Path | str) -> Path:
+        path = Path(output_csv)
+        if not path.is_absolute():
+            from scraper.config import PROJECT_ROOT
+
+            path = PROJECT_ROOT / path
+        rows = self.query_result_rows(query_id)
+        tmp_path = path.with_name(f"{path.stem}.tmp{path.suffix}")
+        path.parent.mkdir(parents=True, exist_ok=True)
+        self._write_csv(tmp_path, QUERY_EXPORT_COLUMNS, rows)
+        tmp_path.replace(path)
+        return path
+
+    def export_query_results_json(self, query_id: str, output_json: Path | str) -> Path:
+        path = Path(output_json)
+        if not path.is_absolute():
+            from scraper.config import PROJECT_ROOT
+
+            path = PROJECT_ROOT / path
+        rows = self.query_result_rows(query_id)
+        cars = [
+            {column: row.get(column) for column in QUERY_JSON_COLUMNS}
+            for row in rows
+        ]
+        payload = {
+            "query_id": query_id,
+            "count": len(cars),
+            "cars": cars,
+        }
+        tmp_path = path.with_name(f"{path.stem}.tmp{path.suffix}")
+        path.parent.mkdir(parents=True, exist_ok=True)
+        tmp_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        tmp_path.replace(path)
+        return path
+
+    def query_result_rows(self, query_id: str) -> list[dict[str, Any]]:
+        columns_sql = ", ".join(f"c.{column}" for column in QUERY_EXPORT_COLUMNS)
+        rows = self.conn.execute(
+            f"""
+            SELECT DISTINCT {columns_sql}, qr.id AS query_result_id
+            FROM query_results qr
+            JOIN cars c
+              ON (
+                (qr.listing_id IS NOT NULL AND c.listing_id = qr.listing_id)
+                OR (qr.url IS NOT NULL AND c.url = qr.url)
+              )
+            WHERE qr.query_id = ?
+            ORDER BY qr.id ASC
+            """,
+            (query_id,),
+        ).fetchall()
+        return [
+            {column: row[column] for column in QUERY_EXPORT_COLUMNS}
+            for row in rows
+        ]
 
     def completed_brand_count(self) -> tuple[int, int]:
         rows = self.brand_report_rows()
