@@ -14,10 +14,11 @@ EXPORTS_DIR = DATA_DIR / "exports"
 LOGS_DIR = PROJECT_ROOT / "logs"
 DB_PATH = DATA_DIR / "cars.db"
 LOG_FILE = LOGS_DIR / "parser.log"
+BRAND_STATE_PATH = DATA_DIR / "brand_parser_state.json"
 
-TOTAL_LIMIT = 50000
+TOTAL_LIMIT = 50_000
 MAX_PER_MODEL = 700
-MAX_PER_BRAND = 5000
+MAX_PER_BRAND = TOTAL_LIMIT // 10
 DEFAULT_TEST_LIMIT = 100
 
 HTTP_CONCURRENCY = 1
@@ -27,13 +28,15 @@ REQUEST_TIMEOUT_SECONDS = 30
 MAX_RETRIES = 2
 ERROR_STOP_THRESHOLD = 5
 RETRY_BACKOFF_SECONDS = (20.0, 180.0)
+FAST_SKIP_PAGE_DELAY_SECONDS = (2.0, 6.0)
 BLOCK_STOP_MESSAGE = (
     "Possible temporary rate limit or block. Stopped safely. "
     "Try later with safe-mode, balanced-mode, or night-mode."
 )
+VISIBLE_CHALLENGE_STOP_MESSAGE = "Captcha or visible challenge detected. Stop parser and retry later."
 
 DEFAULT_HEADLESS = True
-DESCRIPTION_WAIT_MS = 5000
+DESCRIPTION_WAIT_MS = 5_000
 PLAYWRIGHT_TIMEOUT_MS = 30000
 
 USER_AGENT = (
@@ -72,7 +75,7 @@ CRAWL_MODE_SETTINGS = {
     "balanced": CrawlModeSettings(
         name="balanced",
         detail_delay_seconds=(3.0, 7.0),
-        search_delay_seconds=(20.0, 45.0),
+        search_delay_seconds=(8.0, 18.0),
         max_consecutive_errors=3,
         short_pause_every=100,
         short_pause_seconds=(120.0, 300.0),
@@ -123,5 +126,25 @@ TARGET_MODELS = [
         "model": "3-Series",
         "limit": 700,
         "aliases": ["3-Series", "3 Series", "3 \u0441\u0435\u0440\u0438\u044f", "316", "318", "320", "325", "328", "330"],
+    },
+]
+
+
+BRAND_TARGETS = [
+    {
+        "brand": "Toyota",
+        "url": "https://kolesa.kz/cars/toyota/",
+        "limit": 3500,
+        "aliases": ["Toyota", "toyota", "\u0422\u043e\u0439\u043e\u0442\u0430"],
+    },
+    {"brand": "BMW", "url": "https://kolesa.kz/cars/bmw/", "limit": 2000},
+    {"brand": "Hyundai", "url": "https://kolesa.kz/cars/hyundai/", "limit": 2000},
+    {"brand": "Kia", "url": "https://kolesa.kz/cars/kia/", "limit": 2000},
+    {"brand": "Lexus", "url": "https://kolesa.kz/cars/lexus/", "limit": 2000},
+    {
+        "brand": "Mercedes-Benz",
+        "url": "https://kolesa.kz/cars/mercedes-benz/",
+        "limit": 2000,
+        "aliases": ["Mercedes", "Mercedes-Benz", "Mercedes Benz", "\u041c\u0435\u0440\u0441\u0435\u0434\u0435\u0441"],
     },
 ]

@@ -155,6 +155,18 @@ def normalize_characteristic_key(text: Optional[str]) -> str:
 
 
 BLOCK_STATUS_CODES = {403, 429}
+VISIBLE_CHALLENGE_STOP_PHRASES = [
+    "captcha",
+    "\u043a\u0430\u043f\u0447\u0430",
+    "\u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438",
+    "\u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435, \u0447\u0442\u043e \u0432\u044b \u043d\u0435 \u0440\u043e\u0431\u043e\u0442",
+    "are you human",
+    "verify you are human",
+    "access denied",
+    "\u0434\u043e\u0441\u0442\u0443\u043f \u043e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d",
+    "too many requests",
+    "\u0441\u043b\u0438\u0448\u043a\u043e\u043c \u043c\u043d\u043e\u0433\u043e \u0437\u0430\u043f\u0440\u043e\u0441\u043e\u0432",
+]
 VISIBLE_BLOCK_PHRASES = [
     "captcha",
     "\u043a\u0430\u043f\u0447\u0430",
@@ -168,6 +180,18 @@ VISIBLE_BLOCK_PHRASES = [
     "verify you are human",
     "temporarily blocked",
 ]
+
+
+def is_visible_challenge_text(text: str) -> tuple[bool, str]:
+    text_for_detection = (normalize_text(text) or "").lower()
+    for phrase in VISIBLE_CHALLENGE_STOP_PHRASES:
+        if phrase == "captcha":
+            if re.search(r"\bcaptcha\b", text_for_detection):
+                return True, phrase
+            continue
+        if phrase in text_for_detection:
+            return True, phrase
+    return False, ""
 
 
 def is_blocked_response(status_code: int, html: str) -> tuple[bool, str]:

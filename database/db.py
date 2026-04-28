@@ -1,4 +1,6 @@
 import csv
+import logging
+import re
 import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
@@ -72,7 +74,6 @@ IMPORTANT_COLUMNS = [
     "engine_volume_l",
     "fuel_type",
     "transmission",
-    "generation",
 ]
 
 
@@ -148,6 +149,11 @@ class CarDatabase:
         row["is_active"] = 1 if row.get("is_active") is None else row["is_active"]
         row["created_at"] = row.get("created_at") or now
         row["updated_at"] = now
+        listing_id = row.get("listing_id")
+        url = row.get("url")
+
+        if self.car_exists(listing_id, url):
+            return False
 
         placeholders = ", ".join("?" for _ in CAR_COLUMNS)
         columns_sql = ", ".join(CAR_COLUMNS)
@@ -157,8 +163,13 @@ class CarDatabase:
             f"INSERT OR IGNORE INTO cars ({columns_sql}) VALUES ({placeholders})",
             values,
         )
+        if cursor.rowcount != 1:
+            self.conn.commit()
+            return False
+
         self.conn.commit()
-        return cursor.rowcount == 1
+        logging.getLogger("car_database").info("committed listing to SQLite: %s", listing_id or url)
+        return True
 
     def car_exists(self, listing_id: Optional[str], url: Optional[str]) -> bool:
         row = self.conn.execute(
@@ -182,11 +193,7 @@ class CarDatabase:
     def count_by_brand(self, brand: Optional[str]) -> int:
         if not brand:
             return 0
-        row = self.conn.execute(
-            "SELECT COUNT(*) AS count FROM cars WHERE lower(brand) = lower(?)",
-            (brand,),
-        ).fetchone()
-        return int(row["count"])
+        return len(self._matching_brand_rows(brand))
 
     def count_by_brand_model(self, brand: Optional[str], model: Optional[str]) -> int:
         if not brand or not model:
@@ -362,6 +369,75 @@ class CarDatabase:
         completed = sum(1 for row in rows if row["remaining"] == 0)
         return completed, len(rows)
 
+    def get_brand_progress(self) -> list[dict[str, Any]]:
+        return self.brand_report_rows()
+
+    def brand_report_rows(self) -> list[dict[str, Any]]:
+        from scraper.config import BRAND_TARGETS
+
+        rows = []
+        for target in BRAND_TARGETS:
+            matching_rows = self._matching_brand_rows(target["brand"])
+            prices = [row["price"] for row in matching_rows if row["price"] is not None]
+            years = [row["year"] for row in matching_rows if row["year"] is not None]
+            mileages = [row["mileage_km"] for row in matching_rows if row["mileage_km"] is not None]
+            models = {
+                str(row["model"]).strip()
+                for row in matching_rows
+                if row.get("model") and str(row["model"]).strip()
+            }
+            target_limit = int(target["limit"])
+            current_count = len(matching_rows)
+            rows.append(
+                {
+                    "brand": target["brand"],
+                    "target_limit": target_limit,
+                    "current_count": current_count,
+                    "remaining": max(0, target_limit - current_count),
+                    "avg_price": self._average(prices),
+                    "min_price": min(prices) if prices else None,
+                    "max_price": max(prices) if prices else None,
+                    "min_year": min(years) if years else None,
+                    "max_year": max(years) if years else None,
+                    "avg_mileage": self._average(mileages),
+                    "unique_models": len(models),
+                }
+            )
+        return rows
+
+    def export_brand_report(self) -> Path:
+        path = EXPORTS_DIR / "brand_report.csv"
+        rows = self.brand_report_rows()
+        fieldnames = [
+            "brand",
+            "target_limit",
+            "current_count",
+            "remaining",
+            "avg_price",
+            "min_price",
+            "max_price",
+            "min_year",
+            "max_year",
+            "avg_mileage",
+            "unique_models",
+        ]
+        self._write_csv(path, fieldnames, rows)
+        return path
+
+    def export_brand_checkpoint_csv(self, brand: str, path: Optional[Path] = None) -> Path:
+        path = path or self._brand_checkpoint_path(brand)
+        rows = self._brand_car_rows(brand)
+        tmp_path = path.with_name(f"{path.stem}.tmp{path.suffix}")
+        path.parent.mkdir(parents=True, exist_ok=True)
+        self._write_csv(tmp_path, CAR_COLUMNS, rows)
+        tmp_path.replace(path)
+        return path
+
+    def completed_brand_count(self) -> tuple[int, int]:
+        rows = self.brand_report_rows()
+        completed = sum(1 for row in rows if row["remaining"] == 0)
+        return completed, len(rows)
+
     def export_full_csv(self) -> Path:
         path = EXPORTS_DIR / "cars_full.csv"
         cursor = self.conn.execute("SELECT * FROM cars ORDER BY id ASC")
@@ -381,6 +457,13 @@ class CarDatabase:
 
     def export_ml(self) -> Path:
         return self.export_ml_csv()
+
+    def _brand_checkpoint_path(self, brand: str) -> Path:
+        from scraper.brand_targets import normalize_brand_name
+
+        normalized = normalize_brand_name(brand).lower()
+        slug = re.sub(r"[^0-9a-z]+", "_", normalized).strip("_") or "brand"
+        return EXPORTS_DIR / "checkpoints" / f"{slug}_checkpoint.csv"
 
     def _target_for(self, brand: str, model: str) -> dict[str, Any]:
         from scraper.target_models import find_target
@@ -402,6 +485,40 @@ class CarDatabase:
             (target["brand"],),
         ).fetchall()
         return [dict(row) for row in candidates if matches_target_model(dict(row), target)]
+
+    def _matching_brand_rows(self, brand: str) -> list[dict[str, Any]]:
+        from scraper.brand_targets import normalize_brand_name
+
+        target_brand = normalize_brand_name(brand)
+        if not target_brand:
+            return []
+
+        candidates = self.conn.execute(
+            """
+            SELECT brand, model, price, year, mileage_km
+            FROM cars
+            WHERE brand IS NOT NULL AND trim(CAST(brand AS TEXT)) != ''
+            """
+        ).fetchall()
+        return [
+            dict(row)
+            for row in candidates
+            if normalize_brand_name(row["brand"]) == target_brand
+        ]
+
+    def _brand_car_rows(self, brand: str) -> list[dict[str, Any]]:
+        from scraper.brand_targets import normalize_brand_name
+
+        target_brand = normalize_brand_name(brand)
+        if not target_brand:
+            return []
+
+        cursor = self.conn.execute("SELECT * FROM cars ORDER BY id ASC")
+        return [
+            dict(row)
+            for row in cursor.fetchall()
+            if normalize_brand_name(row["brand"]) == target_brand
+        ]
 
     def _average(self, values: list[int | float]) -> Optional[float]:
         if not values:

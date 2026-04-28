@@ -71,7 +71,8 @@ Balanced mode is the normal practical collection mode:
 
 - concurrency: 1
 - detail page delay: random 3-7 seconds
-- search page delay: random 20-45 seconds
+- normal search page delay: random 8-18 seconds
+- empty or duplicate-only brand page delay: random 2-6 seconds
 - after every 100 saved listings: sleep random 2-5 minutes
 - after every 500 saved listings: sleep random 8-15 minutes
 - supports `--max-runtime-hours`
@@ -129,9 +130,81 @@ Add new unique cars:
 python main.py collect --add 5000 --night-mode --max-runtime-hours 8
 ```
 
+## Brand Collection
+
+`collect-brands` is the recommended collection mode now. It opens the configured Kolesa brand pages directly instead of scanning all cars and filtering by target model later. This is faster and cleaner because it starts from pages like:
+
+```text
+https://kolesa.kz/cars/toyota/
+https://kolesa.kz/cars/bmw/
+https://kolesa.kz/cars/hyundai/
+https://kolesa.kz/cars/kia/
+https://kolesa.kz/cars/lexus/
+https://kolesa.kz/cars/mercedes-benz/
+```
+
+It collects up to 2000 unique public listings for each selected brand, for a total brand target of 12000 cars. It does not filter by model in this mode, and it does not use proxies, rotating user agents, captcha bypass, or ban bypass logic.
+
+For each brand page, the parser extracts only likely main listing cards. It skips duplicates before opening detail pages, skips cards that clearly belong to another brand before opening detail pages, then verifies the brand again after parsing the detail page. If a brand already has enough rows in SQLite, that brand page is not opened.
+
+Existing `data/cars.db` is never deleted. Running the same command later continues from the existing SQLite database, skips duplicate `listing_id` and `url` values, and resumes brand pagination from:
+
+```text
+data/brand_parser_state.json
+```
+
+Test Playwright brand collection:
+
+```bash
+python main.py collect-brands --engine playwright --safe-mode --headless false
+```
+
+Practical run:
+
+```bash
+python main.py collect-brands --engine playwright --balanced-mode --headless false
+```
+
+Single-brand run:
+
+```bash
+python main.py collect-brands --brand BMW --engine playwright --balanced-mode --headless false
+python main.py collect-brands --brand Mercedes --engine playwright --balanced-mode --headless false
+```
+
+Start selected brand from page 1 instead of saved page state:
+
+```bash
+python main.py collect-brands --brand BMW --ignore-state --engine playwright --balanced-mode --headless false
+```
+
+Long run:
+
+```bash
+python main.py collect-brands --engine playwright --night-mode --headless false --max-runtime-hours 8
+```
+
+HTTP brand collection:
+
+```bash
+python main.py collect-brands --engine http --balanced-mode
+```
+
+Check progress:
+
+```bash
+python main.py brand-report
+```
+
+`brand-report` prints progress per selected brand and exports:
+
+```text
+data/exports/brand_report.csv
+```
+
 ## Targeted Model Collection
 
-`collect-targets` collects only selected brand/model pairs. This is better for ML work because it builds repeated examples for the same models instead of a wide random mix. When Kolesa search filtering works through the query URL, it is faster and cleaner than collecting everything and filtering later. Every detail page is still post-filtered before saving, so cars outside the configured target list are skipped.
+`collect-targets` is still available as the older model-focused mode. It collects only selected brand/model pairs and post-filters every detail page before saving, so cars outside the configured target list are skipped.
 
 Configured targets include Toyota Camry, Corolla, RAV4, Prado; Hyundai Tucson, Elantra, Sonata; Kia Sportage, K5, Rio; Lexus RX, ES, LX; BMW X5, 5-Series, and 3-Series. Existing `data/cars.db` is never deleted. Running the same command later continues from the current database and skips duplicates by `listing_id` and `url`.
 
@@ -257,6 +330,12 @@ Report:
 python main.py report
 ```
 
+Brand progress:
+
+```bash
+python main.py brand-report
+```
+
 Target progress:
 
 ```bash
@@ -312,4 +391,4 @@ Logs are written to:
 logs/parser.log
 ```
 
-Logs include mode, engine, concurrency, current DB count, target total limit, current search page, listing URL, saved listings, duplicate skips, model and brand limit skips, HTTP status codes, exception class names, retry numbers, backoff duration, pause duration, stop reasons, and final DB count.
+Logs include mode, engine, concurrency, current DB count, target total limit, current brand, brand URL, brand page number, current search page, listing URL, saved listings, duplicate skips, wrong-brand skips, model and brand limit skips, HTTP/navigation errors, timeout errors, block detection reasons, retry numbers, backoff duration, pause duration, stop reasons, and final DB count.

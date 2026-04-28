@@ -7,7 +7,9 @@ from tqdm import tqdm
 
 from database.db import CarDatabase
 from scraper.config import (
+    BRAND_TARGETS,
     BLOCK_STOP_MESSAGE,
+    FAST_SKIP_PAGE_DELAY_SECONDS,
     HTTP_CONCURRENCY,
     MAX_PER_BRAND,
     MAX_PER_MODEL,
@@ -17,7 +19,14 @@ from scraper.config import (
     get_crawl_mode_settings,
     CrawlModeSettings,
 )
-from scraper.html_parser import extract_listing_urls, parse_listing_page
+from scraper.brand_targets import (
+    brand_matches,
+    build_brand_page_url,
+    is_wrong_brand_guess,
+    load_brand_state,
+    save_brand_state,
+)
+from scraper.html_parser import extract_brand_listing_cards, extract_listing_urls, parse_listing_page
 from scraper.http_client import KolesaHTTPClient
 from scraper.target_models import build_target_search_url, matches_target_model
 from scraper.utils import extract_listing_id
@@ -162,6 +171,65 @@ class KolesaHTTPParser:
             settings=self.settings,
         ) as client:
             saved, _ = await self._collect_target_model(client, target, remaining, True)
+            if client.stop_requested:
+                self._request_stop(client.stop_reason or "HTTP client requested stop", block_detected=True)
+            return saved
+
+    async def collect_brands(self, targets: list[dict] = BRAND_TARGETS, ignore_state: bool = False) -> int:
+        self._start_run("collect-brands", sum(int(target["limit"]) for target in targets))
+        saved_count = 0
+
+        async with KolesaHTTPClient(
+            concurrency=self.concurrency,
+            mode=self.mode,
+            stop_on_block=self.stop_on_block,
+            settings=self.settings,
+        ) as client:
+            first_search_request = True
+            for target in targets:
+                if not self._run_can_continue(client):
+                    break
+
+                current_count = self.db.count_by_brand(target["brand"])
+                remaining = max(0, int(target["limit"]) - current_count)
+                self.logger.info(
+                    "current brand progress: %s %s/%s remaining=%s",
+                    target["brand"],
+                    current_count,
+                    target["limit"],
+                    remaining,
+                )
+                self.logger.info("current brand URL: %s", target["url"])
+
+                if remaining <= 0:
+                    self.logger.info("brand completed: %s %s/%s", target["brand"], current_count, target["limit"])
+                    self.logger.info("skipped because brand limit reached: %s", target["brand"])
+                    continue
+
+                saved_for_brand, first_search_request = await self._collect_brand_target(
+                    client,
+                    target,
+                    first_search_request,
+                    ignore_state=ignore_state,
+                )
+                saved_count += saved_for_brand
+
+            if client.stop_requested:
+                self._request_stop(client.stop_reason or "HTTP client requested stop", block_detected=True)
+
+        self.logger.info("reason for stopping: %s", self.stop_reason or "brand collection finished")
+        self.logger.info("final DB count: %s", self.db.count_all_cars())
+        return saved_count
+
+    async def collect_brand_target(self, target: dict, ignore_state: bool = False) -> int:
+        self._start_run("collect-brand-target", int(target["limit"]))
+        async with KolesaHTTPClient(
+            concurrency=self.concurrency,
+            mode=self.mode,
+            stop_on_block=self.stop_on_block,
+            settings=self.settings,
+        ) as client:
+            saved, _ = await self._collect_brand_target(client, target, True, ignore_state=ignore_state)
             if client.stop_requested:
                 self._request_stop(client.stop_reason or "HTTP client requested stop", block_detected=True)
             return saved
@@ -394,6 +462,151 @@ class KolesaHTTPParser:
 
         return saved, first_search_request
 
+    async def _collect_brand_target(
+        self,
+        client: KolesaHTTPClient,
+        target: dict,
+        first_search_request: bool,
+        ignore_state: bool = False,
+    ) -> tuple[int, bool]:
+        brand = target["brand"]
+        limit = int(target["limit"])
+        current_count = self.db.count_by_brand(brand)
+        remaining = max(0, limit - current_count)
+        saved = 0
+        page_number = 1 if ignore_state else load_brand_state(brand)
+        blank_pages = 0
+        empty_saved_pages = 0
+        use_fast_skip_delay = False
+        progress = tqdm(total=remaining, desc=brand, unit="car")
+
+        try:
+            while self._run_can_continue(client):
+                current_count = self.db.count_by_brand(brand)
+                if current_count >= limit:
+                    self.logger.info("brand completed: %s %s/%s", brand, current_count, limit)
+                    self.logger.info("skipped because brand limit reached: %s", brand)
+                    break
+
+                brand_url = build_brand_page_url(target["url"], page_number)
+                save_brand_state(brand, page_number)
+                self.logger.info(
+                    "current brand %s; current brand page number %s; current brand URL: %s",
+                    brand,
+                    page_number,
+                    brand_url,
+                )
+                self.logger.info(
+                    "current brand progress: %s %s/%s remaining=%s",
+                    brand,
+                    current_count,
+                    limit,
+                    max(0, limit - current_count),
+                )
+
+                html = await client.fetch(
+                    brand_url,
+                    request_kind="search",
+                    skip_delay=first_search_request,
+                    delay_range_override=FAST_SKIP_PAGE_DELAY_SECONDS if use_fast_skip_delay else None,
+                    delay_label="fast skip page delay" if use_fast_skip_delay else "normal search page delay",
+                )
+                first_search_request = False
+                use_fast_skip_delay = False
+                if not self._run_can_continue(client):
+                    break
+                if not html:
+                    blank_pages += 1
+                    self.logger.warning(
+                        "blank/error brand page for %s page %s; consecutive_blank_pages=%s/%s",
+                        brand,
+                        page_number,
+                        blank_pages,
+                        self.settings.max_consecutive_errors,
+                    )
+                    if blank_pages >= self.settings.max_consecutive_errors:
+                        self._request_stop("too many blank/error brand pages")
+                        break
+                    page_number += 1
+                    continue
+
+                blank_pages = 0
+                total_links_found = len(extract_listing_urls(html))
+                cards = extract_brand_listing_cards(html, brand)
+                page_stats = {
+                    "brand": brand,
+                    "page_number": page_number,
+                    "total_links_found": total_links_found,
+                    "unique_main_card_links": len(cards),
+                    "duplicates_skipped_before_detail": 0,
+                    "wrong_brand_skipped_before_detail": 0,
+                    "detail_pages_opened": 0,
+                    "saved_listings": 0,
+                    "wrong_brand_after_detail": 0,
+                }
+                if not cards:
+                    self.logger.warning("no main listing cards found for brand %s on page %s", brand, page_number)
+                    self._log_brand_page_summary(page_stats)
+                    empty_saved_pages += 1
+                    if empty_saved_pages >= 5:
+                        self.logger.info("stopping current brand %s after %s consecutive pages with zero saves", brand, empty_saved_pages)
+                        break
+                    use_fast_skip_delay = self.mode == "balanced"
+                    save_brand_state(brand, page_number)
+                    page_number += 1
+                    continue
+
+                for card in cards:
+                    if not self._run_can_continue(client):
+                        break
+                    url = card["url"]
+                    listing_id = extract_listing_id(url)
+                    if self.db.car_exists(listing_id, url):
+                        page_stats["duplicates_skipped_before_detail"] += 1
+                        self.logger.info("skipped duplicate before detail request %s", url)
+                        continue
+                    if is_wrong_brand_guess(card.get("brand_guess"), brand):
+                        page_stats["wrong_brand_skipped_before_detail"] += 1
+                        self.logger.info(
+                            "skipped wrong brand from card before detail request %s; brand_guess=%s target=%s title=%s",
+                            url,
+                            card.get("brand_guess"),
+                            brand,
+                            card.get("card_title"),
+                        )
+                        continue
+                    current_count = self.db.count_by_brand(brand)
+                    if current_count >= limit:
+                        self.logger.info("brand completed: %s %s/%s", brand, current_count, limit)
+                        self.logger.info("skipped because brand limit reached: %s", brand)
+                        break
+                    page_stats["detail_pages_opened"] += 1
+                    result = await self._fetch_parse_save_brand(client, url, target)
+                    if result == "saved":
+                        saved += 1
+                        page_stats["saved_listings"] += 1
+                        progress.update(1)
+                        await self._after_successful_save(client, TOTAL_LIMIT)
+                    elif result == "wrong_brand":
+                        page_stats["wrong_brand_after_detail"] += 1
+
+                self._log_brand_page_summary(page_stats)
+                if page_stats["saved_listings"] == 0:
+                    empty_saved_pages += 1
+                    if empty_saved_pages >= 5:
+                        self.logger.info("stopping current brand %s after %s consecutive pages with zero saves", brand, empty_saved_pages)
+                        break
+                    use_fast_skip_delay = self.mode == "balanced" and page_stats["detail_pages_opened"] == 0
+                else:
+                    empty_saved_pages = 0
+                    use_fast_skip_delay = False
+                save_brand_state(brand, page_number)
+                page_number += 1
+        finally:
+            progress.close()
+
+        return saved, first_search_request
+
     async def _fetch_parse_save_target(self, client: KolesaHTTPClient, url: str, target: dict) -> bool:
         listing_id = extract_listing_id(url)
         if self.db.car_exists(listing_id, url):
@@ -443,6 +656,79 @@ class KolesaHTTPParser:
 
         self.logger.info("skipped duplicate by SQLite constraint %s", url)
         return False
+
+    async def _fetch_parse_save_brand(self, client: KolesaHTTPClient, url: str, target: dict) -> str:
+        brand = target["brand"]
+        listing_id = extract_listing_id(url)
+        if self.db.car_exists(listing_id, url):
+            self.logger.info("skipped duplicate before detail request %s", url)
+            return "duplicate"
+
+        self.logger.info("current brand %s; current listing URL %s", brand, url)
+        html = await client.fetch(url, request_kind="detail")
+        if not self._run_can_continue(client) or not html:
+            return "skipped"
+
+        try:
+            car = parse_listing_page(html, url)
+        except Exception:
+            self.logger.exception("parsing error for %s", url)
+            return "skipped"
+
+        matches, reason = brand_matches(car, brand)
+        if not matches:
+            self.logger.info("skipped because wrong brand: %s; %s", url, reason)
+            return "wrong_brand"
+        if reason == "incomplete_brand_parse":
+            # The listing came from the public brand page, so keep it resumable under that brand.
+            self.logger.info("incomplete_brand_parse for %s from brand page %s", url, brand)
+            car["brand"] = brand
+
+        if not self._has_minimum_public_data(car):
+            self.logger.warning("skipped incomplete listing %s", url)
+            return "skipped"
+
+        if self.db.car_exists(car.get("listing_id"), car.get("url")):
+            self.logger.info("skipped duplicate %s", url)
+            return "duplicate"
+
+        current_count = self.db.count_by_brand(brand)
+        if current_count >= int(target["limit"]):
+            self.logger.info("skipped because brand limit reached: %s", brand)
+            return "limit"
+
+        saved = self.db.insert_car(car)
+        if saved:
+            self.logger.info(
+                "saved listing %s for brand %s; current brand progress: %s/%s; current DB count: %s",
+                url,
+                brand,
+                current_count + 1,
+                target["limit"],
+                self.db.count_all_cars(),
+            )
+            return "saved"
+
+        self.logger.info("skipped duplicate by SQLite constraint %s", url)
+        return "duplicate"
+
+    def _log_brand_page_summary(self, stats: dict) -> None:
+        self.logger.info(
+            (
+                "brand page summary: brand=%s page=%s total_links_found=%s "
+                "unique_main_card_links=%s duplicates_on_page=%s wrong_brand_on_page=%s "
+                "detail_pages_opened=%s saved_on_page=%s wrong_brand_after_detail=%s"
+            ),
+            stats["brand"],
+            stats["page_number"],
+            stats["total_links_found"],
+            stats["unique_main_card_links"],
+            stats["duplicates_skipped_before_detail"],
+            stats["wrong_brand_skipped_before_detail"],
+            stats["detail_pages_opened"],
+            stats["saved_listings"],
+            stats["wrong_brand_after_detail"],
+        )
 
     async def _after_successful_save(self, client: KolesaHTTPClient, target_total: int) -> None:
         self.saved_this_run += 1

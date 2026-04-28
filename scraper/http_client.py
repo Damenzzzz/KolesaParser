@@ -75,6 +75,8 @@ class KolesaHTTPClient:
         url: str,
         request_kind: RequestKind = "detail",
         skip_delay: bool = False,
+        delay_range_override: tuple[float, float] | None = None,
+        delay_label: str | None = None,
     ) -> Optional[str]:
         if self.stop_requested:
             return None
@@ -89,7 +91,12 @@ class KolesaHTTPClient:
                 if skip_delay and retry_index == 0:
                     self._log_skipped_delay(request_kind, url)
                 else:
-                    await self._delay_before_request(request_kind, url)
+                    await self._delay_before_request(
+                        request_kind,
+                        url,
+                        delay_range_override=delay_range_override if retry_index == 0 else None,
+                        delay_label=delay_label if retry_index == 0 else None,
+                    )
 
                 try:
                     response = await self.client.get(url)
@@ -144,15 +151,24 @@ class KolesaHTTPClient:
 
         return None
 
-    async def _delay_before_request(self, request_kind: RequestKind, url: str) -> None:
-        delay_range = (
+    async def _delay_before_request(
+        self,
+        request_kind: RequestKind,
+        url: str,
+        delay_range_override: tuple[float, float] | None = None,
+        delay_label: str | None = None,
+    ) -> None:
+        delay_range = delay_range_override or (
             self.settings.search_delay_seconds
             if request_kind == "search"
             else self.settings.detail_delay_seconds
         )
+        if delay_label is None:
+            delay_label = "normal search page delay" if request_kind == "search" else "detail delay"
         delay = random.uniform(*delay_range)
         self.logger.info(
-            "pause duration %.1fs before %s request: %s",
+            "%s duration %.1fs before %s request: %s",
+            delay_label,
             delay,
             request_kind,
             url,

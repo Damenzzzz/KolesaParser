@@ -104,6 +104,179 @@ def extract_listing_urls(html: str) -> list[str]:
     return urls
 
 
+def extract_brand_listing_cards(html: str, target_brand: str) -> list[dict]:
+    """Extract listing links only from likely main search result cards."""
+    from bs4 import BeautifulSoup, FeatureNotFound
+
+    from scraper.brand_targets import guess_brand_from_text
+
+    try:
+        soup = BeautifulSoup(html or "", "lxml")
+    except FeatureNotFound:
+        soup = BeautifulSoup(html or "", "html.parser")
+
+    for node in soup(["script", "style", "meta", "noscript", "svg"]):
+        node.decompose()
+
+    cards: list[dict] = []
+    seen_ids: set[str] = set()
+
+    card_selectors = [
+        '[data-test*="advert"]',
+        ".a-card",
+        'div[class*="a-card"]',
+        ".a-list__item",
+        "article",
+        'div[class*="listing"]',
+        'div[class*="result"]',
+        'div[class*="search"]',
+    ]
+    for selector in card_selectors:
+        for node in soup.select(selector):
+            _add_brand_card_from_node(node, cards, seen_ids, guess_brand_from_text)
+
+    # Fallback: climb from each listing link to its nearest card-like ancestor.
+    for link in soup.select('a[href*="/a/show/"]'):
+        card_node = _closest_card_like_node(link)
+        if card_node is not None:
+            _add_brand_card_from_node(card_node, cards, seen_ids, guess_brand_from_text)
+
+    return cards
+
+
+def _add_brand_card_from_node(node, cards: list[dict], seen_ids: set[str], brand_guesser) -> None:
+    if _node_is_excluded_from_brand_cards(node):
+        return
+
+    links = []
+    for link in node.select('a[href*="/a/show/"]'):
+        url = canonicalize_url(link.get("href"), BASE_URL)
+        listing_id = extract_listing_id(url)
+        if url and listing_id:
+            links.append((url, listing_id, link))
+
+    unique_links = []
+    seen_in_node = set()
+    for url, listing_id, link in links:
+        if listing_id not in seen_in_node:
+            unique_links.append((url, listing_id, link))
+            seen_in_node.add(listing_id)
+
+    # Broad containers such as full search sections are not cards.
+    if len(unique_links) != 1:
+        return
+
+    url, listing_id, link = unique_links[0]
+    if listing_id in seen_ids:
+        return
+
+    card_text = normalize_text(node.get_text(" ", strip=True)) or ""
+    card_title = _brand_card_title(node, link, card_text)
+    brand_guess = brand_guesser(" ".join(part for part in [card_title, card_text] if part))
+    cards.append(
+        {
+            "url": url,
+            "card_title": card_title,
+            "card_text": card_text,
+            "brand_guess": brand_guess,
+        }
+    )
+    seen_ids.add(listing_id)
+
+
+def _brand_card_title(node, link, card_text: str) -> str:
+    title_selectors = [
+        ".a-card__title",
+        ".a-card__name",
+        '[class*="title"]',
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+    ]
+    for selector in title_selectors:
+        title_node = node.select_one(selector)
+        if title_node:
+            title = normalize_text(title_node.get_text(" ", strip=True))
+            if title:
+                return title
+
+    link_text = normalize_text(link.get_text(" ", strip=True))
+    if link_text:
+        return link_text
+    return card_text[:160]
+
+
+def _closest_card_like_node(link):
+    card_hints = ("a-card", "card", "listing", "result", "item", "advert", "article")
+    node = link
+    for _ in range(8):
+        node = node.parent
+        if node is None:
+            return None
+        if getattr(node, "name", None) == "article":
+            return node
+        signature = _node_signature(node)
+        if any(hint in signature for hint in card_hints):
+            return node
+    return None
+
+
+def _node_is_excluded_from_brand_cards(node) -> bool:
+    for current in [node, *list(node.parents)]:
+        name = getattr(current, "name", "") or ""
+        if name in {"footer", "aside"}:
+            return True
+        signature = _node_signature(current)
+        if any(hint in signature for hint in _EXCLUDED_CARD_SIGNATURE_HINTS):
+            return True
+        if name == "body":
+            break
+
+    text = (normalize_text(node.get_text(" ", strip=True)) or "").lower()
+    return any(hint in text for hint in _EXCLUDED_CARD_TEXT_HINTS)
+
+
+def _node_signature(node) -> str:
+    values = [getattr(node, "name", "") or ""]
+    for key in ("id", "class", "data-test", "role", "aria-label"):
+        value = node.attrs.get(key) if hasattr(node, "attrs") else None
+        if isinstance(value, list):
+            values.extend(str(item) for item in value)
+        elif value:
+            values.append(str(value))
+    return " ".join(values).lower()
+
+
+_EXCLUDED_CARD_SIGNATURE_HINTS = (
+    "recommendation",
+    "recommended",
+    "similar",
+    "banner",
+    "footer",
+    "sidebar",
+    "recently",
+    "viewed",
+    "promo",
+    "commercial",
+    "advertising",
+    "vip",
+    "\u043f\u043e\u0445\u043e\u0436",
+    "\u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434",
+)
+
+_EXCLUDED_CARD_TEXT_HINTS = (
+    "recommendations",
+    "recommended",
+    "similar",
+    "recently viewed",
+    "\u043f\u043e\u0445\u043e\u0436\u0438\u0435",
+    "\u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0435\u043c",
+    "\u0441\u043c\u043e\u0442\u0440\u0438\u0442\u0435 \u0442\u0430\u043a\u0436\u0435",
+)
+
+
 def parse_listing_page(html: str, url: str) -> dict:
     root = _tree(html)
     title = _text(_first(root, selectors.TITLE_SELECTORS))
