@@ -14,6 +14,8 @@ logger = logging.getLogger(__name__)
 
 MODULE_ROOT = Path(__file__).resolve().parents[1]
 LLM_DIR = Path(__file__).resolve().parent
+DEFAULT_LM_STUDIO_BASE_URL = "http://localhost:1234/v1"
+DEFAULT_LM_STUDIO_MODEL = "google/gemma-4-e4b"
 
 try:
     from langchain.tools import tool
@@ -79,17 +81,25 @@ def extract_json_from_text(text: str) -> dict:
 def extract_car_info(user_text: str) -> dict:
     llm = _build_llm()
     if llm is None:
-        logger.warning("LLM API key not found, using fallback car-info extraction")
+        logger.warning("%s", _fallback_reason())
         return fallback_extract_car_info(user_text)
 
-    response = llm.invoke(
-        [
-            {"role": "system", "content": CAR_INFO_SYSTEM_PROMPT},
-            {"role": "user", "content": user_text},
-        ]
-    )
-    content = getattr(response, "content", str(response))
-    return normalize_car_info(extract_json_from_text(content))
+    try:
+        response = llm.invoke(
+            [
+                {"role": "system", "content": CAR_INFO_SYSTEM_PROMPT},
+                {"role": "user", "content": user_text},
+            ]
+        )
+        content = getattr(response, "content", str(response))
+        return normalize_car_info(extract_json_from_text(content))
+    except Exception as exc:
+        logger.warning(
+            "LLM car-info extraction failed, using fallback: %s: %s",
+            exc.__class__.__name__,
+            exc,
+        )
+        return fallback_extract_car_info(user_text)
 
 
 def prompt_to_query_json(user_text: str) -> dict:
@@ -128,16 +138,23 @@ def _build_llm():
         return None
 
     use_real_llm = os.getenv("ML_PREDICTION_USE_REAL_LLM", "").strip().lower() in {"1", "true", "yes"}
-    base_url = os.getenv("LLM_BASE_URL") or os.getenv("OPENAI_BASE_URL")
-    api_key = os.getenv("OPENAI_API_KEY")
+    base_url = (os.getenv("LLM_BASE_URL") or os.getenv("OPENAI_BASE_URL") or "").strip()
+    api_key = (os.getenv("OPENAI_API_KEY") or "").strip()
+    model = (os.getenv("QUERY_PARSER_MODEL") or os.getenv("OPENAI_MODEL") or "").strip()
 
-    if not use_real_llm and not base_url:
+    if not use_real_llm:
         return None
+    if use_real_llm and not base_url:
+        base_url = DEFAULT_LM_STUDIO_BASE_URL
+    if base_url and _is_local_base_url(base_url) and not api_key:
+        api_key = "lm-studio"
+    if base_url and _is_local_base_url(base_url) and not model:
+        model = DEFAULT_LM_STUDIO_MODEL
+
     if not api_key:
-        if base_url and ("localhost" in base_url or "127.0.0.1" in base_url):
-            api_key = "lm-studio"
-        else:
-            return None
+        return None
+    if not model:
+        model = DEFAULT_LM_STUDIO_MODEL if base_url and _is_local_base_url(base_url) else "gpt-4o-mini"
 
     try:
         from langchain_openai import ChatOpenAI
@@ -145,12 +162,35 @@ def _build_llm():
         logger.warning("langchain_openai is not installed, using fallback car-info extraction")
         return None
 
+    logger.info("Using real LLM query parser: base_url=%s model=%s", base_url or "OpenAI default", model)
     return ChatOpenAI(
-        base_url=base_url,
+        base_url=base_url or None,
         api_key=api_key,
-        model=os.getenv("QUERY_PARSER_MODEL") or os.getenv("OPENAI_MODEL") or "gpt-4o-mini",
+        model=model,
         temperature=0,
     )
+
+
+def _is_local_base_url(base_url: str) -> bool:
+    lowered = base_url.lower()
+    return "localhost" in lowered or "127.0.0.1" in lowered
+
+
+def _fallback_reason() -> str:
+    if os.getenv("ML_PREDICTION_FORCE_QUERY_PARSER_FALLBACK", "").strip().lower() in {"1", "true", "yes"}:
+        return "LLM query parser fallback forced by ML_PREDICTION_FORCE_QUERY_PARSER_FALLBACK"
+
+    use_real_llm = os.getenv("ML_PREDICTION_USE_REAL_LLM", "").strip().lower() in {"1", "true", "yes"}
+    base_url = (os.getenv("LLM_BASE_URL") or os.getenv("OPENAI_BASE_URL") or "").strip()
+    api_key = (os.getenv("OPENAI_API_KEY") or "").strip()
+
+    if not use_real_llm:
+        return "Real LLM query parser is disabled, using fallback car-info extraction"
+    if base_url and _is_local_base_url(base_url):
+        return "Local LLM query parser could not be initialized, using fallback car-info extraction"
+    if not api_key:
+        return "LLM API key not found, using fallback car-info extraction"
+    return "LLM query parser could not be initialized, using fallback car-info extraction"
 
 
 def fallback_extract_car_info(user_text: str) -> dict:
