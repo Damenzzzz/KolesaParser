@@ -292,6 +292,7 @@ class KolesaPlaywrightParser:
         saved = 0
         page_number = 1 if ignore_state else load_brand_state(brand)
         blank_pages = 0
+        no_card_pages = 0
         empty_saved_pages = 0
         use_fast_skip_delay = False
         progress = tqdm(total=remaining, desc=brand, unit="car")
@@ -386,15 +387,16 @@ class KolesaPlaywrightParser:
                 if not cards:
                     self.logger.warning("no main listing cards found for brand %s on page %s", brand, page_number)
                     self._log_brand_page_summary(page_stats)
-                    empty_saved_pages += 1
-                    if empty_saved_pages >= 5:
-                        self.logger.info("stopping current brand %s after %s consecutive pages with zero saves", brand, empty_saved_pages)
+                    no_card_pages += 1
+                    if no_card_pages >= 5:
+                        self.logger.info("stopping current brand %s after %s consecutive pages with no listing cards", brand, no_card_pages)
                         break
                     use_fast_skip_delay = self.mode == "balanced"
                     save_brand_state(brand, page_number)
                     page_number += 1
                     continue
 
+                no_card_pages = 0
                 for card in cards:
                     if not self._can_continue():
                         break
@@ -433,8 +435,11 @@ class KolesaPlaywrightParser:
                 if page_stats["saved_listings"] == 0:
                     empty_saved_pages += 1
                     if empty_saved_pages >= 5:
-                        self.logger.info("stopping current brand %s after %s consecutive pages with zero saves", brand, empty_saved_pages)
-                        break
+                        self.logger.info(
+                            "continuing current brand %s after %s consecutive pages with zero saves",
+                            brand,
+                            empty_saved_pages,
+                        )
                     use_fast_skip_delay = self.mode == "balanced" and page_stats["detail_pages_opened"] == 0
                 else:
                     empty_saved_pages = 0
@@ -786,10 +791,25 @@ class KolesaPlaywrightParser:
                 return False
         return True
 
-    async def _after_successful_save(self) -> None:
+    async def _after_successful_save(self, brand: str | None = None) -> None:
         self.saved_this_run += 1
         self.logger.info("saved count this run: %s", self.saved_this_run)
         self._print_current_db_count()
+        if brand and self.saved_this_run % 10 == 0:
+            current_brand_count = self.db.count_by_brand(brand)
+            total_count = self.db.count_all_cars()
+            self.logger.info(
+                "progress checkpoint: saved this run=%s; current %s count=%s; total DB count=%s",
+                self.saved_this_run,
+                brand,
+                current_brand_count,
+                total_count,
+            )
+            print(f"Saved this run: {self.saved_this_run}; current {brand} count: {current_brand_count}; total DB count: {total_count}")
+
+        if brand and self.checkpoint_export_every and self.saved_this_run % self.checkpoint_export_every == 0:
+            checkpoint_path = self.db.export_brand_checkpoint_csv(brand)
+            self.logger.info("checkpoint exported: %s", checkpoint_path)
 
         long_every = self.settings.long_pause_every
         short_every = self.settings.short_pause_every
@@ -817,6 +837,12 @@ class KolesaPlaywrightParser:
 
         self.logger.info("pause duration %.1fs; reason=%s", delay, reason)
         await asyncio.sleep(delay)
+
+    async def _safe_close(self, resource, label: str) -> None:
+        try:
+            await resource.close()
+        except Exception as exc:
+            self.logger.warning("could not close %s cleanly: %s: %s", label, exc.__class__.__name__, exc)
 
     def _start_run(self, command: str, target_total: int) -> None:
         self.started_at = time.monotonic()

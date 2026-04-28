@@ -43,10 +43,12 @@ class KolesaHTTPParser:
         max_runtime_hours: float | None = None,
         stop_on_block: bool = True,
         settings: CrawlModeSettings | None = None,
+        checkpoint_export_every: int = 0,
     ) -> None:
         self.db = db
         self.mode = mode
         self.settings = settings or get_crawl_mode_settings(mode)
+        self.checkpoint_export_every = max(0, int(checkpoint_export_every))
         self.concurrency = 1 if mode in {"safe", "balanced", "night"} else max(1, concurrency)
         self.max_runtime_seconds = max_runtime_hours * 3600 if max_runtime_hours is not None else None
         self.stop_on_block = stop_on_block
@@ -476,6 +478,7 @@ class KolesaHTTPParser:
         saved = 0
         page_number = 1 if ignore_state else load_brand_state(brand)
         blank_pages = 0
+        no_card_pages = 0
         empty_saved_pages = 0
         use_fast_skip_delay = False
         progress = tqdm(total=remaining, desc=brand, unit="car")
@@ -547,15 +550,16 @@ class KolesaHTTPParser:
                 if not cards:
                     self.logger.warning("no main listing cards found for brand %s on page %s", brand, page_number)
                     self._log_brand_page_summary(page_stats)
-                    empty_saved_pages += 1
-                    if empty_saved_pages >= 5:
-                        self.logger.info("stopping current brand %s after %s consecutive pages with zero saves", brand, empty_saved_pages)
+                    no_card_pages += 1
+                    if no_card_pages >= 5:
+                        self.logger.info("stopping current brand %s after %s consecutive pages with no listing cards", brand, no_card_pages)
                         break
                     use_fast_skip_delay = self.mode == "balanced"
                     save_brand_state(brand, page_number)
                     page_number += 1
                     continue
 
+                no_card_pages = 0
                 for card in cards:
                     if not self._run_can_continue(client):
                         break
@@ -586,7 +590,7 @@ class KolesaHTTPParser:
                         saved += 1
                         page_stats["saved_listings"] += 1
                         progress.update(1)
-                        await self._after_successful_save(client, TOTAL_LIMIT)
+                        await self._after_successful_save(client, TOTAL_LIMIT, brand)
                     elif result == "wrong_brand":
                         page_stats["wrong_brand_after_detail"] += 1
 
@@ -594,8 +598,11 @@ class KolesaHTTPParser:
                 if page_stats["saved_listings"] == 0:
                     empty_saved_pages += 1
                     if empty_saved_pages >= 5:
-                        self.logger.info("stopping current brand %s after %s consecutive pages with zero saves", brand, empty_saved_pages)
-                        break
+                        self.logger.info(
+                            "continuing current brand %s after %s consecutive pages with zero saves",
+                            brand,
+                            empty_saved_pages,
+                        )
                     use_fast_skip_delay = self.mode == "balanced" and page_stats["detail_pages_opened"] == 0
                 else:
                     empty_saved_pages = 0
@@ -730,10 +737,25 @@ class KolesaHTTPParser:
             stats["wrong_brand_after_detail"],
         )
 
-    async def _after_successful_save(self, client: KolesaHTTPClient, target_total: int) -> None:
+    async def _after_successful_save(self, client: KolesaHTTPClient, target_total: int, brand: str | None = None) -> None:
         self.saved_this_run += 1
         self.logger.info("saved count this run: %s", self.saved_this_run)
         self._print_current_db_count()
+        if brand and self.saved_this_run % 10 == 0:
+            current_brand_count = self.db.count_by_brand(brand)
+            total_count = self.db.count_all_cars()
+            self.logger.info(
+                "progress checkpoint: saved this run=%s; current %s count=%s; total DB count=%s",
+                self.saved_this_run,
+                brand,
+                current_brand_count,
+                total_count,
+            )
+            print(f"Saved this run: {self.saved_this_run}; current {brand} count: {current_brand_count}; total DB count: {total_count}")
+
+        if brand and self.checkpoint_export_every and self.saved_this_run % self.checkpoint_export_every == 0:
+            checkpoint_path = self.db.export_brand_checkpoint_csv(brand)
+            self.logger.info("checkpoint exported: %s", checkpoint_path)
 
         if not self.settings.short_pause_every and not self.settings.long_pause_every:
             return

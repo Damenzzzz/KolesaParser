@@ -513,7 +513,8 @@ class CarDatabase:
         if not target_brand:
             return []
 
-        cursor = self.conn.execute("SELECT * FROM cars ORDER BY id ASC")
+        columns_sql = ", ".join(CAR_COLUMNS)
+        cursor = self.conn.execute(f"SELECT {columns_sql} FROM cars ORDER BY id ASC")
         return [
             dict(row)
             for row in cursor.fetchall()
