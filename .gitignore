@@ -1,4 +1,39 @@
+# Python
 __pycache__/
-*.py[cod]
-.venv/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
 venv/
+*/venv/
+
+# Env files
+.env
+*.env
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+KolesaParser/data/cars.db
+
+# Generated parser data
+KolesaParser/data/exports/
+KolesaParser/data/outputs/
+KolesaParser/data/brand_parser_state.json
+
+# Logs/debug
+logs/
+*.log
+KolesaParser/logs/
+KolesaParser/logs/*.png
+
+# ML artifacts
+ML_prediction_price/catboost_info/
+catboost_info/
+
+# Editor/system
+.vscode/
+.idea/
+.DS_Store

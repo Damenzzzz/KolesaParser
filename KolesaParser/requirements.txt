@@ -1,0 +1,9 @@
+httpx
+selectolax
+beautifulsoup4
+lxml
+pandas
+tqdm
+python-dotenv
+playwright
+elasticsearch>=8,<9

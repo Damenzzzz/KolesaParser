@@ -1,1 +1,0 @@
-"""Kolesa.kz scraping package."""
