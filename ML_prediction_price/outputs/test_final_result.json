@@ -1,0 +1,87 @@
+{
+  "created_at": "2026-04-28T21:16:51.947156+00:00",
+  "sample_prediction": {
+    "predicted_price": 15222088,
+    "listed_price": 18500000,
+    "price_difference": 3277912,
+    "price_difference_percent": 21.53,
+    "price_status": "above_market"
+  },
+  "source_file": "C:\\Users\\chebupel777\\OneDrive\\Рабочий стол\\Total_project\\KolesaParser\\data\\outputs\\live\\live_query_test_camry_35.json",
+  "scored_file": "C:\\Users\\chebupel777\\OneDrive\\Рабочий стол\\Total_project\\ML_prediction_price\\outputs\\test_scored_parser_output.json",
+  "total_cars": 2,
+  "scored_cars": 2,
+  "failed_cars": 0,
+  "top_cars": [
+    {
+      "listing_id": "217776960",
+      "url": "https://kolesa.kz/a/show/217776960",
+      "brand": "Toyota",
+      "model": "Camry",
+      "year": 2021,
+      "price": 13000000,
+      "city": "Алматы",
+      "mileage_km": 50000,
+      "engine_volume_l": 3.5,
+      "fuel_type": "petrol",
+      "transmission": "automatic",
+      "body_type": "Седан",
+      "description": null,
+      "generated_description": "Toyota Camry 2021 in Алматы. Mileage: 50000 km. Engine: 3.5 L, petrol. Transmission: automatic. Price: 13000000 KZT.",
+      "predicted_price": 15890832,
+      "listed_price": 13000000,
+      "price_difference": -2890832,
+      "price_difference_percent": -18.19,
+      "price_status": "below_market",
+      "deal_score": 25.19,
+      "risk_score": 0.0,
+      "final_score": 25.19,
+      "rank": 1
+    },
+    {
+      "listing_id": "217885740",
+      "url": "https://kolesa.kz/a/show/217885740",
+      "brand": "Toyota",
+      "model": "Camry",
+      "year": 2021,
+      "price": 18000000,
+      "city": "Алматы",
+      "mileage_km": 35000,
+      "engine_volume_l": 3.5,
+      "fuel_type": "petrol",
+      "transmission": "automatic",
+      "body_type": "Седан",
+      "description": null,
+      "generated_description": "Toyota Camry 2021 in Алматы. Mileage: 35000 km. Engine: 3.5 L, petrol. Transmission: automatic. Price: 18000000 KZT.",
+      "predicted_price": 15853713,
+      "listed_price": 18000000,
+      "price_difference": 2146287,
+      "price_difference_percent": 13.54,
+      "price_status": "above_market",
+      "deal_score": -6.54,
+      "risk_score": 0.0,
+      "final_score": -6.54,
+      "rank": 2
+    }
+  ],
+  "llm_summary": "Ranked 2 option(s) for Toyota Camry 2021. The current top option is Toyota Camry 2021; ranking uses ML fair price, mileage, year, and risk flags.",
+  "llm": {
+    "summary": "Ranked 2 option(s) for Toyota Camry 2021. The current top option is Toyota Camry 2021; ranking uses ML fair price, mileage, year, and risk flags.",
+    "top_cars_explanation": [
+      {
+        "rank": 1,
+        "title": "Toyota Camry 2021",
+        "short_reason": "Listed about 18.2% below the ML fair price.",
+        "risk_note": "No major ML/ranking risk flags from the available fields.",
+        "url": "https://kolesa.kz/a/show/217776960"
+      },
+      {
+        "rank": 2,
+        "title": "Toyota Camry 2021",
+        "short_reason": "Listed about 13.5% above the ML fair price.",
+        "risk_note": "No major ML/ranking risk flags from the available fields.",
+        "url": "https://kolesa.kz/a/show/217885740"
+      }
+    ]
+  }
+}

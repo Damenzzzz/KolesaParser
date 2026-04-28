@@ -99,6 +99,39 @@ def get_crawl_mode_settings(mode: str) -> CrawlModeSettings:
     return CRAWL_MODE_SETTINGS.get(mode, CRAWL_MODE_SETTINGS["normal"])
 
 
+QUERY_CRAWL_MODE_SETTINGS = {
+    "normal": CRAWL_MODE_SETTINGS["normal"],
+    "safe": CrawlModeSettings(
+        name="safe",
+        detail_delay_seconds=(10.0, 20.0),
+        search_delay_seconds=(30.0, 60.0),
+        max_consecutive_errors=3,
+        short_pause_every=10,
+        short_pause_seconds=(180.0, 420.0),
+    ),
+    "balanced": CrawlModeSettings(
+        name="balanced",
+        detail_delay_seconds=(5.0, 10.0),
+        search_delay_seconds=(15.0, 30.0),
+        max_consecutive_errors=3,
+        short_pause_every=20,
+        short_pause_seconds=(120.0, 300.0),
+    ),
+    "night": CrawlModeSettings(
+        name="night",
+        detail_delay_seconds=(20.0, 40.0),
+        search_delay_seconds=(60.0, 180.0),
+        max_consecutive_errors=3,
+        short_pause_every=20,
+        short_pause_seconds=(300.0, 900.0),
+    ),
+}
+
+
+def get_query_crawl_mode_settings(mode: str) -> CrawlModeSettings:
+    return QUERY_CRAWL_MODE_SETTINGS.get(mode, QUERY_CRAWL_MODE_SETTINGS["normal"])
+
+
 TARGET_MODELS = [
     {"brand": "Toyota", "model": "Camry", "limit": 1200, "aliases": ["Camry", "\u041a\u0430\u043c\u0440\u0438"]},
     {"brand": "Toyota", "model": "Corolla", "limit": 1000, "aliases": ["Corolla", "\u041a\u043e\u0440\u043e\u043b\u043b\u0430"]},

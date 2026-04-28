@@ -237,7 +237,7 @@ Create `data/queries/query.json`:
 Run:
 
 ```bash
-python main.py query-collect --config data/queries/query.json --engine playwright --headless false
+python main.py query-collect --config data/queries/query.json --engine playwright --balanced-mode --headless false
 ```
 
 Run with a manual time override:
@@ -249,8 +249,14 @@ python main.py query-collect --config data/queries/query.json --minutes 10 --eng
 Run with checkpoint export:
 
 ```bash
-python main.py query-collect --config data/queries/query_strict.json --engine playwright --headless false --checkpoint-export-every 10
+python main.py query-collect --config data/queries/query_strict.json --engine playwright --balanced-mode --headless false --checkpoint-export-every 10
 ```
+
+Query collection modes use their own live-parser pauses:
+
+- safe mode: detail pages 10-20 seconds, search pages 30-60 seconds, pause 3-7 minutes after every 10 newly matched cars
+- balanced mode: detail pages 5-10 seconds, search pages 15-30 seconds, pause 2-5 minutes after every 20 newly matched cars
+- night mode: detail pages 20-40 seconds, search pages 60-180 seconds, pause 5-15 minutes after every 20 newly matched cars
 
 ## Elasticsearch search and dual query
 
@@ -286,14 +292,26 @@ data/outputs/elastic/elastic_query_strict.json
 Run both live parsing and Elasticsearch search from one query file:
 
 ```bash
-python main.py dual-query --config data/queries/query_strict.json --engine playwright --balanced-mode --minutes 10
+python main.py dual-query --config data/queries/query_test_camry_35.json --engine playwright --balanced-mode --minutes 3 --headless false
+```
+
+Safer dual query:
+
+```bash
+python main.py dual-query --config data/queries/query_test_camry_35.json --engine playwright --safe-mode --minutes 3 --headless false
+```
+
+Custom live-parser delays:
+
+```bash
+python main.py dual-query --config data/queries/query_test_camry_35.json --engine playwright --balanced-mode --minutes 3 --headless false --detail-delay-min 8 --detail-delay-max 15 --search-delay-min 20 --search-delay-max 40
 ```
 
 This writes:
 
 ```text
-data/outputs/live/live_query_strict.json
-data/outputs/elastic/elastic_query_strict.json
+data/outputs/live/live_query_test_camry_35.json
+data/outputs/elastic/elastic_query_test_camry_35.json
 ```
 
 The live output has `"source": "live_parser"`. The Elasticsearch output has `"source": "elasticsearch"`.

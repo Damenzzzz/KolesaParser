@@ -20,6 +20,7 @@ from scraper.config import (
     TOTAL_LIMIT,
     TARGET_MODELS,
     get_crawl_mode_settings,
+    get_query_crawl_mode_settings,
     VISIBLE_CHALLENGE_STOP_MESSAGE,
 )
 
@@ -59,8 +60,12 @@ def selected_crawl_mode(args: argparse.Namespace) -> str:
     return "normal"
 
 
-def build_mode_settings(args: argparse.Namespace, crawl_mode: str) -> CrawlModeSettings:
-    settings = get_crawl_mode_settings(crawl_mode)
+def build_mode_settings(
+    args: argparse.Namespace,
+    crawl_mode: str,
+    base_settings: CrawlModeSettings | None = None,
+) -> CrawlModeSettings:
+    settings = base_settings or get_crawl_mode_settings(crawl_mode)
     detail_min = getattr(args, "detail_delay_min", None)
     detail_max = getattr(args, "detail_delay_max", None)
     search_min = getattr(args, "search_delay_min", None)
@@ -76,6 +81,10 @@ def build_mode_settings(args: argparse.Namespace, crawl_mode: str) -> CrawlModeS
     )
 
     return replace(settings, detail_delay_seconds=detail_delay, search_delay_seconds=search_delay)
+
+
+def build_query_mode_settings(args: argparse.Namespace, crawl_mode: str) -> CrawlModeSettings:
+    return build_mode_settings(args, crawl_mode, get_query_crawl_mode_settings(crawl_mode))
 
 
 def validate_delay_settings(settings: CrawlModeSettings) -> None:
@@ -343,6 +352,9 @@ async def run_query_collect(args: argparse.Namespace, db: CarDatabase) -> None:
     logger = logging.getLogger("kolesa_parser")
     if args.checkpoint_export_every < 0:
         raise ValueError("--checkpoint-export-every must be non-negative")
+    crawl_mode = selected_crawl_mode(args)
+    settings = build_query_mode_settings(args, crawl_mode)
+    validate_delay_settings(settings)
 
     from scraper.query_collector import QueryCollector
     from scraper.query_config import load_query_config, normalize_query_config
@@ -353,15 +365,20 @@ async def run_query_collect(args: argparse.Namespace, db: CarDatabase) -> None:
         config["parse_minutes"] = args.minutes
 
     logger.info("selected command query-collect")
+    logger.info("mode: %s", crawl_mode)
     logger.info("engine: %s", args.engine)
     logger.info("headless: %s", args.headless)
     logger.info("loaded config: %s", raw_config)
     logger.info("normalized config: %s", config)
+    logger.info("detail delay seconds: %.1f-%.1f", *settings.detail_delay_seconds)
+    logger.info("search delay seconds: %.1f-%.1f", *settings.search_delay_seconds)
     logger.info("checkpoint export every: %s", args.checkpoint_export_every)
 
     collector = QueryCollector(
         db=db,
         headless=args.headless,
+        mode=crawl_mode,
+        settings=settings,
         checkpoint_export_every=args.checkpoint_export_every,
     )
     result = None
@@ -465,15 +482,28 @@ async def run_dual_query(args: argparse.Namespace, db: CarDatabase) -> None:
     config["output_json"] = str(live_output_path(args.config))
 
     crawl_mode = selected_crawl_mode(args)
+    settings = build_query_mode_settings(args, crawl_mode)
+    validate_delay_settings(settings)
+    if args.checkpoint_export_every < 0:
+        raise ValueError("--checkpoint-export-every must be non-negative")
     logger.info("selected command dual-query")
     logger.info("mode: %s", crawl_mode)
     logger.info("engine: %s", args.engine)
     logger.info("headless: %s", args.headless)
     logger.info("loaded config: %s", raw_config)
     logger.info("normalized config: %s", config)
+    logger.info("detail delay seconds: %.1f-%.1f", *settings.detail_delay_seconds)
+    logger.info("search delay seconds: %.1f-%.1f", *settings.search_delay_seconds)
+    logger.info("checkpoint export every: %s", args.checkpoint_export_every)
 
     live_error = None
-    collector = QueryCollector(db=db, headless=args.headless)
+    collector = QueryCollector(
+        db=db,
+        headless=args.headless,
+        mode=crawl_mode,
+        settings=settings,
+        checkpoint_export_every=args.checkpoint_export_every,
+    )
     try:
         live_result = await collector.collect(config)
         if live_result.get("stop_reason"):
@@ -564,6 +594,8 @@ def print_stop_counts(db: CarDatabase, args: argparse.Namespace) -> None:
             from scraper.query_config import load_query_config, normalize_query_config
 
             config = normalize_query_config(load_query_config(args.config))
+            if getattr(args, "command", None) == "dual-query":
+                config["output_json"] = str(live_output_path(args.config))
             output_csv = db.export_query_results(config["query_id"], config["output_csv"])
             output_json = db.export_query_results_json(config["query_id"], config["output_json"])
             print(f"Current query matched count: {db.count_query_results(config['query_id'])}")
@@ -654,6 +686,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
         default=0,
         help="Export query checkpoint CSV after this many newly matched cars. 0 disables checkpoints.",
     )
+    add_safety_args(query_collect)
 
     elastic_query = subparsers.add_parser("elastic-query", help="Search already indexed cars in Elasticsearch.")
     elastic_query.add_argument("--config", required=True, help="Path to query JSON config.")
@@ -664,6 +697,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
     dual_query.add_argument("--minutes", type=float, default=None, help="Override parse_minutes from the JSON config.")
     dual_query.add_argument("--engine", choices=["playwright"], default="playwright")
     dual_query.add_argument("--headless", type=str_to_bool, default=DEFAULT_HEADLESS)
+    dual_query.add_argument(
+        "--checkpoint-export-every",
+        type=int,
+        default=0,
+        help="Export live query checkpoint CSV/JSON after this many newly matched cars. 0 disables checkpoints.",
+    )
     add_safety_args(dual_query)
 
     update = subparsers.add_parser("update", help="Parse only the first N search pages.")

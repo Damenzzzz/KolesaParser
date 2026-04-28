@@ -1,0 +1,43 @@
+{
+  "query_id": "sample_toyota_camry_2021",
+  "source": "sample",
+  "count": 2,
+  "cars": [
+    {
+      "listing_id": "sample-1",
+      "url": "https://kolesa.kz/a/show/sample-1",
+      "brand": "Toyota",
+      "model": "Camry",
+      "year": 2021,
+      "price": 18500000,
+      "city": "Алматы",
+      "mileage_km": 45000,
+      "body_type": "sedan",
+      "engine_volume_l": 3.5,
+      "fuel_type": "petrol",
+      "transmission": "automatic",
+      "drive_type": "front",
+      "steering_wheel": "left",
+      "color": "white",
+      "condition": "used"
+    },
+    {
+      "listing_id": "sample-2",
+      "url": "https://kolesa.kz/a/show/sample-2",
+      "brand": "Toyota",
+      "model": "Camry",
+      "year": 2018,
+      "price": 17000000,
+      "city": "Астана",
+      "mileage_km": 160000,
+      "body_type": "Седан",
+      "engine_volume_l": 2.5,
+      "fuel_type": "бензин",
+      "transmission": "automatic",
+      "drive_type": "Передний привод",
+      "steering_wheel": "Слева",
+      "color": "черный",
+      "condition": "used"
+    }
+  ]
+}

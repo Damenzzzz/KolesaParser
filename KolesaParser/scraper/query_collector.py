@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import random
 import re
 import time
 from datetime import datetime
@@ -8,7 +9,7 @@ from typing import Any
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 from database.db import CarDatabase
-from scraper.config import LOGS_DIR, PLAYWRIGHT_TIMEOUT_MS, USER_AGENT
+from scraper.config import CrawlModeSettings, LOGS_DIR, PLAYWRIGHT_TIMEOUT_MS, USER_AGENT, get_query_crawl_mode_settings
 from scraper.html_parser import extract_brand_listing_cards, extract_listing_urls, parse_listing_page
 from scraper.query_config import (
     apply_site_filters,
@@ -173,14 +174,19 @@ class QueryCollector:
         self,
         db: CarDatabase,
         headless: bool = True,
+        mode: str = "normal",
+        settings: CrawlModeSettings | None = None,
         checkpoint_export_every: int = 0,
     ) -> None:
         self.db = db
         self.headless = headless
+        self.mode = settings.name if settings else mode
+        self.settings = settings or get_query_crawl_mode_settings(mode)
         self.checkpoint_export_every = max(0, int(checkpoint_export_every))
         self.stop_requested = False
         self.stop_reason: str | None = None
         self.matched_this_run = 0
+        self.consecutive_page_errors = 0
         self.logger = logger
 
     async def collect(self, config: dict[str, Any]) -> dict[str, Any]:
@@ -195,9 +201,14 @@ class QueryCollector:
 
         self.logger.info("selected command query-collect")
         self.logger.info("command: query-collect")
+        self.logger.info("mode: %s", self.mode)
+        self.logger.info("detail delay seconds: %.1f-%.1f", *self.settings.detail_delay_seconds)
+        self.logger.info("search delay seconds: %.1f-%.1f", *self.settings.search_delay_seconds)
         self.logger.info("query_id: %s", query_id)
         self.logger.info("normalized config: %s", config)
         self.logger.info("built base URL: %s", config["base_url"])
+        self.logger.info("current matched count: %s", self.db.count_query_results(query_id))
+        self.logger.info("total DB count: %s", self.db.count_all_cars())
         if not config.get("model_url_exact"):
             self.logger.warning("model URL could not be built exactly; using fallback URL: %s", config["base_url"])
 
@@ -213,47 +224,67 @@ class QueryCollector:
             detail_page = await context.new_page()
 
             try:
-                await search_page.goto(config["base_url"], wait_until="domcontentloaded", timeout=PLAYWRIGHT_TIMEOUT_MS)
-                filter_result = await apply_site_filters(search_page, config)
-                for field in filter_result.get("applied", []):
-                    self.logger.info("filter applied: %s", field)
-                for field in filter_result.get("not_applied", []):
-                    self.logger.info("filter not applied: %s", field)
-                self.logger.info("final filtered URL: %s", search_page.url)
+                if await self._delay("search", config["base_url"], deadline):
+                    try:
+                        await search_page.goto(
+                            config["base_url"],
+                            wait_until="domcontentloaded",
+                            timeout=PLAYWRIGHT_TIMEOUT_MS,
+                        )
+                    except Exception as exc:
+                        await self._record_page_failure("search", config["base_url"], exc, search_page, stop_now=True)
+                    else:
+                        filter_result = await apply_site_filters(search_page, config)
+                        for field in filter_result.get("applied", []):
+                            self.logger.info("filter applied: %s", field)
+                        for field in filter_result.get("not_applied", []):
+                            self.logger.info("filter not applied: %s", field)
+                        self.logger.info("final filtered URL: %s", search_page.url)
 
-                page_number = 1
-                base_filtered_url = search_page.url
-                while self._can_continue(deadline) and self.db.count_query_results(query_id) < max_results:
-                    current_url = _page_url(base_filtered_url, page_number)
-                    self.logger.info("current page number: %s", page_number)
-                    if page_number > 1:
-                        await search_page.goto(current_url, wait_until="domcontentloaded", timeout=PLAYWRIGHT_TIMEOUT_MS)
+                        page_number = 1
+                        base_filtered_url = search_page.url
+                        while self._can_continue(deadline) and self.db.count_query_results(query_id) < max_results:
+                            current_url = _page_url(base_filtered_url, page_number)
+                            self.logger.info("current page number: %s", page_number)
+                            if page_number > 1:
+                                if not await self._delay("search", current_url, deadline):
+                                    break
+                                try:
+                                    await search_page.goto(
+                                        current_url,
+                                        wait_until="domcontentloaded",
+                                        timeout=PLAYWRIGHT_TIMEOUT_MS,
+                                    )
+                                except Exception as exc:
+                                    await self._record_page_failure("search", current_url, exc, search_page, stop_now=True)
+                                    break
 
-                    response_status = await _response_status(search_page)
-                    html = await search_page.content()
-                    if await self._page_is_blocked(search_page, response_status, html, "search"):
-                        break
+                            response_status = await _response_status(search_page)
+                            html = await search_page.content()
+                            if await self._page_is_blocked(search_page, response_status, html, "search"):
+                                break
 
-                    cards = extract_brand_listing_cards(html, config["brand"])
-                    listing_urls = [card["url"] for card in cards if card.get("url")]
-                    if not listing_urls:
-                        listing_urls = extract_listing_urls(html)
-                    listing_urls = _dedupe_urls(listing_urls)
+                            cards = extract_brand_listing_cards(html, config["brand"])
+                            listing_urls = [card["url"] for card in cards if card.get("url")]
+                            if not listing_urls:
+                                listing_urls = extract_listing_urls(html)
+                            listing_urls = _dedupe_urls(listing_urls)
 
-                    if not listing_urls:
-                        if page_number == 1:
-                            self.stop_reason = "search page not recognized or no listing cards found"
-                            await self._save_debug_stop(search_page, "search")
-                        else:
-                            self.stop_reason = "no more listing cards found"
-                        break
+                            if not listing_urls:
+                                if page_number == 1:
+                                    self.stop_reason = "search page not recognized or no listing cards found"
+                                    await self._save_debug_stop(search_page, "search")
+                                else:
+                                    self.stop_reason = "no more listing cards found"
+                                break
 
-                    for url in listing_urls:
-                        if not self._can_continue(deadline) or self.db.count_query_results(query_id) >= max_results:
-                            break
-                        await self._process_listing(detail_page, url, config)
+                            self._reset_page_errors()
+                            for url in listing_urls:
+                                if not self._can_continue(deadline) or self.db.count_query_results(query_id) >= max_results:
+                                    break
+                                await self._process_listing(detail_page, url, config, deadline)
 
-                    page_number += 1
+                            page_number += 1
             finally:
                 final_csv = self.db.export_query_results(query_id, output_csv)
                 final_json = self.db.export_query_results_json(query_id, output_json)
@@ -276,7 +307,7 @@ class QueryCollector:
             "stop_reason": self.stop_reason,
         }
 
-    async def _process_listing(self, page, url: str, config: dict[str, Any]) -> None:
+    async def _process_listing(self, page, url: str, config: dict[str, Any], deadline: float) -> None:
         query_id = str(config["query_id"])
         listing_id = extract_listing_id(url)
         self.logger.info("current listing URL: %s", url)
@@ -285,11 +316,15 @@ class QueryCollector:
             self.logger.info("skipped duplicate query result: %s", listing_id or url)
             return
 
+        if not await self._delay("detail", url, deadline):
+            return
+
         try:
             response = await page.goto(url, wait_until="domcontentloaded", timeout=PLAYWRIGHT_TIMEOUT_MS)
             html = await page.content()
         except Exception as exc:
             self.logger.warning("listing navigation failed: %s %s: %s", url, exc.__class__.__name__, exc)
+            await self._record_page_failure("detail", url, exc, page)
             return
 
         status_code = response.status if response else 0
@@ -302,6 +337,7 @@ class QueryCollector:
             self.stop_requested = True
             return
 
+        self._reset_page_errors()
         try:
             car = parse_listing_page(html, url)
         except Exception:
@@ -336,6 +372,7 @@ class QueryCollector:
                 self.db.export_query_results_json(query_id, checkpoint_json)
                 self.logger.info("checkpoint export path: %s", checkpoint_csv)
                 self.logger.info("checkpoint export path: %s", checkpoint_json)
+            await self._after_matched(query_id, deadline)
 
     async def _page_is_blocked(self, page, status_code: int, html: str, page_type: str) -> bool:
         blocked, reason = is_blocked_response(status_code, html if status_code != 200 else "")
@@ -399,6 +436,92 @@ class QueryCollector:
             await resource.close()
         except Exception as exc:
             self.logger.warning("could not close %s cleanly: %s: %s", label, exc.__class__.__name__, exc)
+
+    async def _delay(self, request_kind: str, target: str, deadline: float) -> bool:
+        if not self._can_continue(deadline):
+            return False
+
+        delay_range = (
+            self.settings.search_delay_seconds
+            if request_kind == "search"
+            else self.settings.detail_delay_seconds
+        )
+        delay = random.uniform(*delay_range)
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            self.stop_reason = "parse_minutes reached"
+            return False
+        delay = min(delay, remaining)
+
+        if request_kind == "search":
+            self.logger.info("search delay duration %.1fs before search page: %s", delay, target)
+        else:
+            self.logger.info("detail delay duration %.1fs before detail request: %s", delay, target)
+
+        await asyncio.sleep(delay)
+        return self._can_continue(deadline)
+
+    async def _after_matched(self, query_id: str, deadline: float) -> None:
+        matched_total = self.db.count_query_results(query_id)
+        total_count = self.db.count_all_cars()
+        self.logger.info("current matched count: %s", matched_total)
+        self.logger.info("total DB count: %s", total_count)
+
+        pause_every = self.settings.short_pause_every
+        pause_range = self.settings.short_pause_seconds
+        if not pause_every or not pause_range or self.matched_this_run % pause_every != 0:
+            return
+        if not self._can_continue(deadline):
+            return
+
+        delay = random.uniform(*pause_range)
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            self.stop_reason = "parse_minutes reached"
+            return
+        delay = min(delay, remaining)
+        self.logger.info(
+            "periodic pause duration %.1fs after %s matched cars",
+            delay,
+            self.matched_this_run,
+        )
+        await asyncio.sleep(delay)
+
+    async def _record_page_failure(
+        self,
+        page_type: str,
+        target: str,
+        exc: Exception,
+        page,
+        stop_now: bool = False,
+    ) -> None:
+        self.consecutive_page_errors += 1
+        self.logger.warning(
+            "%s page load failure %s/%s: %s %s: %s",
+            page_type,
+            self.consecutive_page_errors,
+            self.settings.max_consecutive_errors,
+            target,
+            exc.__class__.__name__,
+            exc,
+        )
+        if not stop_now and self.consecutive_page_errors < self.settings.max_consecutive_errors:
+            return
+
+        self.stop_requested = True
+        if stop_now:
+            self.stop_reason = f"{page_type} page failed to load: {exc.__class__.__name__}: {exc}"
+        else:
+            self.stop_reason = (
+                f"{page_type} page repeatedly failed to load after "
+                f"{self.consecutive_page_errors} attempts"
+            )
+        await self._save_debug_stop(page, page_type)
+
+    def _reset_page_errors(self) -> None:
+        if self.consecutive_page_errors:
+            self.logger.info("page load failure counter reset after usable page")
+        self.consecutive_page_errors = 0
 
     def _checkpoint_paths(self, query_id: str) -> tuple[Path, Path]:
         slug = re.sub(r"[^0-9a-zA-Z_\\-]+", "_", query_id).strip("_") or "query"

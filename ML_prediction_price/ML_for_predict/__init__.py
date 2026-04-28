@@ -1,0 +1,1 @@
+"""CatBoost price prediction package."""
