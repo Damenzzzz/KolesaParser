@@ -1,9 +1,11 @@
 import argparse
 import asyncio
+import json
 import logging
 from dataclasses import replace
+from pathlib import Path
 
-from database.db import CarDatabase
+from database.db import CarDatabase, QUERY_JSON_COLUMNS
 from scraper.config import (
     BRAND_TARGETS,
     BLOCK_STOP_MESSAGE,
@@ -14,6 +16,7 @@ from scraper.config import (
     HTTP_CONCURRENCY,
     LOG_FILE,
     LOGS_DIR,
+    PROJECT_ROOT,
     TOTAL_LIMIT,
     TARGET_MODELS,
     get_crawl_mode_settings,
@@ -31,6 +34,8 @@ def setup_logging() -> None:
             logging.StreamHandler(),
         ],
     )
+    logging.getLogger("elastic_transport").setLevel(logging.CRITICAL)
+    logging.getLogger("urllib3").setLevel(logging.CRITICAL)
 
 
 def str_to_bool(value: str | bool) -> bool:
@@ -376,6 +381,127 @@ async def run_query_collect(args: argparse.Namespace, db: CarDatabase) -> None:
         print(f"Matched new query listings: {result['matched_this_run']}")
 
 
+def live_output_path(config_path: str | Path) -> Path:
+    from elasticsearch_service.config import clean_query_stem
+
+    stem = clean_query_stem(Path(config_path).stem)
+    return PROJECT_ROOT / "data" / "outputs" / "live" / f"live_{stem}.json"
+
+
+def elastic_output_path(config_path: str | Path) -> Path:
+    from elasticsearch_service.config import clean_query_stem
+
+    stem = clean_query_stem(Path(config_path).stem)
+    return PROJECT_ROOT / "data" / "outputs" / "elastic" / f"elastic_{stem}.json"
+
+
+def write_json_payload(path: Path, payload: dict) -> Path:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp_path = path.with_name(f"{path.stem}.tmp{path.suffix}")
+    tmp_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    tmp_path.replace(path)
+    return path
+
+
+def live_query_payload(db: CarDatabase, query_id: str, error: str | None = None) -> dict:
+    rows = db.query_result_rows(query_id)
+    cars = [{column: row.get(column) for column in QUERY_JSON_COLUMNS} for row in rows]
+    payload = {
+        "query_id": query_id,
+        "source": "live_parser",
+        "count": len(cars),
+        "cars": cars,
+    }
+    if error:
+        payload["error"] = error
+    return payload
+
+
+def empty_elastic_payload(query_id: str, error: str | None = None) -> dict:
+    payload = {
+        "query_id": query_id,
+        "source": "elasticsearch",
+        "count": 0,
+        "cars": [],
+    }
+    if error:
+        payload["error"] = error
+    return payload
+
+
+def run_elastic_query(args: argparse.Namespace) -> dict:
+    from elasticsearch_service.client import ElasticsearchUnavailable
+    from elasticsearch_service.config import ELASTICSEARCH_UNAVAILABLE_MESSAGE
+    from elasticsearch_service.search import normalize_search_query_config, search_cars_by_query
+    from scraper.query_config import load_query_config
+
+    raw_config = load_query_config(args.config)
+    config = normalize_search_query_config(raw_config)
+    output_json = elastic_output_path(args.config)
+    try:
+        result = search_cars_by_query(config, limit=args.limit)
+    except ElasticsearchUnavailable as exc:
+        message = str(exc) or ELASTICSEARCH_UNAVAILABLE_MESSAGE
+        print(message)
+        result = empty_elastic_payload(config["query_id"], message)
+    write_json_payload(output_json, result)
+    print(f"Elastic count: {result['count']}")
+    print(f"Elastic JSON: {output_json}")
+    return {"result": result, "output_json": output_json}
+
+
+async def run_dual_query(args: argparse.Namespace, db: CarDatabase) -> None:
+    logger = logging.getLogger("kolesa_parser")
+    from elasticsearch_service.client import ElasticsearchUnavailable
+    from elasticsearch_service.config import ELASTICSEARCH_UNAVAILABLE_MESSAGE
+    from elasticsearch_service.search import search_cars_by_query
+    from scraper.query_collector import QueryCollector
+    from scraper.query_config import load_query_config, normalize_query_config
+
+    raw_config = load_query_config(args.config)
+    config = normalize_query_config(raw_config)
+    if args.minutes is not None:
+        config["parse_minutes"] = args.minutes
+    config["output_json"] = str(live_output_path(args.config))
+
+    crawl_mode = selected_crawl_mode(args)
+    logger.info("selected command dual-query")
+    logger.info("mode: %s", crawl_mode)
+    logger.info("engine: %s", args.engine)
+    logger.info("headless: %s", args.headless)
+    logger.info("loaded config: %s", raw_config)
+    logger.info("normalized config: %s", config)
+
+    live_error = None
+    collector = QueryCollector(db=db, headless=args.headless)
+    try:
+        live_result = await collector.collect(config)
+        if live_result.get("stop_reason"):
+            print(f"Stopped safely: {live_result['stop_reason']}")
+    except Exception as exc:
+        live_error = f"Live parser failed: {exc.__class__.__name__}: {exc}"
+        logger.exception("dual-query live parser failed")
+        print(live_error)
+
+    live_json = live_output_path(args.config)
+    live_payload = live_query_payload(db, config["query_id"], live_error)
+    write_json_payload(live_json, live_payload)
+
+    elastic_json = elastic_output_path(args.config)
+    try:
+        elastic_payload = search_cars_by_query(config, limit=config.get("max_results") or 50)
+    except ElasticsearchUnavailable as exc:
+        message = str(exc) or ELASTICSEARCH_UNAVAILABLE_MESSAGE
+        print(message)
+        elastic_payload = empty_elastic_payload(config["query_id"], message)
+    write_json_payload(elastic_json, elastic_payload)
+
+    print(f"Live count: {live_payload['count']}")
+    print(f"Elastic count: {elastic_payload['count']}")
+    print(f"Live JSON: {live_json}")
+    print(f"Elastic JSON: {elastic_json}")
+
+
 def run_report(db: CarDatabase) -> None:
     total = db.count_all_cars()
     model_report_path = db.export_model_report()
@@ -433,7 +559,7 @@ def run_export(db: CarDatabase) -> None:
 
 
 def print_stop_counts(db: CarDatabase, args: argparse.Namespace) -> None:
-    if getattr(args, "command", None) == "query-collect" and getattr(args, "config", None):
+    if getattr(args, "command", None) in {"query-collect", "dual-query"} and getattr(args, "config", None):
         try:
             from scraper.query_config import load_query_config, normalize_query_config
 
@@ -529,6 +655,17 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Export query checkpoint CSV after this many newly matched cars. 0 disables checkpoints.",
     )
 
+    elastic_query = subparsers.add_parser("elastic-query", help="Search already indexed cars in Elasticsearch.")
+    elastic_query.add_argument("--config", required=True, help="Path to query JSON config.")
+    elastic_query.add_argument("--limit", type=int, default=50, help="Maximum Elasticsearch results to export.")
+
+    dual_query = subparsers.add_parser("dual-query", help="Run live query collection and Elasticsearch search.")
+    dual_query.add_argument("--config", required=True, help="Path to query JSON config.")
+    dual_query.add_argument("--minutes", type=float, default=None, help="Override parse_minutes from the JSON config.")
+    dual_query.add_argument("--engine", choices=["playwright"], default="playwright")
+    dual_query.add_argument("--headless", type=str_to_bool, default=DEFAULT_HEADLESS)
+    add_safety_args(dual_query)
+
     update = subparsers.add_parser("update", help="Parse only the first N search pages.")
     update.add_argument("--pages", type=int, default=5)
     update.add_argument("--engine", choices=["http", "playwright"], default=DEFAULT_ENGINE)
@@ -558,6 +695,11 @@ def main() -> None:
             asyncio.run(run_collect_brands(args, db))
         elif args.command == "query-collect":
             asyncio.run(run_query_collect(args, db))
+        elif args.command == "elastic-query":
+            logging.getLogger("kolesa_parser").info("selected mode elastic-query")
+            run_elastic_query(args)
+        elif args.command == "dual-query":
+            asyncio.run(run_dual_query(args, db))
         elif args.command == "update":
             asyncio.run(run_update(args, db))
         elif args.command == "report":

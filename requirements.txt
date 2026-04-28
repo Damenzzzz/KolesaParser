@@ -6,3 +6,4 @@ pandas
 tqdm
 python-dotenv
 playwright
+elasticsearch>=8,<9

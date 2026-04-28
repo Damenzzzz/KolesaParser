@@ -252,6 +252,52 @@ Run with checkpoint export:
 python main.py query-collect --config data/queries/query_strict.json --engine playwright --headless false --checkpoint-export-every 10
 ```
 
+## Elasticsearch search and dual query
+
+Elasticsearch search works only on cars that already exist in `data/cars.db` and have been indexed into Elasticsearch. It does not parse Kolesa.kz.
+
+By default the Elasticsearch client uses:
+
+```text
+ELASTICSEARCH_URL=http://localhost:9200
+ELASTICSEARCH_INDEX=cars
+```
+
+You can override either value with environment variables.
+
+First index existing SQLite cars:
+
+```bash
+python scripts/index_cars_to_elastic.py
+```
+
+Search existing DB rows through Elasticsearch with the same query JSON filters:
+
+```bash
+python main.py elastic-query --config data/queries/query_strict.json --limit 50
+```
+
+This writes:
+
+```text
+data/outputs/elastic/elastic_query_strict.json
+```
+
+Run both live parsing and Elasticsearch search from one query file:
+
+```bash
+python main.py dual-query --config data/queries/query_strict.json --engine playwright --balanced-mode --minutes 10
+```
+
+This writes:
+
+```text
+data/outputs/live/live_query_strict.json
+data/outputs/elastic/elastic_query_strict.json
+```
+
+The live output has `"source": "live_parser"`. The Elasticsearch output has `"source": "elasticsearch"`.
+
 ## Targeted Model Collection
 
 `collect-targets` is still available as the older model-focused mode. It collects only selected brand/model pairs and post-filters every detail page before saving, so cars outside the configured target list are skipped.
